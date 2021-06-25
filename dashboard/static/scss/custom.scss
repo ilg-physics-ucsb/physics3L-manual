@@ -1,0 +1,164 @@
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+$custom-colors: (
+  "UCSB-navy": #003660,
+  "UCSB-gold": #FEBC11,
+  "UCSB-aqua": #04859B,
+  "UCSB-moss": #7A8D39,
+  "UCSB-seagreen": #0BA89A,
+  "UCSB-coral": #EF5645,
+  "UCSB-mist": #9CBEBE,
+  "UCSB-clay": #DCD6CC,
+  "UCSB-sandstone": #C9BF9D,
+  "UCSB-lightgray": #DCE1E5,
+);
+
+$UCSB-navy: #003660;
+$UCSB-gold: #FEBC11;
+$UCSB-aqua: #04859B;
+$UCSB-moss: #7A8D39;
+$UCSB-seagreen: #0BA89A;
+$UCSB-coral: #EF5645;
+$UCSB-mist: #9CBEBE;
+$UCSB-clay: #DCD6CC;
+$UCSB-sandstone: #C9BF9D;
+$UCSB-lightgray: #DCE1E5;
+
+
+$light : $UCSB-lightgray;
+$dark: shade-color($UCSB-navy,60%);
+$primary: $UCSB-navy;
+$component-active-bg: $UCSB-aqua;
+
+
+
+$input-btn-focus-width: 0.1rem;
+
+// SPACER
+
+$dropdown-divider-margin-y:         1px ;
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "../bootstrap/scss/variables";
+@import "../bootstrap/scss/mixins";
+ 
+
+
+
+
+
+$accordion-padding-y:                     0.75rem;
+$accordion-padding-x:                     1rem;
+$accordion-color:                         $body-color;
+$accordion-bg:                            $body-bg;
+$accordion-border-width:                  $border-width;
+$accordion-border-color:                  rgba($black, .125);
+$accordion-border-radius:                 0 px;
+$accordion-inner-border-radius:           subtract($accordion-border-radius, $accordion-border-width);
+
+$accordion-body-padding-y:                $accordion-padding-y;
+$accordion-body-padding-x:                $accordion-padding-x;
+
+$accordion-button-padding-y:              $accordion-padding-y;
+$accordion-button-padding-x:              $accordion-padding-x;
+$accordion-button-color:                  $accordion-color;
+$accordion-button-bg:                     $accordion-bg;
+$accordion-transition:                    $btn-transition, border-radius .15s ease;
+$accordion-button-active-bg:              tint-color($component-active-bg, 90%);
+$accordion-button-active-color:           shade-color($primary, 10%);
+
+$accordion-button-focus-border-color:     $input-focus-border-color;
+$accordion-button-focus-box-shadow:       $btn-focus-box-shadow;
+
+$accordion-icon-width:                    1.25rem;
+$accordion-icon-color:                    $accordion-color;
+$accordion-icon-active-color:             $accordion-button-active-color;
+$accordion-icon-transition:               transform .2s ease-in-out;
+$accordion-icon-transform:                rotate(-180deg);
+
+
+pre {
+    border: $accordion-border-color $border-width solid;
+    
+    margin: auto;
+    background-color: $UCSB-lightgray;
+    padding: 5px;
+  };
+
+code{
+    background-color: $UCSB-lightgray;
+}
+
+@media (min-width: map-get($grid-breakpoints, "sm" )){ 
+    pre{
+    max-width: 70%;
+    }
+}
+
+// 4. Include any optional Bootstrap components as you like
+@import "../bootstrap/scss/root";
+@import "../bootstrap/scss/reboot";
+@import "../bootstrap/scss/type";
+@import "../bootstrap/scss/images";
+@import "../bootstrap/scss/containers";
+@import "../bootstrap/scss/grid";
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// 5. Add additional custom code here
+@import "../bootstrap/scss/bootstrap";
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////// 
+//CONTAINERS
+
+$materials-bg: tint-color($UCSB-navy,80%);
+$figure-bg: $UCSB-sandstone;
+
+
+
+.Materials{
+    background-color: $materials-bg;
+    color:$dark;
+ };
+
+
+ .Materials ul{
+     font-size: 90%;
+ };
+
+
+ .Figure{
+    background-color: $figure-bg;
+    color:$dark;
+    text-align: center;
+ };
+
+ .Figure img{
+     max-width: 60%;
+     margin: auto;
+ }
+
+
+ .Figure ul{
+     font-size: 90%;
+ };
+
