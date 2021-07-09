@@ -44,7 +44,7 @@ var tableOfContents = function (content, target, options) {
 		levels: 'h1, h2',
 		heading: ' <b>Jump To: </b>',
 		headingLevel: 'h4',
-		listType: 'ul'
+		listType: 'ul class="list-unstyled mb-0" '
 	};
 	var settings = {};
 
@@ -74,7 +74,7 @@ var tableOfContents = function (content, target, options) {
 	 */
 	var createID = function (heading) {
 		if (heading.id.length) return;
-		heading.id = 'toc_' + heading.textContent.replace(/[^A-Za-z0-9]/g, '-');
+		heading.id =  heading.textContent.replace(/[^A-Za-z0-9]/g, '');
 	};
 
 	/**
@@ -166,50 +166,29 @@ var tableOfContents = function (content, target, options) {
 					html +=
 					
 						//'<li>' +
-						'</div></div><div class="accordion-item">'+
-						'<h2 class="accordion-header" id="'+ heading.id +'acc">'+
-						'<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#' + current_name + '">' 
-						 + heading.innerHTML.trim()  +
+						'</div></div>'+
+						'<div class="accordion-item" style="padding-bottom:-20px;">'+
+						'<h1 class="accordion-header " id="'+ heading.id +'acc">'+
+						'<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#' + 
+						current_name + 
+						'">' +
+						'<div class="ac-heads">'+
+						heading.innerHTML.trim()  +
+						'</div>' +
 						'</button>'+
-						'</h2>'+
+						'</h1>'+
 						'<div class = "collapse" id='+ current_name + '>' +
 						'<div class="accordion-collapse collapse show" aria-labelled-by="'+current_name+'">'+
 						'<div class="accordion body">'+
-						'<a class="nav-link " href="#' + heading.id + '"> <b>' +
+						'<a class="nav-link ac-min" href="#' + heading.id + '"> ' +
 						heading.innerHTML.trim() +
-						'</b></a>'+
+						'</a>'+
 						'</div>'+
-						'</div>'+
-						'<hr class="dropdown-divider" style="margin-left:20px;" ></hr>';
+						'</div>'
+						// '<hr class="dropdown-divider ac-min" style="margin-left:20px;margin-bottom:-1px;" ></hr>';
 
 						;
-
-					// html +=
-					
-					// 	//'<li>' +
-					// 	'</div></div><div class="accordion-item">'+
-						
-					// 	'<div class="accordion-header justify-right" id="'+ heading.id +'acc">'+
-					// 	'<div class="btn-group">' +
-					// 	'<a class="nav-link collapsed " href="#'+ heading.id +'" >' +
-					// 	 heading.innerHTML.trim()  +
-					// 	'</a>'+
-					// 	'<button class=" accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#' + current_name + '" style="display:flex!important; max-width:40px;">'+
-					// 	'</button>'+
-					// 	'</div>'+
-					// 	'</div>'+
-						
-
-					// 	'<div class = "collapse" id='+ current_name + '>' +
-					// 	'<div class="accordion-collapse collapse show" aria-labelled-by="'+current_name+'">'+
-					// 	'<div class="accordion body">'+
-						
-					// 	'</div>'+
-					// 	'</div>';
-
-						
-
-
+			
 					// If the last item, close it all out
 					if (index === len) {
 						// html += getOutdent(Math.abs(startingLevel - currentLevel));
@@ -218,18 +197,16 @@ var tableOfContents = function (content, target, options) {
 					html +=
 						//'<li>' +
 					
-						'<div class="class="accordion-collapse collapse " aria-labelled-by="'+current_name+'">'+
-						'<div class="accordion body">'+
-						'<a class="nav-link " href="#' + heading.id + '">' +
+						'<li class="" aria-labelled-by="'+current_name+'">'+
+						'<a class="nav-link nav-item ac-min" href="#' + heading.id + '">' +
 						heading.innerHTML.trim() +
-						'</a>'+
-						'</div>'+
-						'</div>';
+						'</a>'+			
+						'</li>';
 
 					// If the last item, close it all out
 					if (index === len) {
 						html +=//  getOutdent(Math.abs(startingLevel - currentLevel)) +
-						'</div>' ;
+						'</div></div>' ;
 					}
 				}
 

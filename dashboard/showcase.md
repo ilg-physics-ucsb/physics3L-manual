@@ -1,24 +1,17 @@
 # Manual Feature Showcase
 
-:::Materials ref_name Things you will Need
-- Computer
-    - We recommend using VS code with the Live Server extension
-    - Optionally, you should install the Spell Right extension to catch typos in markdown files
-        - Unless you are Louis, of course 😉
-- Brains
-  - Hopefully you have these handy! 
-- Patience
-  - It's a virtue, you know
+:::Intro (The-intro|Welcome to "The Guide")
+In this guide, we will cover most of the features in the online manual renderer. Each section feature full examples as well as code snippets that will produce the examples. We also provide suggestions for how to use each feature.
 :::
 
 
 
 
 
-# Header 2
+# Header Two
 
+The first header in a markdown file is rendered as the title of the page. The second single-hashed header becomes Part I. Typically this should be an introduction section. Since it is the first thing that students will read, they will be less mentally fatigued and recall more of this information. It should summarize the 'big-picture' of the lab, and use visual elements such as images, videos and figures.
 
-The second single-hashed header becomes Part I. Typically this should be an introduction section. Since it is the first thing that students will read, they will be less mentally fatigued and recall more of this information. It should summarize the 'big-picture' of the lab, and use visual elements such as images, videos and figures.
 
 
 ## Second Level Headers
@@ -35,20 +28,30 @@ Third Level Headers and beyond will not generate a link, so they should be used 
 Generate your Material List quickly with the following Code:
 
 ``` 
-:::Materials 
+:::Materials (s|hi)
 - item 1
 - item 2
   - note for item 2
 - item 3
 :::
 ```
-:::Materials 
-- item 1
+:::Materials (sasd|float-lg-start )
+- item 1 ksdj alksd jalkd sjaksdlj  ksdj alksd jalkd sjaksdlj  ksdj alksd jalkd sjaksdlj 
 - item 2
   - note for item 2
 - item 3
 :::
 
+Floating materials
+###### h6
+:::Materials (|col-lg-4)
+- item 1 asdasdjasdjal ksdj alksd jalkd sjaksdlj 
+- item 2
+  - note for item 2
+- item 3
+:::
+
+Floating materials
 
 
 ## @fa-line-chart@ Figures
@@ -61,7 +64,7 @@ Figures and generally contain images. They are automatically numbered, nameable 
 ![This is an image](imgs/crossproduct.png)
 :::
 ``` 
-:::Figure balls 
+:::Figure (balls|) 
 ![This is an image](imgs/crossproduct.png)
 :::
 
@@ -80,9 +83,9 @@ Right:
 Left: 
 ``` 
 :::LFigure optional-name optional-size
-![The relationship between x and t is constant](../imgs/Constant.png)
-![The relationship between x and t is linear](../imgs/Linear.png)
-![The relationship between x and t is quadratic](../imgs/Quad.png)
+![The relationship between x and t is constant](imgs/Constant.png)
+![The relationship between x and t is linear](imgs/Linear.png)
+![The relationship between x and t is quadratic](imgs/Quad.png)
 :::
 ``` 
 
@@ -91,8 +94,9 @@ The figure will not float next to this text because the text is placed above the
 
 <p style="color:gray">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
 
-:::RFigure phyphox m
-![This is a right floating image](imgs/Lab0/phyphox.png)
+:::RFigure (phyphox|m)
+![This is a right floating image](imgs/phyphox.png)
+This is a right floating image
 :::
 
 It will, however, float to the right of text that follows. Floating figures are best used for tall images, or a figure containing multiple images.
@@ -102,10 +106,13 @@ It will, however, float to the right of text that follows. Floating figures are 
 <p style="color:gray">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
 
 
-:::LFigure graphs xs
-![The relationship between x and t is constant](imgs/Lab0/phyphox.png)
-![The relationship between x and t is linear](imgs/Lab0/phyphox.png)
-![The relationship between x and t is quadratic](imgs/Lab0/phyphox.png)
+:::LFigure (graphs|m)
+![The relationship between x and t is constant](imgs/Constant.png)
+(a) The relationship between x and t is constant.
+![The relationship between x and t is linear](imgs/Linear.png)
+(b) The relationship between x and t is linear
+![The relationship between x and t is quadratic](imgs/Quad.png)
+(c) The relationship between x and t is quadratic
 :::
 
 You might worry that the images appear too small when multiple are in a figure, but the website automatically compiles *modals*. These are frames that pop up to show full-size media when clicked. Go ahead and click on of the images.
@@ -121,16 +128,16 @@ You might worry that the images appear too small when multiple are in a figure, 
 
 To ensure that Figures look nice on large screens, one can specify a maximum size. These sizes, {xs, s, m ,l ,xl} are computed relative to the font size and constrain the height and width of an image to a square. The figures in the excercise below show variants of [Fi](#Fi-balls) with each size
 
-:::::: Exercise
+:::::: Exercise (|Sizing Figures)
 
 ```
-:::Figure ball-o 
-![This is an image](imgs/Lab1/crossproduct.png)
+:::Figure (ball-o|)
+![This is an image](imgs/crossproduct.png)
 **Original**
 :::
 ```
-:::Figure ball-o 
-![This is an image](imgs/Lab1/crossproduct.png)
+:::Figure (ball-o|)
+![This is an image](imgs/crossproduct.png)
 
 **Original**
 :::
@@ -139,16 +146,16 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 
 
 ```
-:::Figure ball-xs xs 
-![This is an image](imgs/Lab1/crossproduct.png)
+:::Figure (ball-xs|xs)
+![This is an image](imgs/crossproduct.png)
 
 **xs**
 :::
 
 ```
 
-:::Figure ball-xs xs 
-![This is an image](imgs/Lab1/crossproduct.png)
+:::Figure (ball-xs|xs) 
+![This is an image](imgs/crossproduct.png)
 
 **xs**
 :::
@@ -156,31 +163,31 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 ---
 
 ```
-:::Figure ball-s s 
-![This is an image](imgs/Lab1/crossproduct.png)
+:::Figure (ball-s|s) 
+![This is an image](imgs/crossproduct.png)
 
 **s**
 :::
 ```
 
-:::Figure ball-s s 
-![This is an image](imgs/Lab1/crossproduct.png)
+:::Figure (ball-s|s)  
+![This is an image](imgs/crossproduct.png)
 
 **s**
 :::
 
 ---
 ```
-:::Figure ball-m m 
-![This is an image](imgs/Lab1/crossproduct.png)
+:::Figure (ball-m|m) 
+![This is an image](imgs/crossproduct.png)
 
 **m**
 :::
 
 ```
 
-:::Figure ball-m m 
-![This is an image](imgs/Lab1/crossproduct.png)
+:::Figure (ball-m|m) 
+![This is an image](imgs/crossproduct.png)
 
 **m**
 :::
@@ -188,14 +195,14 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 ---
 
 ```
-:::Figure ball-l l 
-![This is an image](imgs/Lab1/crossproduct.png)
+:::Figure (ball-l|l) 
+![This is an image](imgs/crossproduct.png)
 
 **l**
 :::
 ```
-:::Figure ball-l l 
-![This is an image](imgs/Lab1/crossproduct.png)
+:::Figure (ball-l|l) 
+![This is an image](imgs/crossproduct.png)
 
 **l**
 :::
@@ -203,15 +210,15 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 ---
 ```
 
-:::Figure ball-xl xl 
-![This is an image](imgs/Lab1/crossproduct.png)
+:::Figure (ball-xl|xl) 
+![This is an image](imgs/crossproduct.png)
 
 **xl**
 :::
 ```
 
-:::Figure ball-xl xl 
-![This is an image](imgs/Lab1/crossproduct.png)
+:::Figure (ball-xl|xl)  
+![This is an image](imgs/crossproduct.png)
 
 **xl**
 :::
@@ -221,9 +228,9 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 ### Columnation
 In order to accommodate a row of images, the site makes use of W3.CSS standard columnization. Each full figure generates a row div class containing 12 equally sized columns. These are visualized in the figure below
 
-::::::Figure
-
-:::col l1 theme-l1
+:::::::::RowFigure
+::::::row
+:::col l1 dark
 C1
 :::
 :::col l1 theme-l2
@@ -259,52 +266,59 @@ C11
 :::col l1 theme-l2
 C12
 :::
-
 ::::::
+:::::::::
 
 
 Within this, we can designate how many columns each part of the figure should take up large screens. The example below shows two images that each take up half of the horizontal space = 6 columns Note: all columns take up the full width on mobile and tablet sized screens.
 
 ```
-::::::Figure
-:::col l6
-![Part A: Unobstructed view](imgs/Lab1/crossproduct.png)
+:::::::::RowFigure (|m)
+::::::row
+:::col 
+![Part A: Unobstructed view](imgs/crossproduct.png)
 
 Part A: This figure takes up 6 of 12 rows
 :::
-:::col l6 
-![](imgs/Lab1/crossproduct.png)
+:::col 
+![](imgs/crossproduct.png)
 
-Part B:This figure takes up 6 of 12 rows
+Part B: This figure takes up 6 of 12 rows
 :::
 ::::::
+:::::::::
 ```
-::::::Figure
-:::col l6
-![Part A: Unobstructed view](imgs/Lab1/crossproduct.png)
+::::::::RowFigure (|m)
+::::::row
+:::col 
+![Part A: Unobstructed view](imgs/crossproduct.png)
 
 Part A: This figure takes up 6 of 12 rows
 :::
-:::col l6 
-![](imgs/Lab1/crossproduct.png)
+:::col 
+![](imgs/crossproduct.png)
 
-Part B:This figure takes up 6 of 12 rows
+Part B: This figure takes up 6 of 12 rows
 :::
 ::::::
+:::::::::
+
+
+
 
 ## @fa-superscript@ Equations
 
 Just as important as figures, equations get their own box. Each equation is automatically numbered. Moreover, equations can be named and linked to later (see linking Section). 
 
 ```
-:::Equation equation_name
+:::Equation (equation_ref|optional-equation-title)
 $$
 \int_M K dA+\int_{\partial M}k_g ds=2\pi\chi(M)
 $$
 :::
 ```
 
-:::Equation gbt
+:::Equation (gbt|The Gauss-Bonnet Theorem) 
 $$
 \int_M K dA+\int_{\partial M}k_g ds=2\pi\chi(M)
 $$
@@ -462,6 +476,101 @@ Tables are as usual, and will fill the entire width available. If the width is n
 |@fa-pencil@   |      |      |      |      |      |        
 :::
 
+### Plain Card
+
+```
+:::Card (ref|optional header|optional footer|style)
+These are contents
+:::
+
+```
+:::Card (ref|optional header|optional footer|style)
+These are contents
+:::
+
+The style option will accept coloring classes. Here I am coloring the card background UCSB Navy and the text white.
+
+
+
+```
+:::Card (ref|header|footer|bg-UCSB-navy-50 text-white)
+These are contents
+:::
+```
+:::Card (ref|header|footer|bg-UCSB-navy text-white)
+These are contents
+:::
+
+:::::::::Hider (color-classes|Full List of Colors to add to 'bg-' or 'text-')
+::::::row
+
+:::col
+<small class="bg-UCSB-navy text-white p-2">UCSB-navy</small>
+:::
+:::col
+<small class="bg-UCSB-gold text-white p-2">UCSB-gold</small>
+:::
+:::col
+<small class="bg-UCSB-seagreen text-white p-2">UCSB-seagreen</small>
+:::
+:::col
+<small class="bg-UCSB-aqua text-white p-2">UCSB-aqua</small>
+:::
+
+:::col
+<small class="bg-UCSB-coral text-white p-2">UCSB-coral</small>
+:::
+:::col
+<small class="bg-UCSB-moss text-white p-2">UCSB-moss</small>
+:::
+
+::::::
+::::::row
+:::col
+<small class="bg-UCSB-mist text-black p-2">UCSB-mist</small>
+:::
+:::col
+<small class="bg-UCSB-clay text-black p-2">UCSB-clay</small>
+:::
+:::col
+<small class="bg-UCSB-sandstone text-black p-2">UCSB-sandstone</small>
+:::
+:::col
+<small class="bg-UCSB-lightgray text-black p-2">UCSB-lightgray</small>
+:::
+:::col
+<small class="bg-dark text-white p-2">dark</small>
+:::
+:::col
+<small class="bg-white text-dark p-2">white</small>
+:::
+
+::::::row
+:::col
+<small class="bg-primary text-white p-2">primary</small>
+:::
+:::col
+<small class="bg-secondary text-white p-2">secondary</small>
+:::
+:::col
+<small class="bg-success text-white p-2">success</small>
+:::
+:::col
+<small class="bg-info text-black p-2">info</small>
+:::
+:::col
+<small class="bg-warning text-black p-2">warning</small>
+:::
+:::col
+<small class="bg-danger text-black p-2">danger</small>
+:::
+
+
+::::::
+
+:::::::::
+
+
 # Other Features
 
 ## Linking (WIP)
@@ -567,14 +676,14 @@ Footnotes are automatically numbered and create small popups on the bottom of th
 A Hider is good for letting students check their understanding or condensing a less important block of information. To title the Hider, type something after decalring it *without* a line break.
 
 ```
-:::Hider If you drop a magnet down a conducting tube, which direction will the force be applied?
+:::Hider (drop|If you drop a magnet down a conducting tube, which direction will the force be applied?)
 
 Upwards! Or, more correctly, in the direction opposite of the gravitational force accelerating it
 
 :::
 ```
 
-:::Hider If you drop a magnet down a conducting tube, which direction will the force be applied?
+:::Hider (drop|If you drop a magnet down a conducting tube, which direction will the force be applied?)
 
 Upwards! Or, more correctly, in the opposite direction of the gravitational force accelerating it
 
@@ -610,7 +719,7 @@ Please turn in your report [here](https://gauchospace.ucsb.edu/courses/my/)
 
 
 # Test
-:::::: Exercise magnetic-field2
+:::::: Exercise (magnetic-field2|)
 Firstly, let's measure the direction of magnetic field from the  magnet.
 **Measurement steps:**
 1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.
@@ -629,7 +738,7 @@ Firstly, let's measure the direction of magnetic field from the  magnet.
 ::::::
 
 
-::::::Figure named 
+::::::Figure (named|)
 Firstly, let's measure the direction of magnetic field from the  magnet.
 **Measurement steps:**
 1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.

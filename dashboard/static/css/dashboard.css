@@ -1,15 +1,15 @@
 body {
-  font-size: 1rem;
+  font-size: 1.1rem;
   background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url("../assets/body.png");
   background-color: #eee;
   background-attachment: fixed;
 }
 
 .allcontent{
-  max-width: 1400px;
+  max-width: 1500px;
   border-right: 1px var(--bs-light) solid ;
   background-color: rgba(255, 255, 255, 0.80);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 
@@ -19,9 +19,6 @@ body {
   }
 }
 
-ul.nav ul {
-  padding-left: 10px;
-}
 
 
 h2.accordion-header{
@@ -35,14 +32,17 @@ h2.accordion-header{
 
 #maincontent> h2{
   padding-top: 30px;
-  color: var(--bs-primary);
+  color: var(--bs-UCSB-navy);
 }
 
 #maincontent> h3{
   color: var(--bs-gray-dark);
+  padding-top: 20px;
 }
 
-
+h1,h2, h6{
+  clear:both;
+}
 
 #maincontent> p{
   text-indent: 1rem;
@@ -51,13 +51,12 @@ h2.accordion-header{
 
 
 #part0{
-  margin:  20px auto 
+  margin:  20px auto;
   display: block;
   text-align: center;
   text-decoration: underline;
-  font-family: 'Courier New', Courier, monospace;
   font-size: 4rem;
-  border-bottom: 0px lightgrey solid
+  border-bottom: 1px lightgrey solid
 }
 
 @media (min-width: 992px) {

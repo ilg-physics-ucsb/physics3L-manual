@@ -18,6 +18,7 @@ $custom-colors: (
   "UCSB-clay": #DCD6CC,
   "UCSB-sandstone": #C9BF9D,
   "UCSB-lightgray": #DCE1E5,
+  "black": black
 );
 
 $UCSB-navy: #003660;
@@ -34,12 +35,26 @@ $UCSB-lightgray: #DCE1E5;
 
 $light : $UCSB-lightgray;
 $dark: shade-color($UCSB-navy,60%);
-$primary: $UCSB-navy;
 $component-active-bg: $UCSB-aqua;
 
 
 
 $input-btn-focus-width: 0.1rem;
+$card-cap-bg:                       rgba(black, .15) !default;
+
+
+$utilities: (
+  "opacity": (
+    property: opacity,
+    values: (
+      0: 0,
+      25: .25,
+      50: .5,
+      75: .75,
+      100: 1,
+    )
+  )
+ );
 
 // SPACER
 
@@ -71,7 +86,7 @@ $accordion-button-padding-x:              $accordion-padding-x;
 $accordion-button-color:                  $accordion-color;
 $accordion-button-bg:                     $accordion-bg;
 $accordion-transition:                    $btn-transition, border-radius .15s ease;
-$accordion-button-active-bg:              tint-color($component-active-bg, 90%);
+$accordion-button-active-bg:              $UCSB-lightgray;
 $accordion-button-active-color:           shade-color($primary, 10%);
 
 $accordion-button-focus-border-color:     $input-focus-border-color;
@@ -125,40 +140,320 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 
 
+/////////////////////////////////////////////////////////////////// 
+//ACC Modify
+
+#navcordion ul li a{
+ padding-left:30px;
+}
+
+.ac-heads{
+    font-size: 1.1rem;
+}
+
+.ac-top, .ac-top:focus, .ac-top:active{
+    background-color: $UCSB-navy;
+    color: $light;
+}
+
+.ac-top:not(.collapsed){
+    background-color: $UCSB-navy;
+    color: $light;
+}
+
+.ac-top::after, .ac-top.ac-top:not(.collapsed)::after{
+
+    background-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+}
+
+.ac-min{
+    background-color: white;
+    border-bottom: 1px solid $light ;
+    font-size: smaller;
+
+}
+.ac-min:hover,.ac-min:active{
+    background-color: $light;
+    border-bottom: 1px solid $light ;
+
+}
+
+.ac-min> ul > li >a{
+    padding-left: 1px;
+}
+
 
 
 /////////////////////////////////////////////////////////////////// 
 //CONTAINERS
 
-$materials-bg: tint-color($UCSB-navy,80%);
-$figure-bg: $UCSB-sandstone;
+$materials-bg: tint-color($UCSB-navy,95%);
+$figure-bg: tint-color($UCSB-sandstone,95%);
+$intro-bg: tint-color($UCSB-moss,90%);
+$hider-bg:  $UCSB-moss;
+$exercise-bg: shade-color(tint-color($UCSB-coral,20%),30%);
+$eqn-bg: tint-color($UCSB-navy,85%);
+$question-header-bg:shade-color($UCSB-seagreen,10%);
+$intro-bg:tint-color($UCSB-navy,90%);
+$simulation-bg:$UCSB-mist;
 
 
+//def
+.card-but{
+    font-size: 1.5rem!important;
+}
 
-.Materials{
+///Intro/////////////////////////////
+.Intro{
+    background-color: $intro-bg;
+    color:$dark;
+    text-align: center;
+    font-size: 1.2rem!important;
+
+    ol, ul{
+        text-align: left
+    }
+ };
+
+
+///Materials/////////////////////////////
+ .Materials{
     background-color: $materials-bg;
     color:$dark;
+
+
+    ul{
+        font-size: 90%;
+    };
  };
 
 
- .Materials ul{
-     font-size: 90%;
- };
+///Hider////
+.Hider{
+    button{
+        border: 0px solid black;
+        width: 100%;
+        background-color:tint-color($hider-bg,75%);
+     };
+    button:active, button:focus{
+        border: 0px solid black;
+        width: 100%;
+        color:$dark;
+        background-color: tint-color($hider-bg,40%);
+        box-shadow: none!important;
+
+    };
+    button:not(.collapsed){
+        border: 0px solid black;
+        width: 100%;
+        color:$dark;
+        background-color: tint-color($hider-bg,30%)!important;
+     };
+
+    .card-but{
+        font-size: 1.3rem!important;
+        font-weight: normal;
+        padding-right:10px;   
+    }
+};
 
 
+
+//Simulation
+.Simulation{
+    button{
+        border: 0px solid black;
+        width: 100%;
+        background-color:tint-color($simulation-bg,75%);
+        box-shadow: none!important;
+
+     };
+    button:active, button:focus{
+        border: 0px solid black;
+        width: 100%;
+        color:$dark;
+        background-color: tint-color($simulation-bg,40%);
+        box-shadow: none!important;
+
+    }; 
+    button:not(.collapsed){
+        border: 0px solid black;
+        width: 100%;
+        color:$dark;
+        background-color: tint-color($simulation-bg,30%)!important;
+     };
+
+    .card-but{
+        font-size: 1.3rem!important;
+        font-weight: normal;
+        padding-right:10px;   
+    }
+};
+
+
+///Equation
+.Equation{
+    background-color: $eqn-bg;
+    .card-footer{
+        color: black;
+    }   
+}
+
+///Exercise
+.Exercise {
+    button{
+    border: 0px solid black;
+    width: 100%;
+    background-color:tint-color($exercise-bg,65%);
+    box-shadow: none!important;
+
+    };
+
+    button:active, .Exercise button:focus{
+        border: 0px solid black;
+        width: 100%;
+        color:$dark;
+        background-color: tint-color($exercise-bg,55%);
+        box-shadow: none!important;
+
+     };
+
+     button:not(.collapsed){
+        border: 0px solid black;
+        width: 100%;
+        color:white;
+        background-color: tint-color($exercise-bg,15%);
+     };
+     button:not(.collapsed):after{
+        background-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+     }
+
+    .card-but{
+        font-size: 1.5rem;
+    }
+
+}
+
+///Question
+
+
+.Question{
+    text-align: center;
+    .card-header{
+        background-color: $question-header-bg;
+        color:white;
+        border:0;
+    }
+
+    ol, ul{
+        text-align: left;
+        li{
+            padding: 0.3rem 0px;
+        }
+        li::marker{
+            font-weight: 550;
+        }
+    }
+
+    ol{ 
+        list-style-type: lower-alpha!important;
+      }
+
+
+}
+///Figure//////////////////////////////
  .Figure{
     background-color: $figure-bg;
     color:$dark;
     text-align: center;
+    justify-content: center;
+    max-width: 95%;
+    
+
+    img{
+        max-width: 100%;
+    }
+    ul, ol{
+        font-size:  0.85rem;
+        text-align: left
+    };
+
+    p{
+        margin: auto;
+        max-width:100%;
+        display: block;
+        overflow: hidden;
+        font-size: 0.85rem;
+    }
+   
  };
 
+.xs, .s, .m, .l, .xl{
+    margin:auto;
+}
+
+ @media (min-width: map-get($grid-breakpoints, "lg" )){ 
+
+    .Figure{
+        max-width:80%;
+    }
+    .xs.Figure:not(.rowfig), .xs img{
+        width:10rem;
+    }
+    .s.Figure:not(.rowfig), .s img{
+        max-width: 15rem;
+    }
+    .m.Figure:not(.rowfig), .m img{
+        max-width: 20rem;
+        margin: auto;
+    }
+    .l.Figure:not(.rowfig), .l img{
+        max-width: 25rem;
+    }
+    .xl.Figure:not(.rowfig), .xl img {
+        max-width: 40rem;
+    }
+ }
  .Figure img{
-     max-width: 60%;
-     margin: auto;
+    display: block;
+    margin: auto;
+    clear: both;
+ }
+ .Figure:not(.rowfig) img{
+    max-width:100%;
  }
 
 
- .Figure ul{
-     font-size: 90%;
- };
+
+
+///Collapse/////////////////////////////
+
+
+
+////Specific
+#part0{
+    font-family: var(--bs-font-monospace);
+    font-size: 1em;
+    direction: ltr /* rtl:ignore */;
+    unicode-bidi: bidi-override;
+
+}
+
+
+///Quick Hacks
+h5 > button{
+    box-shadow: none!important;
+}
+
+
+.row ul{
+    display: block;
+    margin-left:0px;
+}
+
+
+img:hover{
+    cursor: pointer;
+}
+
 
