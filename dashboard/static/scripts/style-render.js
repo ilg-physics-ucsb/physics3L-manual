@@ -7,14 +7,24 @@ function processstyles(){
       { left: "\\[", right: "\\]", display: true }
     ]
   })  
+  modal_img()
+  replace_tags()
   tableOfContents('[data-toc]', '[data-content]')
-    replace_tags()
+    
+  table_list=document.querySelectorAll('.Table table')
 
+  
+  for (i = 0; i < table_list.length; i++) {
+    table_list[i].setAttribute('class', 'table table-striped')
+  }
+
+  
+    
 }
 
 
 function replace_tags() {
-    var text = document.querySelectorAll('#maincontent h3, #maincontent h2, #maincontent p, #maincontent li, #maincontent ol, .Question ol li, #maincontent ul,  .Table td, nav') 
+    var text = document.querySelectorAll('h1, h2, h3') 
     for (i = 0; i < text.length; i++) {
       emojified = text[i].innerHTML.replaceAll(/(\@)(.*?)(\@)/g, "<i class='fa $2'></i>")
       text[i].innerHTML = emojified
@@ -25,5 +35,11 @@ function replace_tags() {
       checked = text[i].innerHTML.replaceAll(/\[c\]/g, "<input type= 'checkbox'>")
       text[i].innerHTML = checked
     }
+
+      
+
   }
   
+
+
+

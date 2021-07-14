@@ -35,23 +35,15 @@ Generate your Material List quickly with the following Code:
 - item 3
 :::
 ```
-:::Materials (sasd|float-lg-start )
-- item 1 ksdj alksd jalkd sjaksdlj  ksdj alksd jalkd sjaksdlj  ksdj alksd jalkd sjaksdlj 
-- item 2
-  - note for item 2
-- item 3
-:::
-
-Floating materials
-###### h6
+###### 
 :::Materials (|col-lg-4)
-- item 1 asdasdjasdjal ksdj alksd jalkd sjaksdlj 
+- item 1 
 - item 2
   - note for item 2
 - item 3
 :::
 
-Floating materials
+
 
 
 ## @fa-line-chart@ Figures
@@ -62,10 +54,15 @@ Figures and generally contain images. They are automatically numbered, nameable 
 ``` 
 :::Figure optional-name optional-size
 ![This is an image](imgs/crossproduct.png)
+This is an image
 :::
 ``` 
-:::Figure (balls|) 
+:::Figure (ball-p|) 
+
+
 ![This is an image](imgs/crossproduct.png)
+This is an image
+
 :::
 
 To improve visual variety you can also make right and left floating figures, respectively. These will float to the right(left) of any text that *follows* it.
@@ -96,7 +93,7 @@ The figure will not float next to this text because the text is placed above the
 
 :::RFigure (phyphox|m)
 ![This is a right floating image](imgs/phyphox.png)
-This is a right floating image
+*This is a right floating image*
 :::
 
 It will, however, float to the right of text that follows. Floating figures are best used for tall images, or a figure containing multiple images.
@@ -107,12 +104,12 @@ It will, however, float to the right of text that follows. Floating figures are 
 
 
 :::LFigure (graphs|m)
-![The relationship between x and t is constant](imgs/Constant.png)
-(a) The relationship between x and t is constant.
-![The relationship between x and t is linear](imgs/Linear.png)
-(b) The relationship between x and t is linear
-![The relationship between x and t is quadratic](imgs/Quad.png)
-(c) The relationship between x and t is quadratic
+![A graph of a function that is parallel to the time axis. The position is equal to 5 meters at all times.](imgs/Constant.png "The relationship between x and t is constant")
+
+![](imgs/Linear.png "The relationship between x and t is linear")
+
+![](imgs/Quad.png "The relationship between x and t is quadratic")
+
 :::
 
 You might worry that the images appear too small when multiple are in a figure, but the website automatically compiles *modals*. These are frames that pop up to show full-size media when clicked. Go ahead and click on of the images.
@@ -132,14 +129,14 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 
 ```
 :::Figure (ball-o|)
-![This is an image](imgs/crossproduct.png)
-**Original**
+![This is an image](imgs/crossproduct.png "Original")
+
 :::
 ```
 :::Figure (ball-o|)
-![This is an image](imgs/crossproduct.png)
+![This is an image](imgs/crossproduct.png "Original")
 
-**Original**
+
 :::
 
 ---
@@ -147,80 +144,77 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 
 ```
 :::Figure (ball-xs|xs)
-![This is an image](imgs/crossproduct.png)
+![This is an image](imgs/crossproduct.png "xs")
 
-**xs**
+
 :::
 
 ```
 
 :::Figure (ball-xs|xs) 
-![This is an image](imgs/crossproduct.png)
+![This is an image](imgs/crossproduct.png "xs")
 
-**xs**
+
 :::
 
 ---
 
 ```
 :::Figure (ball-s|s) 
-![This is an image](imgs/crossproduct.png)
+![This is an image](imgs/crossproduct.png "s")
 
-**s**
 :::
 ```
 
 :::Figure (ball-s|s)  
-![This is an image](imgs/crossproduct.png)
+![This is an image](imgs/crossproduct.png "s")
 
-**s**
+
 :::
 
 ---
 ```
 :::Figure (ball-m|m) 
-![This is an image](imgs/crossproduct.png)
+![This is an image](imgs/crossproduct.png "m")
 
-**m**
+
 :::
 
 ```
 
 :::Figure (ball-m|m) 
-![This is an image](imgs/crossproduct.png)
+![This is an image](imgs/crossproduct.png "m")
 
-**m**
+
 :::
 
 ---
 
 ```
 :::Figure (ball-l|l) 
-![This is an image](imgs/crossproduct.png)
+![This is an image](imgs/crossproduct.png "l")
 
-**l**
+
 :::
 ```
 :::Figure (ball-l|l) 
-![This is an image](imgs/crossproduct.png)
+![This is an image](imgs/crossproduct.png "l")
 
-**l**
+
 :::
 
 ---
 ```
 
 :::Figure (ball-xl|xl) 
-![This is an image](imgs/crossproduct.png)
+![This is an image](imgs/crossproduct.png "xl")
 
-**xl**
 :::
 ```
 
 :::Figure (ball-xl|xl)  
-![This is an image](imgs/crossproduct.png)
+![This is an image](imgs/crossproduct.png "xl")
 
-**xl**
 :::
 ::::::
 
@@ -229,41 +223,41 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 In order to accommodate a row of images, the site makes use of W3.CSS standard columnization. Each full figure generates a row div class containing 12 equally sized columns. These are visualized in the figure below
 
 :::::::::RowFigure
-::::::row
-:::col l1 dark
+::::::row 
+:::col (bg-dark text-light)
 C1
 :::
-:::col l1 theme-l2
+:::col (bg-primary text-light)
 C2
 :::
-:::col l1 theme-l3
+:::col (bg-danger text-light)
 C3
 :::
-:::col l1 theme-l4
+:::col (bg-UCSB-seagreen text-light)
 C4
 :::
-:::col l1 theme-l5
+:::col (bg-UCSB-gold text-light)
 C5
 :::
-:::col l1 theme-l6
+:::col (bg-UCSB-navy text-light)
 C6
 :::
-:::col l1 theme-l5
+:::col (bg-secondary text-light)
 C7
 :::
-:::col l1 theme-l4
+:::col (bg-info text-light)
 C8
 :::
-:::col l1 theme-l3
+:::col (bg-UCSB-coral text-light)
 C9
 :::
-:::col l1 theme-l2
+:::col (bg-UCSB-moss text-light)
 C10
 :::
-:::col l1 theme-l1
+:::col (bg-success text-light)
 C11
 :::
-:::col l1 theme-l2
+:::col (bg-UCSB-aqua text-light)
 C12
 :::
 ::::::
@@ -276,14 +270,14 @@ Within this, we can designate how many columns each part of the figure should ta
 :::::::::RowFigure (|m)
 ::::::row
 :::col 
-![Part A: Unobstructed view](imgs/crossproduct.png)
+![Part A: Unobstructed view](imgs/crossproduct.png "Part A: This figure takes up 6 of 12 rows")
 
-Part A: This figure takes up 6 of 12 rows
+
 :::
 :::col 
-![](imgs/crossproduct.png)
+![](imgs/crossproduct.png "Part B: This figure takes up 6 of 12 rows")
 
-Part B: This figure takes up 6 of 12 rows
+
 :::
 ::::::
 :::::::::
@@ -291,14 +285,14 @@ Part B: This figure takes up 6 of 12 rows
 ::::::::RowFigure (|m)
 ::::::row
 :::col 
-![Part A: Unobstructed view](imgs/crossproduct.png)
+![Part A: Unobstructed view](imgs/crossproduct.png "Part A: This figure takes up 6 of 12 rows")
 
-Part A: This figure takes up 6 of 12 rows
+
 :::
 :::col 
-![](imgs/crossproduct.png)
+![](imgs/crossproduct.png "Part B: This figure takes up 6 of 12 rows")
 
-Part B: This figure takes up 6 of 12 rows
+
 :::
 ::::::
 :::::::::
@@ -326,6 +320,16 @@ $$
 
 
 Equation markup uses standard KaTeX. For less important equations, KaTeX may be rendered in-line with single dollar signs `$a=\tfrac{1}{2}\pi r^2$`, e.g. : For our purposes [Eq](#Eq-gbt) can be reduced to the more familiar $a=\tfrac{1}{2}\pi r^2$
+
+
+
+:::Equation (gbt2) 
+$$
+\int_M K dA+\int_{\partial M}k_g ds=2\pi\chi(M)
+$$
+:::
+
+
 
 ## @fa-question-circle@ Questions
 
@@ -404,7 +408,7 @@ Videos can be added directly via iframe since html is enabled. Use the Video con
 
 ```
 :::Video
-<iframe  src="https://www.youtube.com/embed/PT6GM85ut4I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe  height="100%" width="100%" src="https://www.youtube.com/embed/PT6GM85ut4I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 :::
 
 ## @fa-space-shuttle@ Simulations
@@ -433,9 +437,10 @@ Pay attention to how many colons you use in your markdown container!
 :::
 ```
 
-::: Note
+::: Note (careful|3)
 Pay attention to how many colons you use in your markdown container!
 :::
+
 
 ### Warnings
 Warnings are like notes, but indicate possible *danger* to the student. To make sure they are seen, they are colored obnoxiously and shake until clicked on
@@ -449,6 +454,7 @@ Knives are sharp and not a toy!
 
 ::: Warning
 Knives are sharp and not a toy!
+<hr>
 (click to dismiss)
 :::
 
@@ -458,7 +464,8 @@ Tables are as usual, and will fill the entire width available. If the width is n
 
 ```
 :::Table
-|Offset  $y$  | $R$ |$1/R$  | Measured $B_y$   |Measured $B_z$  | Field strength $B$ |
+|Offset | Radius |Inverse  | Measured |Measured   | Field strength |
+|  $y$  | $R$ |$1/R$  |  $B_y$   | $B_z$  |  $B$ |
 |------|------|------|------|------|------|
 |@fa-pencil@    |      |      |      |      |      |     
 |@fa-pencil@   |      |      |      |      |      |   
@@ -468,7 +475,7 @@ Tables are as usual, and will fill the entire width available. If the width is n
 ```
 
 :::Table
-|Offset  $y$  | $R$ |$1/R$  | Measured $B_y$   |Measured $B_z$  | Field strength $B$ |
+|Offset  $y$  |Radius $R$ |Inverse $1/R$  | Measured $B_y$   |Measured $B_z$  | Field strength $B$ |
 |------|------|------|------|------|------|
 |@fa-pencil@    |      |      |      |      |      |     
 |@fa-pencil@   |      |      |      |      |      |   

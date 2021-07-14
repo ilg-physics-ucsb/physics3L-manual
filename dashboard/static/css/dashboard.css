@@ -6,7 +6,7 @@ body {
 }
 
 .allcontent{
-  max-width: 1500px;
+  max-width: 1600px;
   border-right: 1px var(--bs-light) solid ;
   background-color: rgba(255, 255, 255, 0.80);
   font-size: 1.2rem;

@@ -7,19 +7,7 @@
 @import "../bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
-$custom-colors: (
-  "UCSB-navy": #003660,
-  "UCSB-gold": #FEBC11,
-  "UCSB-aqua": #04859B,
-  "UCSB-moss": #7A8D39,
-  "UCSB-seagreen": #0BA89A,
-  "UCSB-coral": #EF5645,
-  "UCSB-mist": #9CBEBE,
-  "UCSB-clay": #DCD6CC,
-  "UCSB-sandstone": #C9BF9D,
-  "UCSB-lightgray": #DCE1E5,
-  "black": black
-);
+
 
 $UCSB-navy: #003660;
 $UCSB-gold: #FEBC11;
@@ -31,9 +19,10 @@ $UCSB-mist: #9CBEBE;
 $UCSB-clay: #DCD6CC;
 $UCSB-sandstone: #C9BF9D;
 $UCSB-lightgray: #DCE1E5;
+$caution:tint-color($UCSB-gold,70%);
 
 
-$light : $UCSB-lightgray;
+$light : tint-color($UCSB-lightgray,80%);
 $dark: shade-color($UCSB-navy,60%);
 $component-active-bg: $UCSB-aqua;
 
@@ -42,6 +31,21 @@ $component-active-bg: $UCSB-aqua;
 $input-btn-focus-width: 0.1rem;
 $card-cap-bg:                       rgba(black, .15) !default;
 
+
+$custom-colors: (
+  "UCSB-navy": #003660,
+  "UCSB-gold": #FEBC11,
+  "UCSB-aqua": #04859B,
+  "UCSB-moss": #7A8D39,
+  "UCSB-seagreen": #0BA89A,
+  "UCSB-coral": #EF5645,
+  "UCSB-mist": #9CBEBE,
+  "UCSB-clay": #DCD6CC,
+  "UCSB-sandstone": #C9BF9D,
+  "UCSB-lightgray": #DCE1E5,
+  "black": black,
+  "caution": tint-color($UCSB-gold,70%)
+);
 
 $utilities: (
   "opacity": (
@@ -145,41 +149,62 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 #navcordion ul li a{
  padding-left:30px;
+ margin-bottom: -1px;
+ background-color: $light;
 }
 
-.ac-heads{
-    font-size: 1.1rem;
-}
+
 
 .ac-top, .ac-top:focus, .ac-top:active{
     background-color: $UCSB-navy;
     color: $light;
+    
 }
 
 .ac-top:not(.collapsed){
-    background-color: $UCSB-navy;
-    color: $light;
+    background-color: $dark;
+    //color: $UCSB-gold;
+    color:white;
 }
 
-.ac-top::after, .ac-top.ac-top:not(.collapsed)::after{
 
+.ac-top::after, .ac-top.ac-top:not(.collapsed)::after{
     background-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
 }
 
-.ac-min{
+.ac-heads{
+    font-size: 1.1rem;  
+    background-color: tint-color($UCSB-lightgray,10%); 
+    
+    span{
+        color:$dark
+    }
+    box-shadow: none!important;
+}
+
+.ac-heads:active,.ac-heads:focus{
+    color:$dark;
+}
+
+
+.ac-min, .ac-min:active{
     background-color: white;
     border-bottom: 1px solid $light ;
     font-size: smaller;
+    background-color: tint-color($UCSB-lightgray,50%);
 
 }
-.ac-min:hover,.ac-min:active{
-    background-color: $light;
+.ac-min:hover{
+    background-color: shade-color(tint-color($UCSB-gold,90%),10%);
     border-bottom: 1px solid $light ;
 
 }
 
 .ac-min> ul > li >a{
     padding-left: 1px;
+}
+.ac-list > a:hover{
+    background-color: shade-color(tint-color($UCSB-gold,90%),5%)!important;
 }
 
 
@@ -189,12 +214,12 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 $materials-bg: tint-color($UCSB-navy,95%);
 $figure-bg: tint-color($UCSB-sandstone,95%);
-$intro-bg: tint-color($UCSB-moss,90%);
+
 $hider-bg:  $UCSB-moss;
 $exercise-bg: shade-color(tint-color($UCSB-coral,20%),30%);
 $eqn-bg: tint-color($UCSB-navy,85%);
 $question-header-bg:shade-color($UCSB-seagreen,10%);
-$intro-bg:tint-color($UCSB-navy,90%);
+$intro-bg: $UCSB-navy;
 $simulation-bg:$UCSB-mist;
 
 
@@ -205,13 +230,18 @@ $simulation-bg:$UCSB-mist;
 
 ///Intro/////////////////////////////
 .Intro{
-    background-color: $intro-bg;
+    background-color: tint-color($intro-bg,80%);
     color:$dark;
     text-align: center;
     font-size: 1.2rem!important;
 
     ol, ul{
         text-align: left
+    }
+
+    .card-header{
+     color:white;
+     background-color: $intro-bg
     }
  };
 
@@ -280,7 +310,7 @@ $simulation-bg:$UCSB-mist;
         border: 0px solid black;
         width: 100%;
         color:$dark;
-        background-color: tint-color($simulation-bg,30%)!important;
+        background-color: tint-color($simulation-bg,100%)!important;
      };
 
     .card-but{
@@ -304,7 +334,7 @@ $simulation-bg:$UCSB-mist;
     button{
     border: 0px solid black;
     width: 100%;
-    background-color:tint-color($exercise-bg,65%);
+    background-color:tint-color($exercise-bg,85%);
     box-shadow: none!important;
 
     };
@@ -322,7 +352,7 @@ $simulation-bg:$UCSB-mist;
         border: 0px solid black;
         width: 100%;
         color:white;
-        background-color: tint-color($exercise-bg,15%);
+        background-color: shade-color($exercise-bg,5%);
      };
      button:not(.collapsed):after{
         background-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
@@ -360,6 +390,59 @@ $simulation-bg:$UCSB-mist;
       }
 
 
+}
+
+
+//Video
+.Video {
+
+    background-color: tint-color($UCSB-navy,50%);
+    border:0px solid black;
+    border-radius:$border-radius!important;
+    
+    .card-footer, .card-header{
+        background-color: $UCSB-navy;
+        color:white;
+    }
+
+    .card-body{
+        padding:0!important;
+        border-radius:$border-radius!important;
+    }
+
+    iframe {
+    // width: 100%;
+    // height:100%; 
+   }
+}
+
+//Note
+
+.Note{
+    transform:rotate(2deg);
+    font-family: 'Comic Sans Ms', "Comic Sans", cursive;
+    margin-top:50px;
+    i{
+        transform:rotate(45deg) translateY(-40px) ;
+    }
+    .card-header{
+        background-color: $caution!important;
+        border:none;
+        height:20px;
+
+    }
+}
+
+.Warning{
+
+    font-family: 'Impact', 'Arial';
+    margin-top:50px;
+    
+
+    .card-header{
+        background-color: rgba($black, .0);
+        border:none;
+    }
 }
 ///Figure//////////////////////////////
  .Figure{
@@ -416,7 +499,7 @@ $simulation-bg:$UCSB-mist;
  }
  .Figure img{
     display: block;
-    margin: auto;
+    margin: 10px auto;
     clear: both;
  }
  .Figure:not(.rowfig) img{
@@ -457,3 +540,42 @@ img:hover{
 }
 
 
+///Animate
+.hshaker{
+    animation: hshake 1.82s cubic-bezier(.16,.17,.19,.37) both;
+    animation-iteration-count: infinite;
+  }
+  
+.hshaker:hover{
+        animation-iteration-count: 0;
+  }
+
+@keyframes hshake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+      transform: translate3d(1px, 0, 0);
+    }
+    30%, 50%, 70% {
+      transform: translate3d(-2px, 0, 0);
+    }  
+    40%, 60% {
+      transform: translate3d(1px, 0, 0);
+    }
+  }
+
+
+  .rotor{
+    animation: rotor 0.82s  both;
+    animation-iteration-count: infinite;
+  }
+  
+
+  @keyframes rotor {
+    0% { transform: rotate(0deg); }
+    80% { transform: rotate(0deg); }
+    85% { transform: rotate(25deg); }
+    95% { transform: rotate(-25deg); }
+   100% { transform: rotate(0deg); }
+  }

@@ -162,32 +162,30 @@ var tableOfContents = function (content, target, options) {
 				// Generate the HTML
 				if(currentLevel == 1){
 					current_name= heading.id + '_collapse'
-
+					console.log(current_name)
 					html +=
 					
 						//'<li>' +
-						'</div></div>'+
-						'<div class="accordion-item" style="padding-bottom:-20px;">'+
-						'<h1 class="accordion-header " id="'+ heading.id +'acc">'+
-						'<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#' + 
-						current_name + 
-						'">' +
-						'<div class="ac-heads">'+
-						heading.innerHTML.trim()  +
-						'</div>' +
-						'</button>'+
-						'</h1>'+
-						'<div class = "collapse" id='+ current_name + '>' +
-						'<div class="accordion-collapse collapse show" aria-labelled-by="'+current_name+'">'+
-						'<div class="accordion body">'+
-						'<a class="nav-link ac-min" href="#' + heading.id + '"> ' +
-						heading.innerHTML.trim() +
-						'</a>'+
-						'</div>'+
-						'</div>'
-						// '<hr class="dropdown-divider ac-min" style="margin-left:20px;margin-bottom:-1px;" ></hr>';
-
-						;
+							`</div>
+						</div>
+						<div class="accordion-item" style="padding-bottom:-20px;">
+							<h1 class="accordion-header ac-h2" id="${heading.id}acc">
+								<button class="accordion-button collapsed ac-heads" type="button" data-bs-toggle="collapse" data-bs-target="#${current_name}">
+									<span>
+										${heading.innerHTML.trim()}
+									</span>
+								</button>
+							</h1>
+							<div class="collapse" id="${current_name}" >
+								<div class="accordion-collapse collapse show" aria-labelledby="${current_name}">
+									<div class="">
+										<a class="nav-link ac-min" href="#${heading.id}">
+											${heading.innerHTML.trim()}
+										</a>
+									</div>
+								</div>
+							`
+							;
 			
 					// If the last item, close it all out
 					if (index === len) {
@@ -197,7 +195,7 @@ var tableOfContents = function (content, target, options) {
 					html +=
 						//'<li>' +
 					
-						'<li class="" aria-labelled-by="'+current_name+'">'+
+						'<li class="ac-list" aria-labelled-by="'+current_name+'">'+
 						'<a class="nav-link nav-item ac-min" href="#' + heading.id + '">' +
 						heading.innerHTML.trim() +
 						'</a>'+			
