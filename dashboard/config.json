@@ -8,7 +8,8 @@
         "zoom": "https://ucsb.zoom.us/s/7327636002",
         "officehours": "2-3PM Wednesdays",
         "sectionhours": "1-3PM Monday, 12-2PM Thursdays",        
-        "img": "https://www.physics.ucsb.edu/sites/default/files/styles/people_node/public/people/photo/ULW9KeE3_400x400.jpg?itok=_jLjeNxS"
+        "img": "https://www.physics.ucsb.edu/sites/default/files/styles/people_node/public/people/photo/ULW9KeE3_400x400.jpg?itok=_jLjeNxS",
+        "title":"TA"
       },
       {
         "first-name": "Zak",
@@ -18,19 +19,31 @@
         "zoom": "https://ucsb.zoom.us/s/7327636002",
         "officehours": "2-3PM Wednesdays",
         "sectionhours": "1-3PM Monday, 12-2PM Thursdays",
-        "img": "https://www.physics.ucsb.edu/sites/default/files/styles/people_node/public/people/photo/ZakAndGalileo.jpeg?itok=HriS16Cn"
+        "img": "https://www.physics.ucsb.edu/sites/default/files/styles/people_node/public/people/photo/ZakAndGalileo.jpeg?itok=HriS16Cn",
+        "title":"TA"
       }
     ],
     "Faculty": [
       {
-        "first-name": "Paula",
-        "last-name": "Popescu",
+        "first-name": "Kelly",
+        "last-name": "Pawlak",
         "pronouns": "(She/Her/Hers)",
         "email": "kapawlak@ucsb.edu",
         "zoom": "https://ucsb.zoom.us/s/7327636002",
         "officehours": "2-3PM Wednesdays",
+        "sectionhours": "1-3PM Monday, 12-2PM Thursdays",        
+        "img": "https://www.physics.ucsb.edu/sites/default/files/styles/people_node/public/people/photo/ULW9KeE3_400x400.jpg?itok=_jLjeNxS",
+        "title":"Coordinator"
+      },
+      {
+        "first-name": "Paula",
+        "last-name": "Popescu",
+        "pronouns": "(She/Her/Hers)",
+        "email": "ppopescu@physics.ucsb.edu ",
+        "zoom": "https://ucsb.zoom.us/s/7327636002",
+        "officehours": "2-3PM Wednesdays",
         "sectionhours": "1-3PM Monday, 12-2PM Thursdays",
-        "title":"Lecturer",
+        "title":"Lecturer, Coordinator",
         "img": "https://www.physics.ucsb.edu/sites/default/files/styles/people_node/public/people/photo/popescu%20photo.jpg?itok=dkwvpBPq"
       }
     ],
@@ -49,5 +62,10 @@
         "name": "nectir",
         "file": "https://ucsb.nectir.io/channel/physics4l"
       }
-    ]
+    ],
+    "Course-info":
+      {
+        "name" : "Physics 4L"
+      }
+    
   }

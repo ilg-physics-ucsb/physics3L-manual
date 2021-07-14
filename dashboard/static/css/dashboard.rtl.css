@@ -94,3 +94,15 @@ body {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+
+
+.image_crop{
+  height:140px;
+  width:140px;
+  overflow: hidden;
+}
+
+
+.text-responsive {
+  font-size: calc(200% + 1vw + 1vh)!important;
+}

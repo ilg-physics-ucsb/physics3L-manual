@@ -4,7 +4,7 @@ var div_head = []; //This list lets us print out the headers for custom classes
 var div_foot = []; //This list lets us print ou the footers of custom classes using first-in-first-out when there are nested containers
 
 //Class Groups
-const pad_mar = "px-0 mx-auto mb-4" //Applies 0 padding, auto margin (centers element), and bottom margin to most card groups
+const pad_mar = "px-0 mx-auto my-5" //Applies 0 padding, auto margin (centers element), and bottom margin to most card groups
 const group1 = "col-lg-9" // forces a 75% columnar layout that expands to 95% width on small screens
 const fig_group = "justify-content-center text-center px-0 mx-3 mb-4" //Formatting that is special for figues -- adds margins to floated figs
 
@@ -19,7 +19,7 @@ md.use(container, 'Intro', {
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Intro(.*)$/)[1])
       inner_styles = ['text-center', 'text-left', 'text-center']
-      card_maker('Intro', args[0], args[1], '', [group1, pad_mar].join(' '), inner_styles)
+      card_maker('Intro', args[0].replace(' ','_'), args[0], '', [group1, pad_mar].join(' '), inner_styles)
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -34,7 +34,12 @@ md.use(container, 'Materials', {
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Materials(.*)$/)[1]) //identifies the text that is not "Materials", and identifies arguments seperated by a | 
       inner_styles = ['text-center', 'text-left', 'text-center']
-      card_maker('Materials', args[0], 'Materials', '', [pad_mar, args[1]].join(' '), inner_styles)
+      if(!args[1]||args[1]==''){
+        args[1]="col-lg-4 "+ pad_mar
+      } else{
+        args[1]= "col-lg-" + args[1]
+      }
+      card_maker('Materials', args[0], 'Materials', '', [ args[1]].join(' '), inner_styles)
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -44,19 +49,19 @@ md.use(container, 'Materials', {
 
 
 
-///QUESTION///
-md.use(container, 'Question', {
+///Exercise///
+md.use(container, 'Exercise', {
   render: function (tokens, idx) {
     let args;
     if (tokens[idx].nesting === 1) {
-      args = strip(tokens[idx].info.trim().match(/^Question(.*)$/)[1])
-      card_maker('Question', args[0], 'Question #', '', [group1, pad_mar, args[1]].join(' '))
+      args = strip(tokens[idx].info.trim().match(/^Exercise(.*)$/)[1])
+      card_maker('Exercise', args[0], 'Exercise #', '', [group1, pad_mar, args[1]].join(' '))
       return div_head.pop()
     } else {
       return div_foot.pop()
     }
   }
-}) 
+})
 
 ///EQUATION///
 md.use(container, 'Equation', {
@@ -65,8 +70,8 @@ md.use(container, 'Equation', {
 
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Equation(.*)$/)[1])
-      
-  
+
+
       card_maker('Equation', args[0], args[1], 'Equation #', [group1, pad_mar].join(' '))
       return div_head.pop()
     } else {
@@ -84,8 +89,8 @@ md.use(container, 'Video', {
 
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Video(.*)$/)[1])
-      
-  
+
+
       card_maker('Video', args[0], args[1], 'Video #', [group1, "mx-auto px-0"].join(' '), ['text-center', 'text-center ratio ratio-16x9', 'text-center'])
       return div_head.pop()
     } else {
@@ -103,15 +108,15 @@ md.use(container, 'Note', {
 
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Note(.*)$/)[1])
-      
-      if(!args[1]){
-        args[1]='col-lg-5'
-      }else{
-        note_size= 'col-lg-'+args[1]
-        args[1]=note_size
-        console.log(args[1])
+
+      if (!args[1]) {
+        args[1] = 'col-lg-5'
+      } else {
+        note_size = 'col-lg-' + args[1]
+        args[1] = note_size
+
       }
-      card_maker('Note', args[0], '<i class="fa fa-thumb-tack fs-1" aria-hidden="true"></i>','', [ args[1], pad_mar, 'bg-caution bg-gradient' ].join(' '))
+      card_maker('Note', args[0], '<i class="fa fa-thumb-tack fs-1" aria-hidden="true"></i>', '', [args[1], pad_mar, 'bg-caution bg-gradient'].join(' '))
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -127,15 +132,39 @@ md.use(container, 'Warning', {
 
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Warning(.*)$/)[1])
-      
-      if(!args[1]){
-        args[1]='col-lg-5'
-      }else{
-        note_size= 'col-lg-'+args[1]
-        args[1]=note_size
-        console.log(args[1])
+
+      if (!args[1]) {
+        args[1] = 'col-lg-5'
+      } else {
+        note_size = 'col-lg-' + args[1]
+        args[1] = note_size
+
       }
-      card_maker('Warning', args[0], '<i class="fa fa-exclamation-triangle fs-1 rotor" aria-hidden="true"></i> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>','', [ args[1], pad_mar, 'bg-danger bg-gradient alert alert-warning alert-dismissible fade show hshaker' ].join(' '), ['text-center text-light', 'text-center text-light fs-2', 'text-center'])
+      card_maker('Warning', args[0], '<i class="fa fa-exclamation-triangle fs-1 rotor" aria-hidden="true"></i> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>', '', [args[1], pad_mar, 'bg-danger bg-gradient alert alert-warning alert-dismissible fade show hshaker'].join(' '), ['text-center text-light', 'text-center text-light fs-2', 'text-center'])
+      return div_head.pop()
+    } else {
+      return div_foot.pop()
+    }
+  }
+})
+
+
+md.use(container, 'Definition', {
+  render: function (tokens, idx) {
+    let args;
+    let inner_styles = ['text-left ', 'text-left ', 'text-center']
+
+    if (tokens[idx].nesting === 1) {
+      args = strip(tokens[idx].info.trim().match(/^Definition(.*)$/)[1])
+
+      if (!args[1]) {
+        args[1] = 'col-lg-5'
+      } else {
+        note_size = 'col-lg-' + args[1]
+        args[1] = note_size
+
+      }
+      card_maker('Definition', args[0], `<strong > Definition #:</strong> <span class='lead'>${args[0]} </span>` , '', [args[1], pad_mar].join(' '), inner_styles)
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -152,20 +181,20 @@ md.use(container, 'Table', {
 
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Table(.*)$/)[1])
-      
-    if(!args[2]){
-      args[2]='col-lg-9'
-    }
 
-    title='Table #'
-    if(args[1]){
-      title+=':' + args[1]
-    }
+      if (!args[2]) {
+        args[2] = 'col-lg-9'
+      }
 
-      card_maker('Table', args[0], '',title, [ args[2], pad_mar ].join(' '), ['text-center ', 'text-center ', 'text-center'])
-      return div_head.pop() 
+      title = 'Table #'
+      if (args[1]) {
+        title += ':' + args[1]
+      }
+
+      card_maker('Table', args[0], '', title, [args[2], pad_mar].join(' '), ['text-center ', 'text-center ', 'text-center'])
+      return div_head.pop()
     } else {
-      return  div_foot.pop()
+      return div_foot.pop()
     }
   }
 })
@@ -183,7 +212,7 @@ md.use(container, 'Hider', {
 
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Hider(.*)$/)[1])
-      inner_styles=['text-center', 'text-left', 'text-center']
+      inner_styles = ['text-center', 'text-left', 'text-center']
       card_maker_collapse('Hider', args[0], args[1], [group1, pad_mar].join(' '), inner_styles)
       return div_head.pop()
     } else {
@@ -194,18 +223,18 @@ md.use(container, 'Hider', {
 
 
 
-///Exercise
-md.use(container, 'Exercise', {
+///Activity
+md.use(container, 'Activity', {
   render: function (tokens, idx) {
     let args, inner_styles;
     if (tokens[idx].nesting === 1) {
-      args = strip(tokens[idx].info.trim().match(/^Exercise(.*)$/)[1])
-      var title = 'Exericse #'
+      args = strip(tokens[idx].info.trim().match(/^Activity(.*)$/)[1])
+      var title = 'Activity #'
       if (args[1]) {
-        title += `:<span class='lead' style="padding-left:10px"> ${args[1]} </span>`
+        title += ` │ <span class='lead align-baseline' style="padding-left:0px"> ${args[1]} </span>`
       }
-      inner_styles=['text-center', 'text-left', 'text-center']
-      card_maker_collapse('Exercise', args[0], title, ["col-lg-11", pad_mar, args[1]].join(' '), inner_styles)
+      inner_styles = ['text-center', 'text-left', 'text-center']
+      card_maker_collapse('Activity', args[0], title, ["col-lg-11", pad_mar, args[1]].join(' '), inner_styles)
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -218,12 +247,12 @@ md.use(container, 'Simulation', {
   render: function (tokens, idx) {
     let args;
     if (tokens[idx].nesting === 1) {
-      args = strip(tokens[idx].info.trim().match( /^Simulation(.*)$/)[1])
+      args = strip(tokens[idx].info.trim().match(/^Simulation(.*)$/)[1])
       var title = 'Simulation #'
       if (args[1]) {
         title += `:<span class='lead' style="padding-left:10px"> ${args[1]} </span>`
       }
-  
+
       card_maker_collapse('Simulation', args[0], title, [group1, pad_mar, args[2]].join(' '))
       return div_head.pop()
     } else {
@@ -237,89 +266,38 @@ md.use(container, 'Simulation', {
 ////SINGLE  USE
 
 
-///SIMULATION///
-md.use(container, 'Contact', {
+///Contact infor///
+md.use(container, 'ContactTA', {
   render: function (tokens, idx) {
     let args;
     if (tokens[idx].nesting === 1) {
-      args = strip(tokens[idx].info.trim().match( /^Contact(.*)$/)[1])
-  
-      elmt= `
-      
-        <div class="card mx-auto col-lg-8 ">
-        <div class="card-header text-center lead">Contact Information for this Course</div>
-        
-        
-        <span class="display-6 text-center fs-4">TAs</span> <small class="text-muted text-center mx-3"> Your Teaching Assistant (TA) is your first point of contact for this course. 
-        Please reach out to them if you have questions about labs, completing your assignments, grading and regrade requests, as well as attendance. </small>
-        
-        `
+      args = strip(tokens[idx].info.trim().match(/^ContactTA(.*)$/)[1])
+      let blurb = `Your Teaching Assistant (TA) is your first point of contact for this course. 
+      Please reach out to them if you have Exercises about labs, completing your assignments, grading and regrade requests, as well as attendance. `
 
-      for(i=0;i<sitedata["TAs"].length;i++){
-      elmt+=`  
-      <div class="card m-0" style="max-width: 100%; max-height:200px; overflow:hidden;">
-      <div class="row g-0">
-        <div class="col-md-2" >
-          <img src="${sitedata["TAs"][i]["img"]}" class="img-fluid rounded-start img-thumbnail" style="height:120px; max-width:120px; clip: rect(0px,60px,200px,0px)" >
-        </div>
-        <div class="col-md-10">
-          <div class="card-body" style="font-size:0.9rem">
-            <h6 class="card-title">${sitedata["TAs"][i]["first-name"]+ ' ' + sitedata["TAs"][i]["last-name"]} 
-              <small class='text-muted'>${sitedata["TAs"][i]["pronouns"]}</small>
-              <small class="badge bg-primary"><a href="mailto:${sitedata["TAs"][0]["email"]}" class='text-white' style="text-decoration:none">${sitedata["TAs"][0]["email"]}</a></small>
-            </h5>
-            <ul class="list-inline">
-              <li class="list-inline-item"><strong>Office Hours:</strong> ${sitedata["TAs"][i]["officehours"]}</li>
-              <li class="list-inline-item"><strong>Section Hours:</strong> ${sitedata["TAs"][i]["sectionhours"]}</li>
-              <li class="list-inline-item"><strong>Location:</strong> <a href="${sitedata["TAs"][i]["zoom"]}">Room</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>`
-      }
+      return contacts("TAs", blurb)
 
-      elmt+= `
-      
-      <br>
-      <span class="display-6 text-center fs-4">Instructors & Faculty</span> <small class="text-muted text-center mx-3"> Your Teaching Assistant (TA) is your first point of contact for this course. 
-      Please reach out to them if you have questions about labs, completing your assignments, grading and regrade requests, as well as attendance. </small>
-      
-      `
-
-      for(i=0;i<sitedata["Faculty"].length;i++){
-        elmt+=`  
-        <div class="card m-0" style="max-width: 100%; max-height:200px; overflow:hidden;">
-        <div class="row g-0">
-          <div class="col-md-2" >
-            <img src="${sitedata["Faculty"][i]["img"]}" class="img-fluid rounded-start ratio ratio-1x1" style="height:120px" >
-          </div>
-          <div class="col-md-10">
-            <div class="card-body" style="font-size:0.9rem">
-              <h6 class="card-title">${sitedata["Faculty"][i]["first-name"]+ ' ' + sitedata["TAs"][i]["last-name"]} 
-                <small class='text-muted'>${sitedata["Faculty"][i]["pronouns"]}</small>
-                <small class="badge bg-primary"><a href="mailto:${sitedata["Faculty"][0]["email"]}" class='text-white' style="text-decoration:none">${sitedata["TAs"][0]["email"]}</a></small>
-              </h5>
-              <ul class="list-inline">
-                <li class="list-inline-item"><strong>Office Hours:</strong> ${sitedata["Faculty"][i]["officehours"]}</li>
-                <li class="list-inline-item"><strong>Section Hours:</strong> ${sitedata["Faculty"][i]["sectionhours"]}</li>
-                <li class="list-inline-item"><strong>Location:</strong> <a href="${sitedata["Faculty"][i]["zoom"]}">Room</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>`
-        }
-
-      elmt+=`</div>`
-      return elmt
-      
     } else {
       return ''
     }
   }
 })
 
+
+md.use(container, 'ContactFA', {
+  render: function (tokens, idx) {
+    let args;
+    if (tokens[idx].nesting === 1) {
+      args = strip(tokens[idx].info.trim().match(/^ContactFA(.*)$/)[1])
+      let blurb = `The course Faculty are here to help with more complex issues, working behind the scenes to ensure the labs run smoothly. Please contact a Faculty member if you have specific issues reguarding DSP and other accomodations, errors in the lab manual, problems with equipment, or have witnessed/been a victim of any kind of harassment `
+
+      return contacts("Faculty", blurb)
+
+    } else {
+      return ''
+    }
+  }
+})
 
 
 ///FIGURES: Complicated so use helper func/////////////
@@ -360,41 +338,28 @@ md.use(container, 'Card', {
 })
 
 
-//////////////////Card making functions
 
 
 
-function generic(tokens, idx, regmatch, type, extras = [group1, pad_mar].join(' ')) {
-  var m = tokens[idx].info.trim().match(regmatch);
-  var ref, header, footer, style, args;
-
-  if (tokens[idx].nesting === 1) {
-    args = md.utils.escapeHtml(m[1]).trim().replace(/[()]/g, '').split('|')
-    ref = args[0]
-    header = args[1]
-    footer = args[2]
-    style = args.slice(3).join(' ')
-    console.log(footer)
-    card_maker(type, ref, header, footer, [style, extras].join(' '))
-    return div_head.pop()
-  } else {
-    return div_foot.pop()
-  }
-}
 
 
 
-function figure(tokens, idx, regmatch, extra = '') {
-  var args;
 
-  if (tokens[idx].nesting === 1) {
-    args = strip(tokens[idx].info.trim().match(regmatch)[1])
-    card_maker('Figure', args[0], '', 'Figure #', [fig_group, extra, args[1]].join(' '), ['', 'text-center', ''])
-    return div_head.pop() 
-  } else {
-    return div_foot.pop() 
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -433,11 +398,11 @@ function card_maker(type, ref, header, footer, card_style, content_style = ['tex
 
 
   var opening_string =
-    `<div id =" ${type + '-' + ref}" class=" ${[type, card_style].join(' ')} card" data-kiwi="${this_count}"> `;
-  if (header != '' && header!=null) {
+    `<div id ="${type + '-' + ref}" class=" ${[type, card_style].join(' ')} card" data-kiwi="${this_count}" data-type="${type}"> `;
+  if (header != '' && header != null) {
     opening_string +=
-      `<div class="card-header ">
-        <h5 class="my-0 ${content_style[0]} ">
+      `<div class="card-header  ">
+        <h5 class="my-0 ${content_style[0]} align-baseline ">
           ${header.replace('#', this_count)}
         </h5>
       </div>`;
@@ -449,7 +414,7 @@ function card_maker(type, ref, header, footer, card_style, content_style = ['tex
   var closing_string =
     `</div>
         </div>`;
-  if (footer != '' && footer!=null) {
+  if (footer != '' && footer != null) {
     closing_string +=
       `<div class="card-footer">
         <h5 class="my-0 ${content_style[2]} ">
@@ -481,15 +446,14 @@ function card_maker_collapse(type, ref, header, card_style, content_style = ['te
     this_count = 1
     Counter[type][0] = [1, ref]
   }
-  console.log(Counter)
-  console.log(header)
+
   var uniqueid = [type, this_count, "ac"].join('-')
   if (header == '') {
     header = type
   }
   var opening_string =
     `<div class="row justify-content-center">
-      <div id ="${type + '-' + ref}" class="accordion accordion-flush card col-card ${[type, card_style].join(' ')}" >
+      <div id ="${type + '-' + ref}" class="accordion accordion-flush card col-card ${[type, card_style].join(' ')}" data-kiwi="${this_count}" data-type="${type}" >
         <div class="accordion-item"> 
           <span class="my-0 accordion-header ${content_style[0]}">
             <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#${uniqueid}" aria-expanded="false" aria-controls="${uniqueid}">
@@ -525,7 +489,7 @@ md.use(container, 'col', {
   render: function (tokens, idx) {
     let args;
     if (tokens[idx].nesting === 1) {
-      args=strip(tokens[idx].info.trim().match(/^col(.*)$/)[1])
+      args = strip(tokens[idx].info.trim().match(/^col(.*)$/)[1])
       // opening tag
       return `<div class="col-lg ${args[0]}">`;
     } else {
@@ -541,7 +505,7 @@ md.use(container, 'row', {
 
     let args;
     if (tokens[idx].nesting === 1) {
-      args=strip(tokens[idx].info.trim().match(/^row(.*)$/)[1])
+      args = strip(tokens[idx].info.trim().match(/^row(.*)$/)[1])
       // opening tag
       return `<div class="row ${args[0]}">`;
     } else {
@@ -554,3 +518,144 @@ md.use(container, 'row', {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////Card making functions
+
+function generic(tokens, idx, regmatch, type, extras = [group1, pad_mar].join(' ')) {
+  var m = tokens[idx].info.trim().match(regmatch);
+  var ref, header, footer, style, args;
+
+  if (tokens[idx].nesting === 1) {
+    args = md.utils.escapeHtml(m[1]).trim().replace(/[()]/g, '').split('|')
+    ref = args[0]
+    header = args[1]
+    footer = args[2]
+    style = args.slice(3).join(' ')
+
+    card_maker(type, ref, header, footer, [style, extras].join(' '))
+    return div_head.pop()
+  } else {
+    return div_foot.pop()
+  }
+}
+
+
+function figure(tokens, idx, regmatch, extra = '') {
+  var args;
+
+  if (tokens[idx].nesting === 1) {
+    args = strip(tokens[idx].info.trim().match(regmatch)[1])
+    card_maker('Figure', args[0], '', 'Figure #', [fig_group, extra, args[1]].join(' '), ['', 'text-center', ''])
+    return div_head.pop()
+  } else {
+    return div_foot.pop()
+  }
+}
+
+/////////////////Uggly
+
+
+function contacts(kind, blurb) {
+
+
+  let role = ''
+
+  let elmt =
+
+    `<div class="row justify-content-center">
+        <div id ="Contact${kind}" class="accordion accordion-flush card col-card Contact col-md-8 my-3 p-0" >
+          <div class="accordion-item"> 
+            <span class="my-0 accordion-header">
+              <button class="accordion-button collapsed bg-UCSB-navy text-UCSB-gold" type="button" data-bs-toggle="collapse" data-bs-target="#Contact-${kind}" aria-expanded="false" aria-controls="Contact-${kind}">
+               <div class="card-but"> Contact ${kind} of this Course</div>
+              </button>
+            </span>
+            <div id="Contact-${kind}" class="accordion-collapse collapse card-text" aria-labelled-by="Contact-${kind}" data-bs-parent="#Contact${kind}">
+              <div class="accordion-body  p-0">
+              <div class="p-3">
+              <small class="text-muted text-center fs-6 "> ${blurb}</small>
+              </div>
+  
+    `
+  for (i = 0; i < sitedata[kind].length; i++) {
+
+    if (kind == "Faculty") {
+      role = ` <li class="list-inline-item "><strong>Role:</strong> ${sitedata[kind][i]["title"]} </li>`
+    }
+    elmt += `  
+      <div class="card " style="width:100%; overflow:hidden">
+     <div class="row g-0">
+      <div class="ratio ratio-1x1" style="
+            width:150px;
+            background-image: url( ${sitedata[kind][i]["img"]});
+            background-size:cover;
+            background-position:center;  ">
+      
+       
+      </div>
+      <div style="width:calc(100% - 150px)">
+        <div class="card-body">
+          <h5 class="card-title">${sitedata[kind][i]["first-name"] + ' ' + sitedata[kind][i]["last-name"]}
+          <small class='text-muted'>${sitedata[kind][i]["pronouns"]}</small>
+                  <small class="badge bg-UCSB-navy address">${sitedata[kind][i]["email"].replace('@','&commat;')}</small>
+          </h5>
+          <ul class="list-inline p-0 m-0 ">
+                  <li class="list-inline-item "><strong>Office Hours:</strong> ${sitedata[kind][i]["officehours"]}</li>
+                  <li class="list-inline-item "><strong>Section Hours:</strong> ${sitedata[kind][i]["sectionhours"]}</li>
+                  <li class="list-inline-item "><strong>Location:</strong> <a href="${sitedata[kind][i]["zoom"]}">Room</a></li>
+                  ${role}
+                </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+          `
+  }
+
+  elmt += `</div> 
+    </div>
+            </div>
+          </div>
+        </div>
+      </div>`
+  return elmt
+
+}
+
+
+
+
+md.use(container, 'Summary', {
+
+  render: function (tokens, idx) {
+    let args;
+    if (tokens[idx].nesting === 1) {
+      args = strip(tokens[idx].info.trim().match(/^Summary(.*)$/)[1])
+      // opening tag
+      return `<div class="Summary card col-lg-8 mx-auto">
+      <div class="card-header">
+      Summary of the Lab
+      </div>
+      <div class="card-body">
+      There were ${Counter["Activity"].length} Activities and ${Counter["Exercise"].length} Exercises
+      </div>
+      
+      `
+      
+      ;
+    } else {
+      return '</div>'
+    }
+  }
+});

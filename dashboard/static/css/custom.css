@@ -13941,17 +13941,32 @@ textarea.form-control-lg {
 .Intro ol, .Intro ul {
   text-align: left;
 }
-.Intro .card-header {
+.Intro > .card-header {
   color: white;
   background-color: #003660;
 }
 
 .Materials {
-  background-color: #f2f5f7;
+  background-color: rgba(255, 255, 255, 0.2);
   color: #001626;
 }
 .Materials ul {
   font-size: 90%;
+}
+.Materials > .card-header {
+  color: #001626;
+  background-color: #94b5b5;
+}
+
+.Definition {
+  background-color: #f2f5f7;
+  color: #001626;
+}
+.Definition ul {
+  font-size: 90%;
+}
+.Definition .card-header {
+  background-color: #ffde88;
 }
 
 .Hider button {
@@ -14010,50 +14025,54 @@ textarea.form-control-lg {
   color: black;
 }
 
-.Exercise button {
+.Activity button {
   border: 0px solid black;
   width: 100%;
-  background-color: #f2e5e4;
+  background-color: #984c43;
   box-shadow: none !important;
+  color: white;
 }
-.Exercise button:active, .Exercise .Exercise button:focus {
+.Activity button:after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+}
+.Activity button:active, .Activity .Activity button:focus {
   border: 0px solid black;
   width: 100%;
-  color: #001626;
-  background-color: #d8b2ae;
+  color: white;
+  background-color: #ad5d53;
   box-shadow: none !important;
 }
-.Exercise button:not(.collapsed) {
+.Activity button:not(.collapsed) {
   border: 0px solid black;
   width: 100%;
   color: white;
   background-color: #a15046;
 }
-.Exercise button:not(.collapsed):after {
+.Activity button:not(.collapsed):after {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
 }
-.Exercise .card-but {
+.Activity .card-but {
   font-size: 1.5rem;
 }
 
-.Question {
+.Exercise {
   text-align: center;
 }
-.Question .card-header {
+.Exercise .card-header {
   background-color: #0a978b;
   color: white;
   border: 0;
 }
-.Question ol, .Question ul {
+.Exercise ol, .Exercise ul {
   text-align: left;
 }
-.Question ol li, .Question ul li {
+.Exercise ol li, .Exercise ul li {
   padding: 0.3rem 0px;
 }
-.Question ol li::marker, .Question ul li::marker {
+.Exercise ol li::marker, .Exercise ul li::marker {
   font-weight: 550;
 }
-.Question ol {
+.Exercise ol {
   list-style-type: lower-alpha !important;
 }
 
@@ -14070,6 +14089,7 @@ textarea.form-control-lg {
   padding: 0 !important;
   border-radius: 0.25rem !important;
 }
+
 .Note {
   transform: rotate(2deg);
   font-family: "Comic Sans Ms", "Comic Sans", cursive;
@@ -14219,6 +14239,59 @@ img:hover {
   100% {
     transform: rotate(0deg);
   }
+}
+/* Tooltip container */
+.mytooltip {
+  position: static;
+  display: inline;
+  border-bottom: 1px dotted black;
+  /* If you want dots under the hoverable text */
+  cursor: pointer;
+}
+
+.mytooltip sup::before {
+  counter-increment: foot;
+  content: "[" counter(foot);
+}
+
+/* Tooltip text */
+.mytooltip .tooltiptext {
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  max-width: 100%;
+  /* Position the tooltip text */
+  position: fixed;
+  bottom: -500px;
+  transition: all 5s ease;
+  transition-delay: 8s;
+  border: black 8px solid;
+  text-indent: 0;
+  z-index: 1080;
+  display: block;
+  cursor: pointer;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.mytooltip:active .tooltiptext, .mytooltip:focus .tooltiptext {
+  opacity: 1;
+  display: block;
+  bottom: 5px;
+  transition: opacity 1s ease;
+  z-index: 2;
+}
+
+.tooltiptext p {
+  background-color: black;
+}
+
+.modal-body img {
+  max-height: calc(100vh - 180px);
+}
+
+#maincontent > ul, #maincontent > ol {
+  padding-left: 5rem;
 }
 
 /*# sourceMappingURL=custom.css.map */

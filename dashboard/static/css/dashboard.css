@@ -3,6 +3,9 @@ body {
   background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url("../assets/body.png");
   background-color: #eee;
   background-attachment: fixed;
+
+    counter-reset: foot;  
+ 
 }
 
 .allcontent{
@@ -10,6 +13,7 @@ body {
   border-right: 1px var(--bs-light) solid ;
   background-color: rgba(255, 255, 255, 0.80);
   font-size: 1.2rem;
+  line-height: 1.5;
 }
 
 
@@ -27,17 +31,20 @@ h2.accordion-header{
 
 #maincontent> h1:not(#part0){
   padding-top: 40px;
+  margin-bottom: 20px;
   border-bottom: 1px lightgrey solid;
 }
 
 #maincontent> h2{
   padding-top: 30px;
+  margin-bottom: 20px;
   color: var(--bs-UCSB-navy);
 }
 
 #maincontent> h3{
   color: var(--bs-gray-dark);
   padding-top: 20px;
+  margin-bottom: 10px;
 }
 
 h1,h2, h6{
@@ -169,3 +176,24 @@ h1,h2, h6{
   transform: translateX(100%); 
   }
  }
+
+.image_crop{
+  height:100%;
+  overflow: hidden;
+}
+
+.image_crop img{
+  width:150px;
+  height:150px;
+ object-fit: cover!important;
+}
+
+
+.text-responsive:not(h5) {
+  font-size: calc(0.55rem + 0.6vw)!important;
+}
+
+
+h5.text-responsive{
+  font-size: calc(0.9rem + 0.6vw)!important;
+}

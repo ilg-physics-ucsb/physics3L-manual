@@ -162,7 +162,7 @@ var tableOfContents = function (content, target, options) {
 				// Generate the HTML
 				if(currentLevel == 1){
 					current_name= heading.id + '_collapse'
-					console.log(current_name)
+		
 					html +=
 					
 						//'<li>' +
@@ -227,7 +227,7 @@ var tableOfContents = function (content, target, options) {
 		// If none are found, don't render a list
 		headings = contentWrap.querySelectorAll(settings.levels);
 		if (!headings.length) {
-			console.log('nonefound')
+	
 			toc.innerHTML = "none found"
 			return;
 		}

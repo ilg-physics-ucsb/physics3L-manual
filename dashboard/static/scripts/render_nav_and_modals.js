@@ -14,7 +14,11 @@ let sitedata
       sitedata=data
       includeHTML(linkfile)
 
-      console.log(sitedata)  
+      
+      document.getElementById('CourseTitle').innerHTML= 'UCSB ' + sitedata['Course-info']['name'];  
+      document.getElementById('chatframe').setAttribute('src', sitedata['integrations'][0]['file'])  
+
+      
       for(i=0;i<sitedata['page-links'].length;i++){
         lab_list.innerHTML+=`<li><a class="dropdown-item" href="?linkfile=${sitedata['page-links'][i]["file"]}">${sitedata['page-links'][i]["name"]}</a></li>`
 

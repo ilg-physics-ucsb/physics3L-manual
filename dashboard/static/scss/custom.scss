@@ -212,13 +212,14 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 /////////////////////////////////////////////////////////////////// 
 //CONTAINERS
 
-$materials-bg: tint-color($UCSB-navy,95%);
+$materials-bg: shade-color($UCSB-mist,5%);
+$definition-bg: tint-color($UCSB-navy,95%);
 $figure-bg: tint-color($UCSB-sandstone,95%);
 
 $hider-bg:  $UCSB-moss;
-$exercise-bg: shade-color(tint-color($UCSB-coral,20%),30%);
+$Activity-bg: shade-color(tint-color($UCSB-coral,20%),30%);
 $eqn-bg: tint-color($UCSB-navy,85%);
-$question-header-bg:shade-color($UCSB-seagreen,10%);
+$Exercise-header-bg:shade-color($UCSB-seagreen,10%);
 $intro-bg: $UCSB-navy;
 $simulation-bg:$UCSB-mist;
 
@@ -239,7 +240,7 @@ $simulation-bg:$UCSB-mist;
         text-align: left
     }
 
-    .card-header{
+    > .card-header{
      color:white;
      background-color: $intro-bg
     }
@@ -248,13 +249,33 @@ $simulation-bg:$UCSB-mist;
 
 ///Materials/////////////////////////////
  .Materials{
-    background-color: $materials-bg;
+    background-color:rgba(white, .2);
     color:$dark;
 
 
     ul{
         font-size: 90%;
     };
+
+    > .card-header{
+        color:$dark;
+        background-color: $materials-bg;
+
+       }
+ };
+
+
+ .Definition{
+    background-color: $definition-bg;
+    color:$dark;
+
+    ul{
+        font-size: 90%;
+    };
+
+    .card-header{
+        background-color: tint-color($UCSB-gold,50%);
+    }
  };
 
 
@@ -329,21 +350,25 @@ $simulation-bg:$UCSB-mist;
     }   
 }
 
-///Exercise
-.Exercise {
+///Activity
+.Activity {
     button{
     border: 0px solid black;
     width: 100%;
-    background-color:tint-color($exercise-bg,85%);
+    background-color:shade-color($Activity-bg,10%);
     box-shadow: none!important;
-
+    color: white;
     };
+    button:after{
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>")
+   
+    }
 
-    button:active, .Exercise button:focus{
+    button:active, .Activity button:focus{
         border: 0px solid black;
         width: 100%;
-        color:$dark;
-        background-color: tint-color($exercise-bg,55%);
+        color:white;
+        background-color: tint-color($Activity-bg,5%);
         box-shadow: none!important;
 
      };
@@ -352,11 +377,12 @@ $simulation-bg:$UCSB-mist;
         border: 0px solid black;
         width: 100%;
         color:white;
-        background-color: shade-color($exercise-bg,5%);
+        background-color: shade-color($Activity-bg,5%);
      };
      button:not(.collapsed):after{
         background-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
      }
+    
 
     .card-but{
         font-size: 1.5rem;
@@ -364,13 +390,13 @@ $simulation-bg:$UCSB-mist;
 
 }
 
-///Question
+///Exercise
 
 
-.Question{
+.Exercise{
     text-align: center;
     .card-header{
-        background-color: $question-header-bg;
+        background-color: $Exercise-header-bg;
         color:white;
         border:0;
     }
@@ -410,10 +436,7 @@ $simulation-bg:$UCSB-mist;
         border-radius:$border-radius!important;
     }
 
-    iframe {
-    // width: 100%;
-    // height:100%; 
-   }
+   
 }
 
 //Note
@@ -578,4 +601,67 @@ img:hover{
     85% { transform: rotate(25deg); }
     95% { transform: rotate(-25deg); }
    100% { transform: rotate(0deg); }
+  }
+
+
+  /* Tooltip container */
+.mytooltip {
+    position: static;
+    display: inline;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    cursor: pointer;
+  };
+  
+  .mytooltip sup::before{
+    counter-increment: foot;
+    content: '[' counter(foot) ;
+  };
+  
+  /* Tooltip text */
+  .mytooltip .tooltiptext {
+  
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    max-width:100%;
+    /* Position the tooltip text */
+    position:fixed;
+    bottom: -500px;
+    transition: all 5s ease;
+    transition-delay: 8s;
+    border: black 8px solid;
+    text-indent: 0;
+    z-index: 1080;
+    display: block;
+    cursor: pointer;
+  };
+
+  /* Show the tooltip text when you mouse over the tooltip container */
+   .mytooltip:active  .tooltiptext, .mytooltip:focus  .tooltiptext{
+    opacity: 1;
+    display: block;
+    bottom:5px;
+    transition: opacity 1s ease;
+    
+    z-index:2;
+  };
+  
+
+  
+  .tooltiptext p{
+   background-color: black;
+  };
+
+
+  .modal-body img{
+      max-height: calc(100vh - 180px);
+  }
+
+  #maincontent{
+    > ul, > ol{
+        padding-left: 5rem;
+    }
+
+
   }
