@@ -350,6 +350,19 @@ $simulation-bg:$UCSB-mist;
     }   
 }
 
+
+
+///
+.Contact{
+    button:after{
+        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>")
+
+    }
+    button:active:after,  button:focus:after{
+        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>")
+
+    }
+}
 ///Activity
 .Activity {
     button{
@@ -444,7 +457,9 @@ $simulation-bg:$UCSB-mist;
 .Note{
     transform:rotate(2deg);
     font-family: 'Comic Sans Ms', "Comic Sans", cursive;
-    margin-top:50px;
+    margin-top:10px;
+    font-size: 0.9rem;
+    color: shade-color($UCSB-lightgray,70%);
     i{
         transform:rotate(45deg) translateY(-40px) ;
     }
@@ -452,6 +467,7 @@ $simulation-bg:$UCSB-mist;
         background-color: $caution!important;
         border:none;
         height:20px;
+        color:black;
 
     }
 }
@@ -499,7 +515,10 @@ $simulation-bg:$UCSB-mist;
 }
 
  @media (min-width: map-get($grid-breakpoints, "lg" )){ 
-
+    .modal-body img{
+        max-height: calc(100vh - 180px);
+    }
+  
     .Figure{
         max-width:80%;
     }
@@ -654,10 +673,7 @@ img:hover{
   };
 
 
-  .modal-body img{
-      max-height: calc(100vh - 180px);
-  }
-
+ 
   #maincontent{
     > ul, > ol{
         padding-left: 5rem;

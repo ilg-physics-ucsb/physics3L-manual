@@ -1,11 +1,11 @@
 # Manual Feature Showcase
 
-:::Intro (The-intro|Welcome to "The Guide")
+:::Intro (Welcome to "The Guide")
 In this guide, we will cover most of the features in the online manual renderer. Each section feature full examples as well as code snippets that will produce the examples. We also provide suggestions for how to use each feature.
 :::
 
-
-
+:::Materials (Your phone with the Phyphox App installed --- See instructions in Part I |A magnet| Ruler|Steel screw)
+:::
 
 
 # Second Header in File

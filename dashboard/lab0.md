@@ -1,20 +1,14 @@
 # Lab 0: Learning to use Phyphox
 
-::::::Intro (Welcome to the first week!)
+
+
+::::::Intro (Welcome to the first week!|Phone with Phyphox App --- See instructions in Part I|  A magnet | Ruler | Steel screw)
 
 This week we will be starting our quarter-long investigation into the fundamental nature of **Electricity and Magnetism**. Before we start doing some more complex experiments, we will first refresh our data-taking and data-analyzing abilities by compelting a few activities. 
 
 These activities will also help us understand the equipment that we will be using this quarter.
 
----
 
-:::Materials (|12)
--  Your phone with the Phyphox App installed
-    - See instructions in Part I
-- A magnet
-- Ruler
--  Steel screw
-:::
 ::::::
 
 
@@ -47,18 +41,15 @@ However, before we can begin collecting data to characterize magnets, we need to
  
  Our first task is, then, to find the location of the magnetometer on our phone by brute force: literally moving a magnetized object around it to see where the reading will peak. This will give us an empirical measurement of the location of our phones magnetometer, which will hopefully be accurate enough to use in future experiments.
 
-:::Definition (Background)
-In quantitative science, **background**  refers to any extraneous signals that can be confused with the phenomenon to be observed or measured. 
-:::
 
 After we find the exact location of the magnetometer, we will explore how Phyphox allows us to take *calibrated* and *uncalibrated* data, and which type to use in our experiments. Lastly, remember to subtract the **background** from the measurements before you move on to the data analysis. 
 
 
-
-
-:::Note
-For  experiments, be mindful of the environment you are working in! An appropriate location may be a room with minimal electronic devices, or on top of a wooden/nonmetallic table. Be sure to remove any magnets and metals from the experiment area to minimize external fields.
+:::Definition (Background)
+In quantitative science, **background**  refers to any extraneous signals that can be confused with the phenomenon to be observed or measured. 
 :::
+
+
 
 
 
@@ -67,21 +58,21 @@ For  experiments, be mindful of the environment you are working in! An appropria
 
 
 ## Get to know your magnetometer
-
-::: Materials (part-1|)
-- Your phone with Phyphox
-- A magnet
-- Steel screw
+:::Materials (Phone with Phyphox| A magnet | Steel screw )
 :::
 
+:::Note (|3 R)
+For  experiments, be mindful of the environment you are working in! An appropriate location may be a room with minimal electronic devices, or on top of a wooden/nonmetallic table. Be sure to remove any magnets and metals from the experiment area to minimize external fields.
+:::
 Since we know that the field of a magnet is strongest near its poles, we will run a magnetized object around the phone to pinpoint where the reading is highest. It’s never in the center of the device, so you can’t make an accurate measurement just by moving a magnetic source toward or away from the face of your phone.  Usually, the magnetometer is located somewhere at the edge of the phone, and its exact location depends on the brand and model.
+
 
 As mentioned in the note above, metallic objects around your phone may affect the reading you get. Nearby metal and magnets may make it difficult to pinpoint the magnetometer location, and are likely to interfere with future experiments that require quantitative data.
 
+######
 ::: Exercise
-**Answer the following Question:** 
 
-Why would metal interfere with the calculation of magnetic field?
+**Q**: Why would metal interfere with the calculation of magnetic field?
 :::
 
 
@@ -166,7 +157,7 @@ The easiest way to get a feel for how your phones calibration (or lack there of)
 
 
 
-:::::: Activity (calibration-check| Testing your phone's calibration)
+::::::Activity (calibration-check| Testing your phone's calibration)
 We will now make a magnetometer measurement by putting the magnet somewhere around your phone. Make sure the absolute field strength is 100 µT or more. Then you can rotate the phone about every axis while measuring, and if your phone applies a calibration to the reading, at some point the readings will suddenly drop (usually to around 50 µT, sometimes less). 
 
 During calibration, the magnetometer uses the Earth's magnetic field in conjunction with its gyroscope to determine the relative orientation of its sensors. Since the $x$, $y$ and $z$ directions are mutually orthogonal, it analyzes how rotation along each of these axes affects the sensor measurement, to determine how these axes are aligned relative to the device. 
@@ -185,9 +176,7 @@ Try [](#Activity-calibration-check) in both calibrated and uncalibrated mode and
 
 ## 3. Measure the direction and strength of a magnetic field with Phyphox
 
-::: Materials (direction|)
-- Your phone with Phyphox
-- A magnet
+::: Materials (Phone with Phyphox|A magnet)
 :::
 
 
@@ -195,7 +184,7 @@ Try [](#Activity-calibration-check) in both calibrated and uncalibrated mode and
 In [](#Activity-strengthanddirection), the magnet will provide an external magnetic field. Our first task is to characterize the magnet by measuring the *direction* of this field. Later, we will take care of the background noise to measure the *magnitude*.
 
 ######
-:::::: Activity (strengthanddirection|Measuring Strength and Direction)
+::::::Activity (strengthanddirection|Measuring Strength and Direction)
 First, let's identify the axes and directions of your magnetometer:
 ####
 
@@ -251,11 +240,7 @@ By observing how $B_z$ changes with the vertical motion of the magnet, you shoul
 ::::::
 
 ## 4. Measure the field around a magnetic source
-:::Materials (source-field|)
-- Your phone
-- A magnet
-- Ruler
-- Steel screw
+:::Materials (Phone with Phyphox| A magnet | Ruler | Steel screw)
 :::
 
 

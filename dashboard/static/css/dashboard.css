@@ -30,13 +30,13 @@ h2.accordion-header{
 }
 
 #maincontent> h1:not(#part0){
-  padding-top: 40px;
+  padding-top: 50px;
   margin-bottom: 20px;
   border-bottom: 1px lightgrey solid;
 }
 
 #maincontent> h2{
-  padding-top: 30px;
+  padding-top: 40px;
   margin-bottom: 20px;
   color: var(--bs-UCSB-navy);
 }
@@ -65,6 +65,30 @@ h1,h2, h6{
   font-size: 4rem;
   border-bottom: 1px lightgrey solid
 }
+
+
+h2~ul, h3~ul{
+  margin-top:-10px!important;
+}
+
+h1:not(#part0)~ul{
+  margin-top:-21px;
+  border-top:0px solid black;
+
+}
+
+.Intro .Materials{
+
+  border: 0px black solid!important;
+
+  background-color: rgba(0, 0, 0, .0);
+  margin:0px!important;
+}
+.Intro .Materials > li{
+
+ padding-bottom: 5px;
+}
+
 
 @media (min-width: 992px) {
   .nav-buffer {

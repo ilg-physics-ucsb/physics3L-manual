@@ -19,7 +19,7 @@ md.use(container, 'Intro', {
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Intro(.*)$/)[1])
       inner_styles = ['text-center', 'text-left', 'text-center']
-      card_maker('Intro', args[0].replace(' ','_'), args[0], '', [group1, pad_mar].join(' '), inner_styles)
+      card_maker('Intro', args[0].replace(' ','_'), args[0], materials(args.slice(1)), [group1, pad_mar].join(' '), inner_styles)
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -28,24 +28,40 @@ md.use(container, 'Intro', {
 })
 
 ///MATERIALS////
+// md.use(container, 'Materials', {
+//   render: function (tokens, idx) {
+//     let args, inner_styles; //Define list to accept arguments (reference|styles)
+//     if (tokens[idx].nesting === 1) {
+//       args = strip(tokens[idx].info.trim().match(/^Materials(.*)$/)[1]) //identifies the text that is not "Materials", and identifies arguments seperated by a | 
+//       inner_styles = ['text-center', 'text-left', 'text-center']
+//       if(!args[1]||args[1]==''){
+//         args[1]="col-lg-4 "+ pad_mar
+//       } else{
+//         args[1]= "col-lg-" + args[1]
+//       }
+//       card_maker('Materials', args[0], 'Materials', '', [ args[1]].join(' '), inner_styles)
+//       return div_head.pop()
+//     } else {
+//       return div_foot.pop()
+//     }
+//   }
+// })
+
+///MATERIALS////
 md.use(container, 'Materials', {
   render: function (tokens, idx) {
-    let args, inner_styles; //Define list to accept arguments (reference|styles)
+    let args
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Materials(.*)$/)[1]) //identifies the text that is not "Materials", and identifies arguments seperated by a | 
-      inner_styles = ['text-center', 'text-left', 'text-center']
-      if(!args[1]||args[1]==''){
-        args[1]="col-lg-4 "+ pad_mar
-      } else{
-        args[1]= "col-lg-" + args[1]
-      }
-      card_maker('Materials', args[0], 'Materials', '', [ args[1]].join(' '), inner_styles)
-      return div_head.pop()
+     
+      
+      return materials(args)
     } else {
-      return div_foot.pop()
+      return '</ul></span> '
     }
   }
 })
+
 
 
 
@@ -110,19 +126,20 @@ md.use(container, 'Note', {
       args = strip(tokens[idx].info.trim().match(/^Note(.*)$/)[1])
 
       if (!args[1]) {
-        args[1] = 'col-lg-5'
+        args[1] = 'col-lg-5 mx-auto'
       } else {
-        note_size = 'col-lg-' + args[1]
+        note_size = 'col-lg-' + args[1].replace("L","float-lg-start").replace("R","float-lg-end")
         args[1] = note_size
 
       }
-      card_maker('Note', args[0], '<i class="fa fa-thumb-tack fs-1" aria-hidden="true"></i>', '', [args[1], pad_mar, 'bg-caution bg-gradient'].join(' '))
+      card_maker('Note', args[0], '<i class="fa fa-thumb-tack fs-1" aria-hidden="true"></i>', '', [args[1], "mx-auto", 'bg-caution bg-gradient'].join(' '))
       return div_head.pop()
     } else {
       return div_foot.pop()
     }
   }
 })
+
 
 
 ///Warning
@@ -158,7 +175,7 @@ md.use(container, 'Definition', {
       args = strip(tokens[idx].info.trim().match(/^Definition(.*)$/)[1])
 
       if (!args[1]) {
-        args[1] = 'col-lg-5'
+        args[1] = 'col-lg-10'
       } else {
         note_size = 'col-lg-' + args[1]
         args[1] = note_size
@@ -659,3 +676,39 @@ md.use(container, 'Summary', {
     }
   }
 });
+
+
+
+function materials(args){
+  let obj, deet, list
+
+  list= `
+  
+     <ul class="list-inline Materials px-1 py-0 mb-3 " style='border-top: 1px solid var(--bs-UCSB-lightgray); border-bottom: 1px solid var(--bs-UCSB-lightgray)'>
+     <li class="list-inline-item align-middle">
+     <span class=' fs-5' >
+     Materials: </span>
+     </li>
+      
+      `
+      for(i=0;i<args.length;i++){
+        obj=args[i].split('---')[0]
+        deet=args[i].split('---').slice(1).join(' ')
+
+        console.log(deet)
+
+        console.log( deet ? '<span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"> <span class="visually-hidden">New alerts</span>' : '')
+
+        list+= `
+        <li class="list-inline-item align-middle py-1">
+      <a tabindex="0"  role="button" class="btn btn-sm btn-UCSB-navy position-relative mats" data-bs-placement="bottom"  data-bs-toggle="popover" data-bs-trigger="focus" title="" data-bs-content="${deet}" aria-pressed="false" autocomplete="off">
+      ${obj} 
+      
+      ${deet ? ' <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"><span class="visually-hidden">Click for Info</span></span>' : ''}
+
+      </a>
+      </li>`
+      }
+      return list;
+    
+}
