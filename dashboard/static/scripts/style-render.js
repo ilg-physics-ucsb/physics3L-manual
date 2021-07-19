@@ -8,7 +8,7 @@ function processstyles(){
     ]
   })  
   modal_img()
-  
+  replace_tags()
   tableOfContents('[data-toc]', '[data-content]')
     
   table_list=document.querySelectorAll('.Table table')
@@ -17,11 +17,18 @@ function processstyles(){
   for (i = 0; i < table_list.length; i++) {
     table_list[i].setAttribute('class', 'table table-striped')
   }
-  replace_tags()
+  
+
+ 
 
   var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
   var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-    return new bootstrap.Popover(popoverTriggerEl) })
+    console.log(popoverTriggerEl)
+    return new bootstrap.Popover(popoverTriggerEl, {
+      trigger: 'focus'
+    }) })
+
+    
   
     
 }
@@ -29,7 +36,7 @@ function processstyles(){
 
 
 function replace_tags() {
-    var text = document.querySelectorAll('h1, h2, h3, #maincontent p, #maincontent span, #maincontent li') 
+    var text = document.querySelectorAll('h1, h2, h3, #maincontent p, #maincontent span, #maincontent li, #maincontent') 
     for (i = 0; i < text.length; i++) {
       emojified = text[i].innerHTML.replaceAll(/(\@)(.*?)(\@)/g, "<i class='fa $2'></i>")
       text[i].innerHTML = emojified
@@ -42,10 +49,13 @@ function replace_tags() {
       checked = text[i].innerHTML.replaceAll(/\[c\]/g, "<input type= 'checkbox'>")
       text[i].innerHTML = checked
      
-      popper=text[i].innerHTML.replaceAll(/(;;;)(.*?)(;;;)/g, `<button type="button" class="btn btn-sm btn-primary lead" data-bs-toggle="popover" title="" data-bs-content="$2" style='border-radius:15px; height:10px; overflow:visible;'><small>?</small></button>`)
+      popper=text[i].innerHTML.replaceAll(/(;;;)(.*?)(;;;)/g,` 
+      <a tabindex="0" class=" text-primary p-0 m-0 align-top" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="$2" style='text-indent:0px;'><i class="bi bi-question-square-fill"></i></a>`)
       text[i].innerHTML = popper
       
+      
     }
+    
 
     var links = document.querySelectorAll('#maincontent a')
     for (i = 0; i < links.length; i++) {

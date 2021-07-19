@@ -13,12 +13,16 @@ Donec malesuada quam facilisis, auctor tellus sed, pretium neque. Vestibulum era
 ### Contact Information
 
 ######
-:::ContactTA
 
+Your Teaching Assistant (TA) is your first point of contact for this course. 
+      Please reach out to them if you have questions about labs, completing your assignments, grading, regrade requests, or attendance. 
+:::ContactTA
 :::
 
-:::ContactFA
+The course Faculty are here to help with more complex issues, working behind the scenes to ensure the labs run smoothly. Please contact a Faculty member if you have specific issues reguarding DSP and other accomodations, errors in the lab manual, problems with equipment, or have witnessed/been a victim of any kind of harassment `
 
+
+:::ContactFA
 :::
 
 

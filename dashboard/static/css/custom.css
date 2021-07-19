@@ -14100,7 +14100,6 @@ textarea.form-control-lg {
 .Note {
   transform: rotate(2deg);
   font-family: "Comic Sans Ms", "Comic Sans", cursive;
-  margin-top: 10px;
   font-size: 0.9rem;
   color: #424445;
 }
@@ -14150,6 +14149,14 @@ textarea.form-control-lg {
 }
 
 @media (min-width: 992px) {
+  .Note.float-lg-start {
+    margin: 0rem 1.2rem 0rem 0rem !important;
+  }
+
+  .Note.float-lg-end {
+    margin: 0rem 0rem 0rem 1.2rem !important;
+  }
+
   .modal-body img {
     max-height: calc(100vh - 180px);
   }

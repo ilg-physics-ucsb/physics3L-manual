@@ -457,7 +457,6 @@ $simulation-bg:$UCSB-mist;
 .Note{
     transform:rotate(2deg);
     font-family: 'Comic Sans Ms', "Comic Sans", cursive;
-    margin-top:10px;
     font-size: 0.9rem;
     color: shade-color($UCSB-lightgray,70%);
     i{
@@ -515,6 +514,15 @@ $simulation-bg:$UCSB-mist;
 }
 
  @media (min-width: map-get($grid-breakpoints, "lg" )){ 
+
+    .Note.float-lg-start{
+        margin:0rem 1.2rem 0rem 0rem!important
+      }
+      
+      
+      .Note.float-lg-end{
+        margin:0rem 0rem 0rem 1.2rem!important
+      }
     .modal-body img{
         max-height: calc(100vh - 180px);
     }

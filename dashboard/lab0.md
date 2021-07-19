@@ -20,7 +20,7 @@ These activities will also help us understand the equipment that we will be usin
 ![An image of an iPhone on the Phyphox App page in the iOS store](imgs/Lab0/phyphox.png "The Phyphox Phone App in the iOS store")
 :::
 
-In this intro lab, we will learn how to use the Phyphox app to acquire data that we will later analyze. You can download the app from the [Phyphox website](https://Phyphox.org/) or find it in the iOS/Google Play store. 
+In this intro lab, we will learn how to use the Phyphox app to acquire data that we will later analyze. You can download the app from the [Phyphox website](https://Phyphox.org/) or find it in the iOS/Google Play store ;;; Don't have a smart phone? Contact your TA for information on completeing this assignment with alternate technology;;; . 
 
 Phyphox allows you to use the sensors in your phone to measure quantities such as frequency, acceleration, and magnetic field strength. It also includes some additional modules with special functionality, such as acoustic stopwatches. Data can be exported in many common formats for quantitative analysis. Additionally, Phyphox on the phone can be controlled remotely from your desktop as long as they are on the same Wi-Fi network.
 

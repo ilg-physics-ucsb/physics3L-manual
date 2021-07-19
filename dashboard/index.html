@@ -137,7 +137,7 @@
             <div class="accordion-item">
               <h2 class="accordion-header text-center" id="Chat">
                 <button class="accordion-button collapsed ac-top" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#Chat-block" aria-expanded="false" aria-controls="Chat-block">
+                  data-bs-target="#Chat-block" aria-expanded="false" aria-controls="Chat-block" onclick="appresize()">
                   <small class="lead">Toggle Chat</small>
                 </button>
               </h2>
@@ -146,7 +146,7 @@
                 data-bs-parent="#navcordion">
                 <div style="height: 100%;">
                   <iframe width="100%" frameborder="0" allow="microphone; camera" id="chatframe" src=""
-                    style="min-height: 600px;border: 0;"></iframe>
+                    style="min-height: 600px;border: 0;" onmouseenter="appresize()"></iframe>
                 </div>
               </div>
             </div>
@@ -231,7 +231,20 @@
     linkfile = 'home'
   }
 
+  function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+  function appresize(){
+    document.getElementById('chatframe').height=(window.innerHeight-document.getElementById('chatframe').getBoundingClientRect().y) -10 +'px'
+  }
+  appresize()
 
+  window.onresize=appresize
 
   init_nav(linkfile)
 

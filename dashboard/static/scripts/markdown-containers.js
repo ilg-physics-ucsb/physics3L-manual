@@ -128,11 +128,11 @@ md.use(container, 'Note', {
       if (!args[1]) {
         args[1] = 'col-lg-5 mx-auto'
       } else {
-        note_size = 'col-lg-' + args[1].replace("L","float-lg-start").replace("R","float-lg-end")
+        note_size = 'col-lg-' + args[1].replace("L","float-lg-start ").replace("R","float-lg-end")
         args[1] = note_size
 
       }
-      card_maker('Note', args[0], '<i class="fa fa-thumb-tack fs-1" aria-hidden="true"></i>', '', [args[1], "mx-auto", 'bg-caution bg-gradient'].join(' '))
+      card_maker('Note', args[0], '<i class="fa fa-thumb-tack fs-1" aria-hidden="true"></i>', '', ["col-8",args[1], "mx-auto my-4", 'bg-caution bg-gradient'].join(' '))
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -289,10 +289,8 @@ md.use(container, 'ContactTA', {
     let args;
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^ContactTA(.*)$/)[1])
-      let blurb = `Your Teaching Assistant (TA) is your first point of contact for this course. 
-      Please reach out to them if you have Exercises about labs, completing your assignments, grading and regrade requests, as well as attendance. `
 
-      return contacts("TAs", blurb)
+      return contacts("TAs")
 
     } else {
       return ''
@@ -306,9 +304,7 @@ md.use(container, 'ContactFA', {
     let args;
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^ContactFA(.*)$/)[1])
-      let blurb = `The course Faculty are here to help with more complex issues, working behind the scenes to ensure the labs run smoothly. Please contact a Faculty member if you have specific issues reguarding DSP and other accomodations, errors in the lab manual, problems with equipment, or have witnessed/been a victim of any kind of harassment `
-
-      return contacts("Faculty", blurb)
+      return contacts("Faculty")
 
     } else {
       return ''
@@ -583,13 +579,11 @@ function figure(tokens, idx, regmatch, extra = '') {
 /////////////////Uggly
 
 
-function contacts(kind, blurb) {
+function contacts(kind) {
 
 
   let role = ''
-
   let elmt =
-
     `<div class="row justify-content-center">
         <div id ="Contact${kind}" class="accordion accordion-flush card col-card Contact col-md-8 my-3 p-0" >
           <div class="accordion-item"> 
@@ -600,22 +594,19 @@ function contacts(kind, blurb) {
             </span>
             <div id="Contact-${kind}" class="accordion-collapse collapse card-text" aria-labelled-by="Contact-${kind}" data-bs-parent="#Contact${kind}">
               <div class="accordion-body  p-0">
-              <div class="p-3">
-              <small class="text-muted text-center fs-6 "> ${blurb}</small>
-              </div>
-  
+       
     `
-  for (i = 0; i < sitedata[kind].length; i++) {
+    sitedata[kind].forEach( (e)=> {
 
     if (kind == "Faculty") {
-      role = ` <li class="list-inline-item "><strong>Role:</strong> ${sitedata[kind][i]["title"]} </li>`
+      role = ` <li class="list-inline-item "><strong>Role:</strong> ${e["title"]} </li>`
     }
     elmt += `  
       <div class="card " style="width:100%; overflow:hidden">
-     <div class="row g-0">
+      <div class="row g-0">
       <div class="ratio ratio-1x1" style="
             width:150px;
-            background-image: url( ${sitedata[kind][i]["img"]});
+            background-image: url( ${e["img"]});
             background-size:cover;
             background-position:center;  ">
       
@@ -623,14 +614,14 @@ function contacts(kind, blurb) {
       </div>
       <div style="width:calc(100% - 150px)">
         <div class="card-body">
-          <h5 class="card-title">${sitedata[kind][i]["first-name"] + ' ' + sitedata[kind][i]["last-name"]}
-          <small class='text-muted'>${sitedata[kind][i]["pronouns"]}</small>
-                  <small class="badge bg-UCSB-navy address">${sitedata[kind][i]["email"].replace('@','&commat;')}</small>
+          <h5 class="card-title">${e["first-name"] + ' ' + e["last-name"]}
+          <small class='text-muted'>${e["pronouns"]}</small>
+                  <small class="badge bg-UCSB-navy address">${e["email"].replace('@','&commat;')}</small>
           </h5>
           <ul class="list-inline p-0 m-0 ">
-                  <li class="list-inline-item "><strong>Office Hours:</strong> ${sitedata[kind][i]["officehours"]}</li>
-                  <li class="list-inline-item "><strong>Section Hours:</strong> ${sitedata[kind][i]["sectionhours"]}</li>
-                  <li class="list-inline-item "><strong>Location:</strong> <a href="${sitedata[kind][i]["zoom"]}">Room</a></li>
+                  <li class="list-inline-item "><strong>Office Hours:</strong> ${e["officehours"]}</li>
+                  <li class="list-inline-item "><strong>Section Hours:</strong> ${e["sectionhours"]}</li>
+                  <li class="list-inline-item "><strong>Location:</strong> <a href="${e["zoom"]}">Room</a></li>
                   ${role}
                 </ul>
         </div>
@@ -638,7 +629,7 @@ function contacts(kind, blurb) {
     </div>
   </div>
           `
-  }
+  })
 
   elmt += `</div> 
     </div>
@@ -679,36 +670,27 @@ md.use(container, 'Summary', {
 
 
 
-function materials(args){
-  let obj, deet, list
+function materials(args) {
+  let obj, deet
 
-  list= `
-  
+  let list = `
      <ul class="list-inline Materials px-1 py-0 mb-3 " style='border-top: 1px solid var(--bs-UCSB-lightgray); border-bottom: 1px solid var(--bs-UCSB-lightgray)'>
-     <li class="list-inline-item align-middle">
-     <span class=' fs-5' >
-     Materials: </span>
-     </li>
-      
+      <li class="list-inline-item align-middle">
+        <span class=' fs-5' >
+          Materials: 
+        </span>
+      </li>  
       `
-      for(i=0;i<args.length;i++){
-        obj=args[i].split('---')[0]
-        deet=args[i].split('---').slice(1).join(' ')
+  args.forEach((e) => {obj = e.split('---')[0]; deet = e.split('---').slice(1).join(' ');
+    list += `<li class="list-inline-item align-middle py-1">
+              <a tabindex="0"  role="button" class="btn btn-sm btn-UCSB-navy position-relative mats" 
+                ${deet ? 'data-bs-placement="bottom"  data-bs-toggle="popover" data-bs-trigger="focus" title="" data-bs-content="' + deet + '"' : ''} 
+                aria-pressed="false" autocomplete="off">
+                ${obj} 
+                ${deet ? '<span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"><span class="visually-hidden">Click for Info</span></span>' : ''}
+              </a>
+            </li>`
+  })
+  return list;
 
-        console.log(deet)
-
-        console.log( deet ? '<span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"> <span class="visually-hidden">New alerts</span>' : '')
-
-        list+= `
-        <li class="list-inline-item align-middle py-1">
-      <a tabindex="0"  role="button" class="btn btn-sm btn-UCSB-navy position-relative mats" data-bs-placement="bottom"  data-bs-toggle="popover" data-bs-trigger="focus" title="" data-bs-content="${deet}" aria-pressed="false" autocomplete="off">
-      ${obj} 
-      
-      ${deet ? ' <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"><span class="visually-hidden">Click for Info</span></span>' : ''}
-
-      </a>
-      </li>`
-      }
-      return list;
-    
 }
