@@ -109,16 +109,23 @@ pre {
     margin: auto;
     background-color: $UCSB-lightgray;
     padding: 5px;
+    white-space: pre-wrap; 
   };
 
 code{
     background-color: $UCSB-lightgray;
+    word-wrap: break-word;
 }
 
 @media (min-width: map-get($grid-breakpoints, "sm" )){ 
     pre{
     max-width: 70%;
     }
+}
+
+$card-border-width: 0px;
+.card{
+    box-shadow: 1px 1px 5px 2px $UCSB-lightgray;
 }
 
 // 4. Include any optional Bootstrap components as you like
@@ -233,7 +240,6 @@ $simulation-bg:$UCSB-mist;
 .Intro{
     background-color: tint-color($intro-bg,80%);
     color:$dark;
-    text-align: center;
     font-size: 1.2rem!important;
 
     ol, ul{
@@ -260,7 +266,6 @@ $simulation-bg:$UCSB-mist;
     > .card-header{
         color:$dark;
         background-color: $materials-bg;
-
        }
  };
 
@@ -365,11 +370,13 @@ $simulation-bg:$UCSB-mist;
 }
 ///Activity
 .Activity {
+    border-radius: 5px!important;
     button{
     border: 0px solid black;
     width: 100%;
     background-color:shade-color($Activity-bg,10%);
     box-shadow: none!important;
+    border-radius: 0.25rem!important;
     color: white;
     };
     button:after{
@@ -383,6 +390,7 @@ $simulation-bg:$UCSB-mist;
         color:white;
         background-color: tint-color($Activity-bg,5%);
         box-shadow: none!important;
+        
 
      };
 
@@ -391,6 +399,8 @@ $simulation-bg:$UCSB-mist;
         width: 100%;
         color:white;
         background-color: shade-color($Activity-bg,5%);
+        border-bottom-left-radius: 0.0rem!important;
+        border-bottom-right-radius: 0.0rem!important;
      };
      button:not(.collapsed):after{
         background-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
@@ -459,6 +469,7 @@ $simulation-bg:$UCSB-mist;
     font-family: 'Comic Sans Ms', "Comic Sans", cursive;
     font-size: 0.9rem;
     color: shade-color($UCSB-lightgray,70%);
+    text-indent: 0.25rem;
     i{
         transform:rotate(45deg) translateY(-40px) ;
     }
@@ -494,7 +505,7 @@ $simulation-bg:$UCSB-mist;
     img{
         max-width: 100%;
     }
-    ul, ol{
+    ul, ol{ 
         font-size:  0.85rem;
         text-align: left
     };
@@ -689,3 +700,8 @@ img:hover{
 
 
   }
+
+
+.card-header p, .card-footer p{
+    margin-bottom: 0px!important
+}

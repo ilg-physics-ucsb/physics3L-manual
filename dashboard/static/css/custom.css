@@ -4,10 +4,12 @@ pre {
   margin: auto;
   background-color: #DCE1E5;
   padding: 5px;
+  white-space: pre-wrap;
 }
 
 code {
   background-color: #DCE1E5;
+  word-wrap: break-word;
 }
 
 @media (min-width: 576px) {
@@ -15,6 +17,10 @@ code {
     max-width: 70%;
   }
 }
+.card {
+  box-shadow: 1px 1px 5px 2px #DCE1E5;
+}
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -6818,7 +6824,7 @@ textarea.form-control-lg {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: 0px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
 .card > hr {
@@ -6873,7 +6879,7 @@ textarea.form-control-lg {
   padding: 0.5rem 1rem;
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.15);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 0px solid rgba(0, 0, 0, 0.125);
 }
 .card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
@@ -6882,7 +6888,7 @@ textarea.form-control-lg {
 .card-footer {
   padding: 0.5rem 1rem;
   background-color: rgba(0, 0, 0, 0.15);
-  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  border-top: 0px solid rgba(0, 0, 0, 0.125);
 }
 .card-footer:last-child {
   border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
@@ -13935,7 +13941,6 @@ textarea.form-control-lg {
 .Intro {
   background-color: #ccd7df;
   color: #001626;
-  text-align: center;
   font-size: 1.2rem !important;
 }
 .Intro ol, .Intro ul {
@@ -14032,11 +14037,15 @@ textarea.form-control-lg {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
 }
 
+.Activity {
+  border-radius: 5px !important;
+}
 .Activity button {
   border: 0px solid black;
   width: 100%;
   background-color: #984c43;
   box-shadow: none !important;
+  border-radius: 0.25rem !important;
   color: white;
 }
 .Activity button:after {
@@ -14054,6 +14063,8 @@ textarea.form-control-lg {
   width: 100%;
   color: white;
   background-color: #a15046;
+  border-bottom-left-radius: 0rem !important;
+  border-bottom-right-radius: 0rem !important;
 }
 .Activity button:not(.collapsed):after {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
@@ -14102,6 +14113,7 @@ textarea.form-control-lg {
   font-family: "Comic Sans Ms", "Comic Sans", cursive;
   font-size: 0.9rem;
   color: #424445;
+  text-indent: 0.25rem;
 }
 .Note i {
   transform: rotate(45deg) translateY(-40px);
@@ -14309,6 +14321,10 @@ img:hover {
 
 #maincontent > ul, #maincontent > ol {
   padding-left: 5rem;
+}
+
+.card-header p, .card-footer p {
+  margin-bottom: 0px !important;
 }
 
 /*# sourceMappingURL=custom.css.map */

@@ -8,185 +8,18 @@ const pad_mar = "px-0 mx-auto my-5" //Applies 0 padding, auto margin (centers el
 const group1 = "col-lg-9" // forces a 75% columnar layout that expands to 95% width on small screens
 const fig_group = "justify-content-center text-center px-0 mx-3 mb-4" //Formatting that is special for figues -- adds margins to floated figs
 
-const narrow_center = "col-lg-9 mx-auto my-5"
-const collapsable_header = ' fs-4 align-bottom'
-
-
-class Card{
-  constructor(type, ref) {
-    //Static
-    this.type=type
-    this.ref= type + '-' +ref  
-    this.number= updateCounter(ref,type)
-    this.id = type + this.number;
-
-    //Mutable -- can be set in the calling routine below
-    this.collapse=false
-    this.headerText=''
-    this.footerText=''
-    this.styleList=[type, 'card']
-    //   innerStyles=[heading classes   , body container classes , body text classes, footer classes]
-    this.innerStyles=['text-center my-0', 'text-left'            , 'px-2'           , 'text-center' ]
-    
-    //Apply certain styles depending on card type
-    switch(type)
-    {
-      case 'Intro':
-        this.styleList.push(narrow_center, 'my-2')
-        this.innerStyles[1]='text-center'
-        break
-      case 'Exercise':
-        this.collapse=false
-        this.headerText=`Exercise ${this.number}`
-        this.styleList.push(narrow_center, 'my-2')
-        break
-      case 'Equation':
-        this.footerText= `Equation ${this.number}`
-        this.styleList.push(narrow_center)
-        break
-      case 'Video':
-        this.styleList.push('col-lg-8', 'mx-auto', 'my-2')
-        this.innerStyles[1]+=' ratio ratio-16x9'
-        this.footerText= `Video ${this.number}`
-        break
-      case 'Note':
-        this.styleList.push('mx-auto', 'my-4', 'col-8 bg-caution bg-gradient')
-        this.innerStyles[1]='text-center'
-        this.headerText = '<i class="fa fa-thumb-tack fs-1" aria-hidden="true"></i>'
-        break
-      case 'Warning':
-        this.styleList.push(' mx-auto bg-danger bg-gradient alert alert-warning alert-dismissible fade show hshaker')
-        this.innerStyles= ['text-center text-light', 'text-center text-light fs-2', 'px-2' , 'text-center']
-        this.headerText='<i class="fa fa-exclamation-triangle fs-1 rotor" aria-hidden="true"></i> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
-        break
-      case 'Definition':
-        this.styleList.push(' mx-auto ')
-        this.innerStyles[0]='text-left'
-        this.headerText=`<strong > Definition ${this.number}: </strong>`
-        break
-      case 'Table':
-        this.styleList.push(' mx-auto ')
-        this.innerStyles[0]='text-left'
-        this.footerText= 'Table ' + this.number
-        break
-      case 'Hider':
-        this.collapse=true
-        this.styleList.push(narrow_center)
-        break
-      case 'Activity':
-        this.collapse=true
-        this.headerText= 'Activity ' + this.number
-        this.styleList.push('col-lg-11 my-5 mx-auto')
-        this.innerStyles[0]+=collapsable_header
-        break
-      case 'Simulation':
-        this.collapse=true
-        this.headerText= 'Simulation ' + this.number
-        this.styleList.push('col-lg-11 my-5 mx-auto')
-        this.innerStyles[0]+= collapsable_header
-        break
-
-    } 
-  }
-
-  publishCard (){ 
-    this.collapse ?  classAcc(this) : classCard(this);
-    
-  }
-
- }
-
-function classCard(c) {
-
-  div_head.push(`
-  <div id="${c.ref}" 
-    class="${[c.styleList.join(' ')]} " 
-    data-kiwi="${c.number}" 
-    data-type="${c.type}"> 
-    ${c.headerText == '' || c.headerText == null ? '' :
-      `<div class="card-header">
-      <h5 class="${c.innerStyles[0]}">
-        ${c.headerText}
-      </h5>
-    </div>`}
-
-    <div class="container ${c.innerStyles[1]}">
-      <div class="card-text card-body ${c.innerStyles[2]}">
-    `)
-
-  div_foot.push(`
-      </div>
-    </div>
-    ${(c.footerText == '' || c.footerText == null ? '' :
-      `<div class="card-footer">
-      <h5 class="my-0 ${c.innerStyles[3]} ">
-        ${c.footerText}
-      </h5>
-    </div>`)}
-    </div>`)
- c= null
-}
-
-function classAcc(c) {
-
-  div_head.push(`
-  <div id="${c.ref}" 
-    class="accordion accordion-flush card col-card ${[c.styleList.join(' ')]} " 
-    data-kiwi="${c.number}" 
-    data-type="${c.type}"> 
-    <div class="accordion-item ">
-        <button 
-          class="accordion-button collapsed ${c.innerStyles[0]}" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#${c.id}" 
-          aria-expanded="false" 
-          aria-controls="${c.id}">
-            ${c.headerText}
-        </button>
-        <div id="${c.id}" 
-        class="accordion-collapse collapse card-text ${c.styleList[1]}" 
-        aria-labelled-by="${c.id}" data-bs-parent="#${c.ref}">
-          <div class="accordion-body container">
-    `)
-
-  div_foot.push(`
-          </div>
-        </div>
-      </div>
-    </div>`)
- c=null
-}
-
 
 //////////////// CUSTOM CONTAINER DEFS
 
-///MATERIALS////
-md.use(container, 'Materials', {
-// Input Format is: 
-// Materials (item 1 --- note 1|item 2 --- note 2|...)
-  render: function (tokens, idx) {
-    let args
-    if (tokens[idx].nesting === 1) {
-      args = strip(tokens[idx].info.trim().match(/^Materials(.*)$/)[1]) //identifies the text that is not "Materials", and identifies arguments seperated by a | 
-      return materials(args)
-    } else {
-      return '</ul></span> '
-    }
-  }
-})
-
 ///INTRODUCTION////
-md.use(container, 'Intro', {  
-  // Input Format is:
-  // Intro (Heading Line|material 1 --- comment|material 2 --- comment| ...)
-  render: function (tokens, idx) {   
-    if (tokens[idx].nesting === 1) {  
+md.use(container, 'Intro', {
+  render: function (tokens, idx) {
+    let args, inner_styles;
+
+    if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Intro(.*)$/)[1])
-      let intro=new Card("Intro", args[0].replace(/[^a-zA-Z0-9]/g,''))
-      intro.headerText=args[0]
-      intro.footerText=(args.slice(1).length ? materials(args.slice(1)) : null)
-      intro.publishCard()
+      inner_styles = ['text-center', 'text-left', 'text-center']
+      card_maker('Intro', args[0].replace(' ','_'), args[0], materials(args.slice(1)), [group1, pad_mar].join(' '), inner_styles)
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -194,16 +27,51 @@ md.use(container, 'Intro', {
   }
 })
 
-///EXERCISE///
+///MATERIALS////
+// md.use(container, 'Materials', {
+//   render: function (tokens, idx) {
+//     let args, inner_styles; //Define list to accept arguments (reference|styles)
+//     if (tokens[idx].nesting === 1) {
+//       args = strip(tokens[idx].info.trim().match(/^Materials(.*)$/)[1]) //identifies the text that is not "Materials", and identifies arguments seperated by a | 
+//       inner_styles = ['text-center', 'text-left', 'text-center']
+//       if(!args[1]||args[1]==''){
+//         args[1]="col-lg-4 "+ pad_mar
+//       } else{
+//         args[1]= "col-lg-" + args[1]
+//       }
+//       card_maker('Materials', args[0], 'Materials', '', [ args[1]].join(' '), inner_styles)
+//       return div_head.pop()
+//     } else {
+//       return div_foot.pop()
+//     }
+//   }
+// })
+
+///MATERIALS////
+md.use(container, 'Materials', {
+  render: function (tokens, idx) {
+    let args
+    if (tokens[idx].nesting === 1) {
+      args = strip(tokens[idx].info.trim().match(/^Materials(.*)$/)[1]) //identifies the text that is not "Materials", and identifies arguments seperated by a | 
+     
+      
+      return materials(args)
+    } else {
+      return '</ul></span> '
+    }
+  }
+})
+
+
+
+
+///Exercise///
 md.use(container, 'Exercise', {
-  // Input Format is: 
-  // Exercise (reference-name)
   render: function (tokens, idx) {
     let args;
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Exercise(.*)$/)[1])
-      let ex = new Card('Exercise', args[0])
-      ex.publishCard()
+      card_maker('Exercise', args[0], 'Exercise #', '', [group1, pad_mar, args[1]].join(' '))
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -213,15 +81,14 @@ md.use(container, 'Exercise', {
 
 ///EQUATION///
 md.use(container, 'Equation', {
-  // Input Format is: 
-  // Equation (reference-name, optional-header)
   render: function (tokens, idx) {
     let args;
+
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Equation(.*)$/)[1])
-      let eq = new Card('Equation', args[0])
-      eq.headerText= md.render(args[1] ?? '')
-      eq.publishCard()    
+
+
+      card_maker('Equation', args[0], args[1], 'Equation #', [group1, pad_mar].join(' '))
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -229,18 +96,18 @@ md.use(container, 'Equation', {
   }
 })
 
+
+
 ///VIDEO
 md.use(container, 'Video', {
-// Input Format is: 
-// Video (reference-name| optional-header)
   render: function (tokens, idx) {
     let args;
+
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Video(.*)$/)[1])
-      let vid= new Card("Video", args[0])
-      vid.headerText= args[1]
-      vid.publishCard()
 
+
+      card_maker('Video', args[0], args[1], 'Video #', [group1, "mx-auto px-0"].join(' '), ['text-center', 'text-center ratio ratio-16x9', 'text-center'])
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -249,19 +116,23 @@ md.use(container, 'Video', {
 })
 ///
 
-///NOTE
+
+///Note
 md.use(container, 'Note', {
-// Input Format is: 
-// Note (reference-name|width alignment)
   render: function (tokens, idx) {
     let args;
 
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Note(.*)$/)[1])
-      let note= new Card('Note', args[0])
-      note.styleList.push(args[1] ? 'col-lg-' + args[1].replace("L","float-lg-start ").replace("R","float-lg-end") : 'col-lg-4 mx-auto' )
-      note.publishCard()
- 
+
+      if (!args[1]) {
+        args[1] = 'col-lg-5 mx-auto'
+      } else {
+        note_size = 'col-lg-' + args[1].replace("L","float-lg-start ").replace("R","float-lg-end")
+        args[1] = note_size
+
+      }
+      card_maker('Note', args[0], '<i class="fa fa-thumb-tack fs-1" aria-hidden="true"></i>', '', ["col-8",args[1], "mx-auto my-4", 'bg-caution bg-gradient'].join(' '))
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -269,17 +140,24 @@ md.use(container, 'Note', {
   }
 })
 
-///WARNING
+
+
+///Warning
 md.use(container, 'Warning', {
-// Input Format is: 
-// Warning (reference-name|optional-width)
   render: function (tokens, idx) {
     let args;
+
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Warning(.*)$/)[1])
-      let warn= new Card('Warning', args[0])
-      warn.styleList.push(args[1] ? 'col-lg-' + args[1] : 'col-lg-5')
-      warn.publishCard()
+
+      if (!args[1]) {
+        args[1] = 'col-lg-5'
+      } else {
+        note_size = 'col-lg-' + args[1]
+        args[1] = note_size
+
+      }
+      card_maker('Warning', args[0], '<i class="fa fa-exclamation-triangle fs-1 rotor" aria-hidden="true"></i> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>', '', [args[1], pad_mar, 'bg-danger bg-gradient alert alert-warning alert-dismissible fade show hshaker'].join(' '), ['text-center text-light', 'text-center text-light fs-2', 'text-center'])
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -287,41 +165,50 @@ md.use(container, 'Warning', {
   }
 })
 
-///DEFINITION
+
 md.use(container, 'Definition', {
-  // Input Format is: 
-  // Warning (optional-width)
   render: function (tokens, idx) {
     let args;
+    let inner_styles = ['text-left ', 'text-left ', 'text-center']
+
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Definition(.*)$/)[1])
 
-      let def= new Card("Definition", args[0])
-      def.headerText+=`<span class='lead'>${args[0]} </span>`
-      def.styleList.push(args[1] ? 'col-lg-' + args[1] : 'col-lg-10')
-      def.publishCard()
+      if (!args[1]) {
+        args[1] = 'col-lg-10'
+      } else {
+        note_size = 'col-lg-' + args[1]
+        args[1] = note_size
+
+      }
+      card_maker('Definition', args[0], `<strong > Definition #:</strong> <span class='lead'>${args[0]} </span>` , '', [args[1], pad_mar].join(' '), inner_styles)
       return div_head.pop()
     } else {
       return div_foot.pop()
     }
   }
 })
+///
 
 
-
-///TABLES
+///Table
 md.use(container, 'Table', {
-  // Input Format is: 
-  // Table (optional-ref|optional-title|width)
   render: function (tokens, idx) {
     let args;
 
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Table(.*)$/)[1])
-      let table=new Card("Table", args[0])
-      table.styleList.push('col-lg-' + (args[2] ||'9') )
-      table.footerText+=(args[1] || '')
-      table.publishCard()
+
+      if (!args[2]) {
+        args[2] = 'col-lg-9'
+      }
+
+      title = 'Table #'
+      if (args[1]) {
+        title += ':' + args[1]
+      }
+
+      card_maker('Table', args[0], '', title, [args[2], pad_mar].join(' '), ['text-center ', 'text-center ', 'text-center'])
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -337,16 +224,13 @@ md.use(container, 'Table', {
 ///Hider
 
 md.use(container, 'Hider', {
-  // Input Format is: 
-  // Hider (optional-ref|title)
   render: function (tokens, idx) {
-    let args
+    let args, inner_styles;
+
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Hider(.*)$/)[1])
-      let hide= new Card('Hider', args[0] )
-      hide.headerText=args[1]
-      hide.publishCard()
-      //card_maker_collapse('Hider', args[0], args[1], [group1, pad_mar].join(' '), inner_styles)
+      inner_styles = ['text-center', 'text-left', 'text-center']
+      card_maker_collapse('Hider', args[0], args[1], [group1, pad_mar].join(' '), inner_styles)
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -356,17 +240,18 @@ md.use(container, 'Hider', {
 
 
 
-///ACTIVITY
+///Activity
 md.use(container, 'Activity', {
-  // Input Format is: 
-  // Activity (optional-ref|optional-title)
   render: function (tokens, idx) {
-    let args
+    let args, inner_styles;
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Activity(.*)$/)[1])
-      let activity = new Card('Activity', args[0])
-      activity.headerText+= args[1] ?  `│ <span class='lead align-baseline' style="padding-left:0px"> ${args[1]} </span>` : ''
-      activity.publishCard()
+      var title = 'Activity #'
+      if (args[1]) {
+        title += ` │ <span class='lead align-baseline' style="padding-left:0px"> ${args[1]} </span>`
+      }
+      inner_styles = ['text-center', 'text-left', 'text-center']
+      card_maker_collapse('Activity', args[0], title, ["col-lg-11", pad_mar, args[1]].join(' '), inner_styles)
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -374,21 +259,18 @@ md.use(container, 'Activity', {
   }
 })
 
-///SIMULATION
+///SIMULATION///
 md.use(container, 'Simulation', {
-  // Input Format is: 
-  // Simulation (optional-ref|optional-title)
   render: function (tokens, idx) {
     let args;
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Simulation(.*)$/)[1])
-      let sim= new Card('Simulation', args[0] )
       var title = 'Simulation #'
       if (args[1]) {
-       sim.headerText+= `:<span class='lead' style="padding-left:10px"> ${args[1]} </span>`
+        title += `:<span class='lead' style="padding-left:10px"> ${args[1]} </span>`
       }
-      sim.publishCard()
-      // card_maker_collapse('Simulation', args[0], title, [group1, pad_mar, args[2]].join(' '))
+
+      card_maker_collapse('Simulation', args[0], title, [group1, pad_mar, args[2]].join(' '))
       return div_head.pop()
     } else {
       return div_foot.pop()
@@ -504,7 +386,12 @@ md.use(container, 'Card', {
 
 
 ////////////////////////////Utility Card Routines
-function updateCounter(ref, type){
+
+
+
+//Blank Cards
+function card_maker(type, ref, header, footer, card_style, content_style = ['text-center', 'text-center', 'text-center']) {
+ 
   let this_count =( Counter[type] ? Counter[type].length + 1 : 1 )
  
   if (Counter[type]) {
@@ -519,16 +406,6 @@ function updateCounter(ref, type){
     }
     Counter[type][0] = [1, ref]
   }
-  console.log(Counter)
-  return this_count
-}
-
-
-//Blank Cards
-function card_maker(type, ref, header, footer, card_style, content_style = ['text-center', 'text-center', 'text-center']) {
- 
-  this_count=updateCounter
-(ref, type)
 
 
   var opening_string =
@@ -559,7 +436,7 @@ function card_maker(type, ref, header, footer, card_style, content_style = ['tex
   closing_string +=
     `</div>`
 
-
+console.log('opening_string')  
 div_head.push(opening_string)
   div_foot.push(closing_string)
 }
@@ -586,14 +463,14 @@ function card_maker_collapse(type, ref, header, card_style, content_style = ['te
     header = type
   }
   var opening_string =
-    `
+    `<div class="row justify-content-center">
       <div id ="${type + '-' + ref}" class="accordion accordion-flush card col-card ${[type, card_style].join(' ')}" data-kiwi="${this_count}" data-type="${type}" >
         <div class="accordion-item"> 
-          
+          <span class="my-0 accordion-header ${content_style[0]}">
             <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#${uniqueid}" aria-expanded="false" aria-controls="${uniqueid}">
-             ${header.replace('#', this_count)}
+             <div class="card-but"> ${header.replace('#', this_count)}</div>
             </button>
-   
+          </span>
           <div id="${uniqueid}" class="accordion-collapse collapse card-text px-2 ${content_style[1]}" aria-labelled-by="${uniqueid}" data-bs-parent="#${type + '-' + ref}">
             <div class="accordion-body container ">`
     ;
@@ -602,7 +479,7 @@ function card_maker_collapse(type, ref, header, card_style, content_style = ['te
           </div>
         </div>
       </div>
-    `
+    </div>`
 
   div_head.push(opening_string)
   div_foot.push(closing_string)

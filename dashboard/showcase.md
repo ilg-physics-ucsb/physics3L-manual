@@ -1,11 +1,14 @@
 # Manual Feature Showcase
 
-:::Intro (Welcome to "The Guide")
+:::Intro (Welcome to "The Guide"|Your phone with the Phyphox App installed --- See instructions in Part I |A magnet| Ruler|Steel screw)
 In this guide, we will cover most of the features in the online manual renderer. Each section feature full examples as well as code snippets that will produce the examples. We also provide suggestions for how to use each feature.
 :::
 
-:::Materials (Your phone with the Phyphox App installed --- See instructions in Part I |A magnet| Ruler|Steel screw)
+```
+:::Intro (Welcome to "The Guide"|Your phone with the Phyphox App installed --- See instructions in Part I |A magnet| Ruler|Steel screw)
+In this guide, we will cover most of the features in the online manual renderer. Each section feature full examples as well as code snippets that will produce the examples. We also provide suggestions for how to use each feature.
 :::
+```
 
 
 # Second Header in File
@@ -13,9 +16,6 @@ In this guide, we will cover most of the features in the online manual renderer.
 The first header in a markdown file is rendered as the title of the page. The second single-hashed header becomes Part I. Typically this should be an introduction section. Since it is the first thing that students will read, they will be less mentally fatigued and recall more of this information. It should summarize the 'big-picture' of the lab, and use visual elements such as images, videos and figures.
 
 
-:::Definition (Elephant)
-And Elephant is
-:::
 
 
 ## Second Level Headers
@@ -29,23 +29,16 @@ Third Level Headers and beyond will not generate a link, so they should be used 
 # Special Elements
 
 ## @fa-wrench@ Materials List
-Generate your Material List quickly with the following Code:
+:::Materials (Brains|Computer---Running VS Code or Similar|Notepad and Pen)
+:::
+The materials list is designed to look nice beneath a section header, allowing you to partition materials for each part of the lab. Each material can be clicked on to change its color. This is intended to help students stay organized as they progress through the lab. You can also add a note to an item, designated by the red notification, that will display when clicked on.  Generate your Material List quickly with the following code:
 
 ``` 
-:::Materials (s|hi)
-- item 1
-- item 2
-  - note for item 2
-- item 3
+:::Materials (Brains|Computer---running VS Code or Similar|Notepad and Pen)
 :::
 ```
 ###### 
-:::Materials (|col-lg-4)
-- item 1 
-- item 2
-  - note for item 2
-- item 3
-:::
+
 
 
 
@@ -364,12 +357,12 @@ Exercises with multiple subparts are automatically labeled with lower-case lette
 :::
 
 
-## @fa-sitemap@ Activitys
+## @fa-sitemap@ Activities
 
-Activitys are another important call-to-action for students. They act as a stand alone prompt with step-by-step instructions for completing part of a lab. They are automatically numbered and occur in full-width boxes so that any figures or Exercises within have sufficient readability.
+Activities are another important call-to-action for students. They act as a stand alone prompt with step-by-step instructions for completing part of a lab. They are automatically numbered and occur in full-width boxes so that any figures or Exercises within have sufficient readability.
 
 ```
-:::::: Activity optional-name
+:::::: Activity ([optional-reference]|[optional-title])
 Firstly, let's measure the direction of magnetic field from the  magnet.
 **Measurement steps:**
 1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.
@@ -385,7 +378,7 @@ Firstly, let's measure the direction of magnetic field from the  magnet.
 ::::::
 ```
 
-:::::: Activity magnetic-field
+:::::: Activity ([optional-reference]|[optional-title])
 Firstly, let's measure the direction of magnetic field from the  magnet.
 **Measurement steps:**
 1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.
@@ -433,17 +426,32 @@ Simulations work the same as everything else, and collapse to save space when th
 ## @fa-warning@ Notes, Warnings, Tables
 
 ### Notes
-Notes are small blurbs meant to call students' attention to a potential pitfall, or a subtly they might otherwise miss
+Notes are small blurbs meant to call students' attention to a potential pitfall, or a subtly they might otherwise miss. The simplest note can be generated with just a note tag:
 
 ```
-::: Note
-Pay attention to how many colons you use in your markdown container!
+::: Note (optional-name)
+The default Note breaks the text and creates a 'post-it' environment that takes up about 50% of the manual's width. 
+
+The default Note can be used for anything in a pinch, but is especially good for long peices of explanatory text that are critical to the lab section
 :::
 ```
 
-::: Note (careful|3)
-Pay attention to how many colons you use in your markdown container!
+::: Note (optional-name)
+The default Note breaks the text and creates a 'post-it' environment that takes up 33% of the manual's width. 
+
+The default Note can be used for anything in a pinch, but is especially good for long peices of explanatory text that are critical to the lab section
 :::
+::: Note (this_is_a_right_note|2 R)
+Hey, look! This note is to the right of the text and tiny
+:::
+You may, of course, want to pass on a smaller or larger amount of information. To make it look nice, you can specify the note's width (a number 1-12) and its alignment (L or R) by passing the argument as (optional-name|width alignment) For example:
+```
+::: Note (this_is_a_right_note|2 R)
+Hey, look! This note is to the right of the text and tiny
+:::
+```
+
+
 
 
 ### Warnings
