@@ -592,7 +592,7 @@ These are contents
 Similarly, one can make a dropdown card.
 
 ```
-:::Drop (ref|header|footer|bg-UCSB-navy-50 text-white)
+:::Drop (ref|header|footer|bg-UCSB-navy text-white)
 These are contents
 :::
 ```

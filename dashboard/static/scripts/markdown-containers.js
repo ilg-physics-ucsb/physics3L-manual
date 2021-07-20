@@ -496,7 +496,6 @@ md.use(container, 'Card', {
 
 
 ///GENERIC Accordion
-
 md.use(container, 'Drop', {
   render: function (tokens, idx) {
     if (tokens[idx].nesting === 1) {
@@ -505,7 +504,7 @@ md.use(container, 'Drop', {
     let drop = new Card('Drop',args[0])
     drop.headerText=args[1]
     drop.footerText=args[2]
-    drop.styleList.push(args.slice(3))  
+    drop.innerStyles[0]+= ' ' + args.slice(3)  
     drop.publishCard()
     return div_head.pop()
     }else{

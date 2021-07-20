@@ -14030,11 +14030,26 @@ textarea.form-control-lg {
   color: black;
 }
 
-.Contact button:after {
+.Contact button:after, .Drop button:after {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
 }
-.Contact button:active:after, .Contact button:focus:after {
+.Contact button:active:after, .Contact button:focus:after, .Drop button:active:after, .Drop button:focus:after {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+}
+
+.col-card {
+  border-radius: 5px !important;
+}
+.col-card button {
+  border: 0px solid black;
+  width: 100%;
+  box-shadow: none !important;
+  border-radius: 0.25rem !important;
+}
+.col-card button:not(.collapsed) {
+  border: 0px solid black;
+  border-bottom-left-radius: 0rem !important;
+  border-bottom-right-radius: 0rem !important;
 }
 
 .Activity {
