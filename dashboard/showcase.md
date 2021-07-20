@@ -219,7 +219,7 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 ### Columnation
 In order to accommodate a row of images, the site makes use of W3.CSS standard columnization. Each full figure generates a row div class containing 12 equally sized columns. These are visualized in the figure below
 
-:::::::::RowFigure
+:::::::::Figure (||Row)
 ::::::row 
 :::col (bg-dark text-light)
 C1
@@ -264,32 +264,26 @@ C12
 Within this, we can designate how many columns each part of the figure should take up large screens. The example below shows two images that each take up half of the horizontal space = 6 columns Note: all columns take up the full width on mobile and tablet sized screens.
 
 ```
-:::::::::Figure (|m|Row)
-::::::row
-:::col 
-![Part A: Unobstructed view](imgs/crossproduct.png "Part A: This figure takes up 6 of 12 rows")
-
-
-:::
-:::col 
-![](imgs/crossproduct.png "Part B: This figure takes up 6 of 12 rows")
-
-
-:::
-::::::
-:::::::::
-```
 ::::::::Figure (|m|Row)
 ::::::row
 :::col 
 ![Part A: Unobstructed view](imgs/crossproduct.png "Part A: This figure takes up 6 of 12 rows")
-
-
 :::
 :::col 
 ![](imgs/crossproduct.png "Part B: This figure takes up 6 of 12 rows")
+:::
+::::::
+:::::::::
+```
 
+::::::::Figure (|m|Row)
+::::::row
+:::col 
+![Part A: Unobstructed view](imgs/crossproduct.png "Part A: This figure takes up 6 of 12 rows")
+:::
 
+:::col 
+![](imgs/crossproduct.png "Part B: This figure takes up 6 of 12 rows")
 :::
 ::::::
 :::::::::
@@ -316,7 +310,7 @@ $$
 :::
 
 
-Equation markup uses standard KaTeX. For less important equations, KaTeX may be rendered in-line with single dollar signs `$a=\tfrac{1}{2}\pi r^2$`, e.g. : For our purposes [Eq](#Eq-gbt) can be reduced to the more familiar $a=\tfrac{1}{2}\pi r^2$
+Equation markup uses standard KaTeX. For less important equations, KaTeX may be rendered in-line with single dollar signs `$a=\tfrac{1}{2}\pi r^2$`, e.g. : For our purposes [](#Equation-gbt) can be reduced to the more familiar $a=\tfrac{1}{2}\pi r^2$
 
 
 
@@ -338,7 +332,7 @@ Are you following along with this tutorial?
 :::
 ```
 
-:::Exercise following
+:::Exercise (following)
 Are you following along with this tutorial?
 :::
 
@@ -378,7 +372,7 @@ Firstly, let's measure the direction of magnetic field from the  magnet.
 ::::::
 ```
 
-:::::: Activity ([optional-reference]|[optional-title])
+:::::: Activity (optional-reference|optional-title)
 Firstly, let's measure the direction of magnetic field from the  magnet.
 **Measurement steps:**
 1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.

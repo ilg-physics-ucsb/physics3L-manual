@@ -76,6 +76,8 @@ class Card{
       case 'Hider':
         this.collapse=true
         this.styleList.push(narrow_center)
+        this.innerStyles[0]+= collapsable_header
+
         break
       case 'Activity':
         this.collapse=true
@@ -94,6 +96,7 @@ class Card{
         break
       case 'Drop':
         this.collapse=true
+        this.styleList.push(narrow_center)
         this.innerStyles[0]+= collapsable_header
         break
       
@@ -499,11 +502,11 @@ md.use(container, 'Drop', {
     if (tokens[idx].nesting === 1) {
     args = strip(tokens[idx].info.trim().match(/^Drop(.*)$/)[1])
     
-    let card = new Card('Card',args[0])
-    card.headerText=args[1]
-    card.footerText=args[2]
-    card.styleList.push(args.slice(3))  
-    card.publishCard()
+    let drop = new Card('Drop',args[0])
+    drop.headerText=args[1]
+    drop.footerText=args[2]
+    drop.styleList.push(args.slice(3))  
+    drop.publishCard()
     return div_head.pop()
     }else{
       return div_foot.pop()
