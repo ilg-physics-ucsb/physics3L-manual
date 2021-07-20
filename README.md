@@ -1,3 +1,3 @@
-# animated-funicular
-Testing new standalone site
-[https://kapawlak.github.io/animated-funicular/dashboard/index.html](https://kapawlak.github.io/animated-funicular/dashboard/index.html)
+# Physics 3L
+
+This is the lab manual for the Physics 3L lab course at University of California, Santa Barbara. 
