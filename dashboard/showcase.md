@@ -1,13 +1,18 @@
 # Manual Feature Showcase
 
 :::Intro (Welcome to "The Guide"|Your phone with the Phyphox App installed --- See instructions in Part I |A magnet| Ruler|Steel screw)
-In this guide, we will cover most of the features in the online manual renderer. Each section feature full examples as well as code snippets that will produce the examples. We also provide suggestions for how to use each feature.
+In this guide, we will cover most of the features in the online manual renderer. Each section feature full examples as well as code snippets that will produce the examples. ;;; Snippets are working pieces of code that you can directly copy into a file to use as a template. One such example is below this intro;;;
+
+We also provide suggestions for how to use each feature to keep the general flow of labs the same between courses.
 :::
 
 ```
 :::Intro (Welcome to "The Guide"|Your phone with the Phyphox App installed --- See instructions in Part I |A magnet| Ruler|Steel screw)
-In this guide, we will cover most of the features in the online manual renderer. Each section feature full examples as well as code snippets that will produce the examples. We also provide suggestions for how to use each feature.
+In this guide, we will cover most of the features in the online manual renderer. Each section feature full examples as well as code snippets that will produce the examples. ;;; Snippets are working pieces of code that you can directly copy into a file to use as a template. One such example is below this intro;;;
+
+We also provide suggestions for how to use each feature to keep the general flow of labs the same between courses.
 :::
+
 ```
 
 
@@ -120,7 +125,7 @@ You might worry that the images appear too small when multiple are in a figure, 
 
 ### Sizing
 
-To ensure that Figures look nice on large screens, one can specify a maximum size. These sizes, {xs, s, m ,l ,xl} are computed relative to the font size and constrain the height and width of an image to a square. The figures in the excercise below show variants of [Fi](#Fi-balls) with each size
+To ensure that Figures look nice on large screens, one can specify a maximum size. These sizes, {xs, s, m ,l ,xl} are computed relative to the font size and constrain the height and width of an image to a square. The figures in the excercise below show variants of [](#Figure-balls) with each size
 
 :::::: Activity (|Sizing Figures)
 
@@ -340,13 +345,13 @@ Exercises with multiple subparts are automatically labeled with lower-case lette
 
 ```
 :::Exercise
-1. Using [Eq](#Eq-gbt) for the case of $d=2$ , derive the result $a=\tfrac{1}{2}\pi r^2$
+1. Using [](#Equation-gbt) for the case of $d=2$ , derive the result $a=\tfrac{1}{2}\pi r^2$
 2. How would this result change if $M$ was a manifold of genus 2? Discuss
 :::
 ```
 
 :::Exercise
-1. Using [Eq](#Eq-gbt) for the case of $d=2$ , derive the result $a=\tfrac{1}{2}\pi r^2$
+1. Using [](#Equation-gbt) for the case of $d=2$ , derive the result $a=\tfrac{1}{2}\pi r^2$
 2. How would this result change if $M$ was a manifold of genus 2? Discuss
 :::
 
@@ -607,9 +612,10 @@ Linking allows you to reference previous named material, autogenerating a link t
 
 
 [](#Equation-gbt) is an Equation link to the Gauss-Bonnet Theorem
-`[](#Question-following) is a Exercise link to the "Are you following?" Exercise`
 
-[](#Question-following) is a Exercise link to the "Are you following?" Exercise
+`[](#Exercise-following) is a Exercise link to the "Are you following?" Exercise`
+
+[](#Exercise-following) is a Exercise link to the "Are you following?" Exercise
 
 
 `[](#Figure-balls) is a Figure link to the balls figure`
@@ -617,13 +623,13 @@ Linking allows you to reference previous named material, autogenerating a link t
 [](#Figure-balls) is a Figure link to the balls figure
 
 
-`[Ex](#Ex-magnetic-field) is an Activity link to the Magnetic Strength Activity` 
+`[](#Activity-magnetic-field) is an Activity link to the Magnetic Strength Activity` 
 
-[Ex](#Ex-magnetic-field) is an Activity link to the Magnetic Strength Activity
+[](#Activity-magnetic-field) is an Activity link to the Magnetic Strength Activity
 
-`[Si](#Si-long-wire) is a Simulation link to the Biot Savart Simulation ` 
+`[](#Simulation-long-wire) is a Simulation link to the Biot Savart Simulation ` 
 
-[Si](#Si-long-wire) is a Simulation link to the Biot Savart Simulation
+[](#Simulation-long-wire) is a Simulation link to the Biot Savart Simulation
 
 To name a Figure, Equation, Exercise, Activity or Simulation element, simply provide a name directly after the declaration (on the same line). 
 

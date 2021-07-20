@@ -60,10 +60,13 @@ function replace_tags() {
     for (i = 0; i < links.length; i++) {
       if( links[i].innerHTML ==''){
       console.log(links[i])
+      links[i].innerHTML ='Invalid Link'
       var link_id = links[i].getAttribute("href").replace('#','');
 
       let link_ref= document.getElementById(link_id)
-      links[i].innerHTML = `${link_ref.dataset.type} ${link_ref.dataset.kiwi}`
+  
+      if(link_ref){
+      links[i].innerHTML = `${link_ref.dataset.type} ${link_ref.dataset.kiwi}`}
       }
     }
 

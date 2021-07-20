@@ -76,7 +76,7 @@ class Card{
       case 'Hider':
         this.collapse=true
         this.styleList.push(narrow_center)
-        this.innerStyles[0]+= collapsable_header
+        this.innerStyles[0]+= ' fs-4 align-bottom'
 
         break
       case 'Activity':
@@ -551,89 +551,8 @@ function updateCounter(ref, type){
 }
 
 
-//Blank Cards
-function card_maker(type, ref, header, footer, card_style, content_style = ['text-center', 'text-center', 'text-center']) {
- 
-  this_count=updateCounter
-(ref, type)
 
 
-  var opening_string =
-    `<div id ="${type + '-' + ref}" class=" ${[type, card_style].join(' ')} card" data-kiwi="${this_count}" data-type="${type}"> `;
-
-    opening_string += (header == '' || header == null ? '' :
-      `<div class="card-header  ">
-        <h5 class="my-0 ${content_style[0]} align-baseline ">
-          ${header.replace('#', this_count)}
-        </h5>
-      </div>`);
-  
-  opening_string +=
-    `<div class=" container  ${content_style[1]}">
-        <div class="card-text card-body px-2">`;
-
-  var closing_string =
-    `</div>
-        </div>`;
-  
-    closing_string += (footer == '' || footer == null ? '' :
-      `<div class="card-footer">
-        <h5 class="my-0 ${content_style[2]} ">
-          ${footer.replace('#', this_count)}
-        </h5>
-      </div>`);
-  
-  closing_string +=
-    `</div>`
-
-
-div_head.push(opening_string)
-  div_foot.push(closing_string)
-}
-
-
-
-
-//Blank Card Collapse
-function card_maker_collapse(type, ref, header, card_style, content_style = ['text-center', 'text-center', 'text-center']) {
-  var card_id
-  var this_count
-  if (Counter[type]) {
-    this_count = Counter[type].length + 1
-    Counter[type].push([this_count, ref]);
-    card_id = type + Counter[type]
-  } else {
-    Counter[type] = []
-    this_count = 1
-    Counter[type][0] = [1, ref]
-  }
-
-  var uniqueid = [type, this_count, "ac"].join('-')
-  if (header == '') {
-    header = type
-  }
-  var opening_string =
-    `
-      <div id ="${type + '-' + ref}" class="accordion accordion-flush card col-card ${[type, card_style].join(' ')}" data-kiwi="${this_count}" data-type="${type}" >
-        <div class="accordion-item"> 
-          
-            <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#${uniqueid}" aria-expanded="false" aria-controls="${uniqueid}">
-             ${header.replace('#', this_count)}
-            </button>
-   
-          <div id="${uniqueid}" class="accordion-collapse collapse card-text px-2 ${content_style[1]}" aria-labelled-by="${uniqueid}" data-bs-parent="#${type + '-' + ref}">
-            <div class="accordion-body container ">`
-    ;
-  var closing_string =
-    `</div>
-          </div>
-        </div>
-      </div>
-    `
-
-  div_head.push(opening_string)
-  div_foot.push(closing_string)
-}
 
 
 
