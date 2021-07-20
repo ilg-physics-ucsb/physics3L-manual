@@ -4,8 +4,7 @@ var div_head = []; //This list lets us print out the headers for custom classes
 var div_foot = []; //This list lets us print ou the footers of custom classes using first-in-first-out when there are nested containers
 
 //Class Groups
-const pad_mar = "px-0 mx-auto my-5" //Applies 0 padding, auto margin (centers element), and bottom margin to most card groups
-const group1 = "col-lg-9" // forces a 75% columnar layout that expands to 95% width on small screens
+
 const fig_group = "justify-content-center text-center px-0 mx-3 mb-4" //Formatting that is special for figues -- adds margins to floated figs
 
 const narrow_center = "col-lg-9 mx-auto my-5"
@@ -16,8 +15,9 @@ class Card{
   constructor(type, ref) {
     //Static
     this.type=type
-    this.ref= type + '-' +ref  
+    
     this.number= updateCounter(ref,type)
+    this.ref= type + '-' + (ref||this.number)  
     this.id = type + this.number;
 
     //Mutable -- can be set in the calling routine below
@@ -76,7 +76,7 @@ class Card{
       case 'Hider':
         this.collapse=true
         this.styleList.push(narrow_center)
-        this.innerStyles[0]+= ' fs-4 align-bottom'
+        this.innerStyles[0]+= ' fs-5 align-bottom text-left'
 
         break
       case 'Activity':
@@ -112,7 +112,8 @@ class Card{
  }
 
 function classCard(c) {
-
+console.log(c.ref)
+console.log(c.number)
   div_head.push(`
   <div id="${c.ref}" 
     class="${[c.styleList.join(' ')]} " 
@@ -531,21 +532,27 @@ md.use(container, 'Drop', {
 ////////////////////////////Utility Card Routines
 //This counter
 function updateCounter(ref, type){
-  let this_count =( Counter[type] ? Counter[type].length + 1 : 1 )
- 
+  let this_count
   if (Counter[type]) {
+    this_count= Counter[type].length + 1
     if (ref == '') {
-      ref = this_count.toString()
+      Counter[type].push([this_count, type+'-'+this_count])
+    }else{
+      Counter[type].push([this_count, type+'-'+ref])
     }
-    Counter[type].push([this_count, ref]);
+   ;
   } else {
+    this_count=1
     Counter[type] = []
+    
     if (ref == '') {
-      ref = this_count.toString()
+      Counter[type][0]=[this_count, type+'-'+this_count]
+    }else{
+      Counter[type][0]=[this_count, type+'-'+ref]
     }
-    Counter[type][0] = [1, ref]
+
   }
-  console.log(Counter)
+
   return this_count
 }
 
@@ -688,20 +695,73 @@ md.use(container, 'Summary', {
     let args;
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Summary(.*)$/)[1])
+      
       // opening tag
-      return `<div class="Summary card col-lg-8 mx-auto">
-      <div class="card-header">
-      Summary of the Lab
-      </div>
-      <div class="card-body">
-      There were ${Counter["Activity"].length} Activities and ${Counter["Exercise"].length} Exercises
-      </div>
+      let string= `
+      <div class="Summary card col-lg-8 mx-auto ">
+        <div class="card-header text-center display-6 ">
+          Summary of the Lab
+        </div>`
       
-      `
+      string+=`
+      <div class='row g-0' >
+        <div class='col-3 text-center badge-Activity container fs-3 text-white'>
+          <span class='badge badge-Activity fs-1 text-white'> ${Counter["Activity"].length} </span> <br> Activities
+          </div> `    
+      string+=`
+        <div class='col-9' style='border-bottom:1px solid var(--bs-secondary)'>
+          <ul class="list-inline px-1 py-0 mb-3 " >`
+      Counter["Activity"].forEach((e)=> {
+        string += `<li class="list-inline-item align-middle py-1">
+            <a 
+              tabindex="0"  
+              href="#${e[1]}"
+              role="button" 
+              class="btn btn-sm badge-Activity position-relative mats text-white"  
+              aria-pressed="false" autocomplete="off">
+              Activity ${e[0]}
+            </a>
+          </li>`
+        })
+          
+
+        string+=`
+        </ul>
+        </div>
       
+        </div>
+    
+        <div class='row g-0'>
+        <div class='col-3 text-center badge-Exercise container fs-3 text-white'>
+          <span class='badge badge-Exercise fs-1 text-white'> ${Counter["Exercise"].length} </span> <br> Exercises
+          </div> `
+       
+      string+=`
+        <div class='col-9 '>
+          <ul class="list-inline px-1 py-0 mb-3 " >`
+ 
+        Counter["Exercise"].forEach((e)=> {
+          string += `<li class="list-inline-item align-middle py-1">
+              <a 
+                tabindex="0"  
+                href="#${e[1]}"
+                role="button" 
+                class="btn btn-sm badge-Exercise position-relative mats text-white"  
+                aria-pressed="false" autocomplete="off">
+                Exercise ${e[0]}
+              </a>
+            </li>`
+          })
+          
+        string+=`</ul>
+        </div>
+        </div>
+        <div class="card-footer text-center py-2" >
+          Please be sure to complete all parts of the lab`
+      return string
       ;
     } else {
-      return '</div>'
+      return ' </div></div>'
     }
   }
 });

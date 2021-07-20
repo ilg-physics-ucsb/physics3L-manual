@@ -189,11 +189,14 @@
           <div class="spinner-border spinner-border-lg position-absolute top-50 start-50  " role="status">
             <span class="visually-hidden ">Loading...</span>
           </div>
-
+         
         </div>
+        <br>
+        <br>
+        <footer class='text-center bg-UCSB-lightgray m-0'> <small class="muted" id='copyright'></small></footer>
       </main>
 
-
+      
 
 
 
@@ -221,7 +224,7 @@
       console.log("pressed")
     })
   })()
-
+document.getElementById('copyright').innerHTML=`©(2020-${new Date().getFullYear()}) UCSB ILG`
 
   //Function that determines the page to display based on URL Variable.
   const queryString = window.location.search;

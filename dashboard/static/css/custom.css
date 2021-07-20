@@ -13951,6 +13951,14 @@ textarea.form-control-lg {
   background-color: #003660;
 }
 
+.Summary {
+  background-color: #ccd7df;
+}
+.Summary > .card-header {
+  color: white;
+  background-color: #003660;
+}
+
 .Materials {
   background-color: rgba(255, 255, 255, 0.2);
   color: #001626;
@@ -14088,6 +14096,15 @@ textarea.form-control-lg {
   font-size: 1.5rem;
 }
 
+.badge-Activity {
+  background-color: #a9544a;
+  font-size: 1.3rem;
+}
+
+.badge-Activity:hover {
+  background-color: #ba766e;
+}
+
 .Exercise {
   text-align: center;
 }
@@ -14107,6 +14124,15 @@ textarea.form-control-lg {
 }
 .Exercise ol {
   list-style-type: lower-alpha !important;
+}
+
+.badge-Exercise {
+  background-color: #0a978b;
+  font-size: 1.3rem;
+}
+
+.badge-Exercise:hover {
+  background-color: #3baca2;
 }
 
 .Video {
@@ -14303,7 +14329,7 @@ img:hover {
 }
 
 /* Tooltip text */
-.mytooltip .tooltiptext {
+.mytooltip + .tooltiptext {
   background-color: black;
   color: #fff;
   text-align: center;
@@ -14322,11 +14348,12 @@ img:hover {
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
-.mytooltip:active .tooltiptext, .mytooltip:focus .tooltiptext {
+.mytooltip:active + .tooltiptext, .mytooltip:focus + .tooltiptext {
   opacity: 1;
   display: block;
   bottom: 5px;
   transition: opacity 1s ease;
+  width: 100%;
   z-index: 2;
 }
 

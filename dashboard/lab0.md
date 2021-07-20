@@ -16,7 +16,7 @@ These activities will also help us understand the equipment that we will be usin
 # The Phyphox App
 
 
-:::RFigure (Phyphox|s)
+:::Figure (Phyphox|s|R)
 ![An image of an iPhone on the Phyphox App page in the iOS store](imgs/Lab0/phyphox.png "The Phyphox Phone App in the iOS store")
 :::
 
@@ -28,7 +28,7 @@ You are encouraged to play with Phyphox, explore its capabilities and the experi
 
 # Experiments
 
-::: LFigure (typical-phone|s)
+:::Figure (typical-phone|s|L)
 ![A cut-away diagram of a phone showing labeled sensors](imgs/Lab0/typicalphone.png "A Typical Phone with a vast array of sensors. Click on the image above to expand the view.")
 :::
 We will get familiar with the Phyphox app by investigating the external magnetic field of a magnet with your phone's magnetometer — this is a device which is sensitive to the *strength* and *direction* of a magnetic field at its specific location. 
@@ -81,15 +81,17 @@ You are now ready to begin [](#Activity-mag-locate). Click on the arrow to expan
 :::::: Activity (mag-locate|Locating the Magnetometer in your Phone)
 Instructions for labs in this course will be in "Activity" boxes such as this one, with numbered steps to help you navigate the procedure. The easiest way to complete these labs successfully is to tackle each step in order, taking observational notes on each numbered step so that you have a record of what you've done for your final write-up.
 
+:::Note (|4 R)
+ The magnetometer in your phone is extremely sensitive because it is designed to be used as a compass. It can easily resolve 50 µT, but it also saturates at few mT.  If you are using a neodymium magnet rather than a magnetized screw, it might easily saturate the sensor because of its strong fields. Make sure that the magnet is either weak enough (or far enough) from the sensor that the field strength stays below 2 mT.
+:::
+
 We will now describe the process you will  use to find the location of the magnetometer:
 1. Find a steel screw (or another small object that can be magnetized, like a paperclip) and a magnet, and magnetize the screw by rubbing it with the permanent magnet.
 2. Remove the magnet from your experiment area.
 3. Move the tip across the surface of your phone until you get a strong reading as it reaches the magnetometer.
 4. Optional: Since you will need to know this location for future labs, feel free to mark it with, for example, a small piece of tape.
 
-:::Note (|7)
- The magnetometer in your phone is extremely sensitive because it is designed to be used as a compass. It can easily resolve 50 µT, but it also saturates at few mT.  If you are using a neodymium magnet rather than a magnetized screw, it might easily saturate the sensor because of its strong fields. Make sure that the magnet is either weak enough (or far enough) from the sensor that the field strength stays below 2 mT.
-:::
+
 
 ::::::
 
@@ -119,7 +121,7 @@ The process of calibration allows us to quantify a measurement of some *physical
 
 ---
 
-:::RFigure (temps|xs)
+:::Figure (temps|xs|R)
 ![Three thermometers displaying a reading for the freezing point of water, the boiling point of water and the current room temperature, respectively](imgs/Lab0/temps.jpg "Thermometer Readings")
 :::
 :::col (text-start)
@@ -134,7 +136,7 @@ The process of calibration allows us to quantify a measurement of some *physical
  Using a ruler on your screen to calibrate the measurement, click on the image to the right and determine the temperature of the room in Celsius. Be sure to describe how you obtained your final result.
 ::::::
 
-:::RFigure (calibration|s)
+:::Figure (calibration|s|R)
 ![Screen shot of my phone during the experiment for both a calibrated and uncalibrated run](imgs/Lab0/calibration.png "An example of bringing a magnet close to my phone's magnetometer. In calibrated mode, you can see that the phone is attempting to correct the field based on the phone's gyroscope, assuming that the additional magnetic field detected is from an accidentally magnetized component, giving me an artificially decreasing field. In the uncalibrated mode, the phone's magnetometer reading does not self-adjust.")
 
 :::
@@ -313,6 +315,8 @@ For each doubling, calculate the ratio of the magnetic field $B(2r)/B(r).$ You s
  
 
 :::Summary
+
+
 :::
 
 

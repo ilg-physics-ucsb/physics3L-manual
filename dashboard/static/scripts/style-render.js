@@ -42,7 +42,7 @@ function replace_tags() {
   
       fnoted = text[i].innerHTML.replaceAll(/\[fn\](.*?)\[\/fn\]/g, 
       `<span class= 'mytooltip' tabindex="0"><sup>]</sup>
-      <span class ='tooltiptext'>$1</span></span>`)
+      </span><span class ='tooltiptext'>$1</span>`)
       text[i].innerHTML = fnoted
   
       checked = text[i].innerHTML.replaceAll(/\[c\]/g, "<input type= 'checkbox'>")

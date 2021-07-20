@@ -253,6 +253,16 @@ $simulation-bg:$UCSB-mist;
  };
 
 
+ .Summary{
+
+    background-color: tint-color($intro-bg,80%);
+    > .card-header{
+        color:white;
+        background-color: $intro-bg
+       }
+ }
+
+
 ///Materials/////////////////////////////
  .Materials{
     background-color:rgba(white, .2);
@@ -430,6 +440,15 @@ $simulation-bg:$UCSB-mist;
 
 }
 
+.badge-Activity{
+    background-color: $Activity-bg;
+    font-size: 1.3rem;
+}
+.badge-Activity:hover{
+    background-color: tint-color($Activity-bg,20%);
+
+}
+
 ///Exercise
 
 
@@ -457,8 +476,14 @@ $simulation-bg:$UCSB-mist;
 
 
 }
+.badge-Exercise{
+    background-color: $Exercise-header-bg;
+    font-size: 1.3rem;
+}
+.badge-Exercise:hover{
+    background-color: tint-color($Exercise-header-bg,20%);
 
-
+}
 //Video
 .Video {
 
@@ -673,7 +698,7 @@ img:hover{
   };
   
   /* Tooltip text */
-  .mytooltip .tooltiptext {
+  .mytooltip + .tooltiptext {
   
     background-color: black;
     color: #fff;
@@ -693,12 +718,12 @@ img:hover{
   };
 
   /* Show the tooltip text when you mouse over the tooltip container */
-   .mytooltip:active  .tooltiptext, .mytooltip:focus  .tooltiptext{
+   .mytooltip:active + .tooltiptext, .mytooltip:focus + .tooltiptext{
     opacity: 1;
     display: block;
     bottom:5px;
     transition: opacity 1s ease;
-    
+    width:100%;
     z-index:2;
   };
   
