@@ -35,7 +35,7 @@ function processstyles(){
 
 
 function replace_tags() {
-    var text = document.querySelectorAll('h1, h2, h3, #maincontent p, #maincontent span, #maincontent li, #maincontent') 
+    var text = document.querySelectorAll('h1, h2, h3, #maincontent p, #maincontent span, #maincontent li, #maincontent table') 
     for (i = 0; i < text.length; i++) {
       emojified = text[i].innerHTML.replaceAll(/(\@)(.*?)(\@)/g, "<i class='fa $2'></i>")
       text[i].innerHTML = emojified

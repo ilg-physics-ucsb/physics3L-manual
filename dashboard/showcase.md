@@ -88,7 +88,7 @@ The figure will not float next to this text because the text is placed above the
 
 <p style="color:gray">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
 
-:::RFigure (phyphox|m)
+:::Figure (phyphox|m|R)
 ![This is a right floating image](imgs/phyphox.png)
 *This is a right floating image*
 :::
@@ -100,7 +100,7 @@ It will, however, float to the right of text that follows. Floating figures are 
 <p style="color:gray">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
 
 
-:::LFigure (graphs|m)
+:::Figure (graphs|m|L)
 ![A graph of a function that is parallel to the time axis. The position is equal to 5 meters at all times.](imgs/Constant.png "The relationship between x and t is constant")
 
 ![](imgs/Linear.png "The relationship between x and t is linear")
@@ -264,7 +264,7 @@ C12
 Within this, we can designate how many columns each part of the figure should take up large screens. The example below shows two images that each take up half of the horizontal space = 6 columns Note: all columns take up the full width on mobile and tablet sized screens.
 
 ```
-:::::::::RowFigure (|m)
+:::::::::Figure (|m|Row)
 ::::::row
 :::col 
 ![Part A: Unobstructed view](imgs/crossproduct.png "Part A: This figure takes up 6 of 12 rows")
@@ -279,7 +279,7 @@ Within this, we can designate how many columns each part of the figure should ta
 ::::::
 :::::::::
 ```
-::::::::RowFigure (|m)
+::::::::Figure (|m|Row)
 ::::::row
 :::col 
 ![Part A: Unobstructed view](imgs/crossproduct.png "Part A: This figure takes up 6 of 12 rows")
@@ -588,28 +588,39 @@ These are contents
 ::::::
 
 :::::::::
+### Drop Down Card
 
+Similarly, one can make a dropdown card.
+
+```
+:::Drop (ref|header|footer|bg-UCSB-navy-50 text-white)
+These are contents
+:::
+```
+:::Drop (ref|header|footer|bg-UCSB-navy text-white)
+These are contents
+:::
 
 # Other Features
 
 ## Linking (WIP)
 
-Linking allows you to reference previous named material, autogenerating a link to the place on the page it is located and the correct description of the item. The syntax is `[Eq](#Eq-gbt)`
+Linking allows you to reference previous named material, autogenerating a link to the place on the page it is located and the correct description of the item. The syntax is `[](#Equation-gbt)`
 
 :::Figure
 
-`[Eq](#Eq-gbt) is an Equation link to the Gauss-Bonnet Theorem`
-
-[Eq](#Eq-gbt) is an Equation link to the Gauss-Bonnet Theorem
-
-`[Qu](#Qu-following) is a Exercise link to the "Are you following?" Exercise`
-
-[Qu](#Qu-following) is a Exercise link to the "Are you following?" Exercise
+`[](#Equation-gbt) is an Equation link to the Gauss-Bonnet Theorem`
 
 
-`[Fi](#Fi-balls) is a Figure link to the balls figure`
+[](#Equation-gbt) is an Equation link to the Gauss-Bonnet Theorem
+`[](#Question-following) is a Exercise link to the "Are you following?" Exercise`
 
-[Fi](#Fi-balls) is a Figure link to the balls figure
+[](#Question-following) is a Exercise link to the "Are you following?" Exercise
+
+
+`[](#Figure-balls) is a Figure link to the balls figure`
+
+[](#Figure-balls) is a Figure link to the balls figure
 
 
 `[Ex](#Ex-magnetic-field) is an Activity link to the Magnetic Strength Activity` 
@@ -666,6 +677,7 @@ Look at the image below and write the first word that comes to mind
 ## Iconography
 
 You can use any icons from [Font Awesome 4.7](https://fontawesome.com/v4.7.0/icons/) by sandwiching the icon name with @ symbols
+
 ```
 @fa-thumbs-up@
 @fa-area-chart@
@@ -737,57 +749,4 @@ Please turn in your report [here](https://gauchospace.ucsb.edu/courses/my/)
 :::
 
 
-# Test
-:::::: Activity (magnetic-field2|)
-Firstly, let's measure the direction of magnetic field from the  magnet.
-**Measurement steps:**
-1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.
-2. Start recording. You should see some random fluctuations on the plot. 
-3. Hold the magnet above the magnetomer, with one flat side facing up. Move it up and down above the magnetometer.
-4.  Now flip the magnet over, and repeat the motion.
-5.  Stop recording to view the collected data. 
-::: Simulation long-wire2
-<iframe src="https://kapawlak.github.io/PhDemoJS/Apps/BiotSavart_Current_Line/Biot_Savart.html" width= "100%" height="800" style="border:none;"></iframe>
-:::
-::: Exercise
-1. Why does $B_z$ change when you move the magnet vertically?
-2. At the point where you flipped the magnet, describe the difference you observe, and give a possible explanation.
-3. Testing footnote [fn] this is a footnote [/fn]
-:::
-::::::
-
-
-::::::Figure (named|)
-Firstly, let's measure the direction of magnetic field from the  magnet.
-**Measurement steps:**
-1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.
-2. Start recording. You should see some random fluctuations on the plot. 
-3. Hold the magnet above the magnetomer, with one flat side facing up. Move it up and down above the magnetometer.
-4.  Now flip the magnet over, and repeat the motion.
-5.  Stop recording to view the collected data. 
-::: Simulation long-wire25
-<iframe src="https://kapawlak.github.io/PhDemoJS/Apps/BiotSavart_Current_Line/Biot_Savart.html" width= "100%" height="800" style="border:none;"></iframe>
-:::
-::: Exercise
-1. Why does $B_z$ change when you move the magnet vertically?
-2. At the point where you flipped the magnet, describe the difference you observe, and give a possible explanation.
-:::
-::::::
-
-# This is another part!
-
-does the text render inside or outside?
-:::Exercise
-This is text
-- it has
-- an unordered
-- list inside
-
-Does it show correctly now?
-:::
-
-
-## test1
-
-## test2
 

@@ -44,6 +44,10 @@ class Card{
         this.footerText= `Equation ${this.number}`
         this.styleList.push(narrow_center)
         break
+      case 'Figure':
+        this.footerText= 'Figure ' + this.number
+        this.styleList.push(fig_group)
+        break
       case 'Video':
         this.styleList.push('col-lg-8', 'mx-auto', 'my-2')
         this.innerStyles[1]+=' ratio ratio-16x9'
@@ -85,6 +89,14 @@ class Card{
         this.styleList.push('col-lg-11 my-5 mx-auto')
         this.innerStyles[0]+= collapsable_header
         break
+      case 'Card':
+        this.styleList.push(narrow_center)
+        break
+      case 'Drop':
+        this.collapse=true
+        this.innerStyles[0]+= collapsable_header
+        break
+      
 
     } 
   }
@@ -398,7 +410,35 @@ md.use(container, 'Simulation', {
 
 
 
-////SINGLE  USE
+///FIGURES: Complicated so use helper func/////////////
+md.use(container, 'Figure', {
+  // Input Format is: 
+  // Figure (optional-ref|[size: xs, s, m, l, xl]|styles[R, L, Row])
+  render: function (tokens, idx) {
+    var args;
+    if (tokens[idx].nesting === 1) {
+      args = strip(tokens[idx].info.trim().match(/^Figure(.*)$/)[1])
+      fig = new Card('Figure', args[0])
+      fig.styleList.push(args[1] || '')
+      if (args[2]) {
+        if (args[2].includes('Row')) {
+          fig.styleList.push('mx-auto')
+        } else if (!args[2].includes("L") && !args[2].includes("R")) {
+          fig.styleList.push('mx-auto')
+        }
+      } else {
+        fig.styleList.push('mx-auto')
+      }
+
+      fig.styleList.push(args[2] ? args[2].replace('Row', 'rowfig').replace('L', 'float-lg-start').replace('R', 'float-lg-end') : '')
+      fig.publishCard()
+      // card_maker('Figure', args[0], '', 'Figure #', [fig_group, extra, args[1]].join(' '), ['', 'text-center', ''])
+      return div_head.pop()
+    } else {
+      return div_foot.pop()
+    }
+  }
+})
 
 
 ///Contact infor///
@@ -407,9 +447,7 @@ md.use(container, 'ContactTA', {
     let args;
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^ContactTA(.*)$/)[1])
-
       return contacts("TAs")
-
     } else {
       return ''
     }
@@ -423,7 +461,6 @@ md.use(container, 'ContactFA', {
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^ContactFA(.*)$/)[1])
       return contacts("Faculty")
-
     } else {
       return ''
     }
@@ -431,62 +468,48 @@ md.use(container, 'ContactFA', {
 })
 
 
-///FIGURES: Complicated so use helper func/////////////
 
 
-md.use(container, 'Figure', {
-  render: function (tokens, idx) {
-    return figure(tokens, idx, /^Figure(.*)$/, 'mx-auto')
-  }
-})
-
-md.use(container, 'LFigure', {
-  render: function (tokens, idx) {
-    return figure(tokens, idx, /^LFigure(.*)$/, 'float-lg-start')
-  }
-})
-
-md.use(container, 'RFigure', {
-  render: function (tokens, idx) {
-    return figure(tokens, idx, /^RFigure(.*)$/, 'float-lg-end')
-  }
-})
-
-md.use(container, 'RowFigure', {
-  render: function (tokens, idx) {
-    return figure(tokens, idx, /^RowFigure(.*)$/, 'Figure rowfig mx-auto')
-  }
-})
 
 
 ///GENERIC CARD
 
 md.use(container, 'Card', {
   render: function (tokens, idx) {
-    args = ['', '', '', '']
-    return generic(tokens, idx, /^Card(.*)$/, "Card")
+    if (tokens[idx].nesting === 1) {
+    args = strip(tokens[idx].info.trim().match(/^Card(.*)$/)[1])
+    
+    let card = new Card('Card',args[0])
+    card.headerText=args[1]
+    card.footerText=args[2]
+    card.styleList.push(args.slice(3))  
+    card.publishCard()
+    return div_head.pop()
+    }else{
+      return div_foot.pop()
+    }
   }
 })
 
 
+///GENERIC Accordion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+md.use(container, 'Drop', {
+  render: function (tokens, idx) {
+    if (tokens[idx].nesting === 1) {
+    args = strip(tokens[idx].info.trim().match(/^Drop(.*)$/)[1])
+    
+    let card = new Card('Card',args[0])
+    card.headerText=args[1]
+    card.footerText=args[2]
+    card.styleList.push(args.slice(3))  
+    card.publishCard()
+    return div_head.pop()
+    }else{
+      return div_foot.pop()
+    }
+  }
+})
 
 
 
@@ -504,6 +527,7 @@ md.use(container, 'Card', {
 
 
 ////////////////////////////Utility Card Routines
+//This counter
 function updateCounter(ref, type){
   let this_count =( Counter[type] ? Counter[type].length + 1 : 1 )
  
@@ -666,36 +690,8 @@ md.use(container, 'row', {
 
 //////////////////Card making functions
 
-function generic(tokens, idx, regmatch, type, extras = [group1, pad_mar].join(' ')) {
-  var m = tokens[idx].info.trim().match(regmatch);
-  var ref, header, footer, style, args;
-
-  if (tokens[idx].nesting === 1) {
-    args = md.utils.escapeHtml(m[1]).trim().replace(/[()]/g, '').split('|')
-    ref = args[0]
-    header = args[1]
-    footer = args[2]
-    style = args.slice(3).join(' ')
-
-    card_maker(type, ref, header, footer, [style, extras].join(' '))
-    return div_head.pop()
-  } else {
-    return div_foot.pop()
-  }
-}
 
 
-function figure(tokens, idx, regmatch, extra = '') {
-  var args;
-
-  if (tokens[idx].nesting === 1) {
-    args = strip(tokens[idx].info.trim().match(regmatch)[1])
-    card_maker('Figure', args[0], '', 'Figure #', [fig_group, extra, args[1]].join(' '), ['', 'text-center', ''])
-    return div_head.pop()
-  } else {
-    return div_foot.pop()
-  }
-}
 
 /////////////////Uggly
 
