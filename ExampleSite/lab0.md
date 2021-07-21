@@ -116,32 +116,25 @@ The process of calibration allows us to quantify a measurement of some *physical
 
 
 
-::::::::: Exercise
+:::::: Exercise
 **Imagine the following scenario:**
 
 ---
 
-::::::row
-
-:::col
-*You are in the lab and need to know the room temperature for an experiment. After shuffling through the drawers, the only thermometer you can find is an old mercury thermometer who's markings have worn off.* 
-
-*Being as clever as you are, you realize that you can calibrate the thermometer by measuring the freezing point and boiling point of water. Proceding with this plan, you make measurements of the freezing point of water, the boiling point of water and the room temperature. [](#Figure-temps) shows the results of your measurements*
-
-:::
-
 :::Figure (temps|xs|R)
 ![Three thermometers displaying a reading for the freezing point of water, the boiling point of water and the current room temperature, respectively](imgs/Lab0/temps.jpg "Thermometer Readings")
 :::
+:::col (text-start)
+*You are in the lab and need to know the room temperature for an experiment. After shuffling through the drawers, the only thermometer you can find is an old mercury thermometer who's markings have worn off.* 
 
-::::::
-
+*Being as clever as you are, you realize that you can calibrate the thermometer by measuring the freezing point and boiling point of water. Proceding with this plan, you make measurements of the freezing point of water, the boiling point of water and the room temperature. [](#Figure-temps) shows the results of your measurements*
+:::
 ######
 ---
 
 
  Using a ruler on your screen to calibrate the measurement, click on the image to the right and determine the temperature of the room in Celsius. Be sure to describe how you obtained your final result.
-:::::::::
+::::::
 
 :::Figure (calibration|s|R)
 ![Screen shot of my phone during the experiment for both a calibrated and uncalibrated run](imgs/Lab0/calibration.png "An example of bringing a magnet close to my phone's magnetometer. In calibrated mode, you can see that the phone is attempting to correct the field based on the phone's gyroscope, assuming that the additional magnetic field detected is from an accidentally magnetized component, giving me an artificially decreasing field. In the uncalibrated mode, the phone's magnetometer reading does not self-adjust.")
@@ -256,7 +249,7 @@ By observing how $B_z$ changes with the vertical motion of the magnet, you shoul
 
 
 In [](#Activity-strengthanddirection), we asked you to identify the poles of your permanent magnet and make some qualitative observations about how field strength behaves as you move the magnet above the magnetometer. 
-:::Figure (bar_magnet|xs|R)
+:::RFigure bar_magnet xs
   ![The magnetic field of a bar magnet has the characteristic of a &lsquo;dipole,' in that its strength falls off more slowly in the direction perpendicular to its polarized axis, than along its axis. From far away, the behavior looks similar to that of a monopole](imgs/Lab0/BarMagnetFieldFRONT.png)
 :::
 We will now make a more quantitative measurement of the field surrounding the magnet. Unlike electric charges, magnetic charges do not exist as "monopoles" with a spherically symmetric magnetic-field, in our universe [fn] At least as far as we know! See [Wikipedia](https://en.wikipedia.org/wiki/Magnetic_monopole#Searches_for_magnetic_monopoles)[/fn]; the poles must always come in equal and opposite pairs, and the surrounding field is therefore changed. 

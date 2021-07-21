@@ -577,7 +577,7 @@ md.use(container, 'col', {
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^col(.*)$/)[1])
       // opening tag
-      return `<div class= " d-inline-flex align-items-end col-lg${args[0] ? (/\d/.test(args[0]) ? `-${args[0]}` : ` ${args[0]}`): ''}">`;
+      return `<div class= "  align-items-end col-lg${args[0] ? (/\d/.test(args[0]) ? `-${args[0]}` : ` ${args[0]}`): ''}">`;
     } else {
       return '</div>'
     }
