@@ -55,6 +55,10 @@
       {
         "name": "Showcase",
         "file": "showcase"
+      },
+      {
+        "name": "Showcase2",
+        "file": "showcase2"
       }
     ],
     "integrations": [

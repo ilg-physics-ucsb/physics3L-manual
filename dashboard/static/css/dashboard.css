@@ -125,7 +125,7 @@ h1:not(#part0)~ul{
 }
 
 .sidebar::-webkit-scrollbar,
-.Table .card-body::-webkit-scrollbar {
+.Table .card-body::-webkit-scrollbar, .Equation .card-body::-webkit-scrollbar {
   width: 10px;
   height: 10px;
   background-color: #f0f0f0;
@@ -133,7 +133,8 @@ h1:not(#part0)~ul{
 }
 
 .sidebar::-webkit-scrollbar-thumb,
-.Table .card-body::-webkit-scrollbar-thumb {
+.Table .card-body::-webkit-scrollbar-thumb,
+.Equation .card-body::-webkit-scrollbar-thumb {
   width: 10px;
   height: 10px;
   background-color: #aaa;
@@ -141,7 +142,9 @@ h1:not(#part0)~ul{
   /* or add it to the track */
 }
 
-
+.Equation .card-body{
+  overflow-x: scroll;
+}
 
 .sidebar-sticky {
   position: relative;

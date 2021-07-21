@@ -14378,4 +14378,8 @@ img:hover {
   max-width: 100%;
 }
 
+.card:not(.Note) {
+  overflow-x: hidden;
+}
+
 /*# sourceMappingURL=custom.css.map */

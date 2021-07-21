@@ -758,10 +758,16 @@ img:hover{
 
 
 .Table {
+    
     .card-body{
     overflow-x: scroll;
     }
     card-footer{
         max-width: 100%;
     }
+  }
+
+  .card:not(.Note){
+    overflow-x: hidden;
+
   }
