@@ -751,6 +751,17 @@ img:hover{
   }
 
 
-.card-header p, .card-footer p{
+.card-header p, .card-footer p, .card-header h5, .card-footer h5{
     margin-bottom: 0px!important
 }
+
+
+
+.Table {
+    .card-body{
+    overflow-x: scroll;
+    }
+    card-footer{
+        max-width: 100%;
+    }
+  }

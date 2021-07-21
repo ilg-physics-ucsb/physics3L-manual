@@ -125,17 +125,17 @@ h1:not(#part0)~ul{
 }
 
 .sidebar::-webkit-scrollbar,
-.Table::-webkit-scrollbar {
+.Table .card-body::-webkit-scrollbar {
   width: 10px;
-  height: 20px;
+  height: 10px;
   background-color: #f0f0f0;
   /* or add it to the track */
 }
 
 .sidebar::-webkit-scrollbar-thumb,
-.Table::-webkit-scrollbar-thumb {
+.Table .card-body::-webkit-scrollbar-thumb {
   width: 10px;
-  height: 20px;
+  height: 10px;
   background-color: #aaa;
   border-right: gray 1px;
   /* or add it to the track */
