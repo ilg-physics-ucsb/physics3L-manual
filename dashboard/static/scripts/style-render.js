@@ -1,4 +1,5 @@
 function processstyles(){
+  
   renderMathInElement(document.body, {
     delimiters: [
       { left: "$$", right: "$$", display: true },
@@ -35,25 +36,28 @@ function processstyles(){
 
 
 function replace_tags() {
-    var text = document.querySelectorAll('h1, h2, h3, #maincontent p, #maincontent span, #maincontent li, #maincontent table') 
-    for (i = 0; i < text.length; i++) {
-      emojified = text[i].innerHTML.replaceAll(/(\@)(.*?)(\@)/g, "<i class='fa $2'></i>")
-      text[i].innerHTML = emojified
+    var text = document.querySelectorAll(' #maincontent >*:not(code):not(pre)')
+    text.forEach( (t) => {
+      console.log(t.tagName)
+      emojified = t.innerHTML.replaceAll(/(\@)(.{2})(-)(.*?)(\@)/g, `<i class='$2 $2-$4'></i>`)
+      t.innerHTML = emojified
   
-      fnoted = text[i].innerHTML.replaceAll(/\[fn\](.*?)\[\/fn\]/g, 
+      fnoted = t.innerHTML.replaceAll(/\[fn\](.*?)\[\/fn\]/g, 
       `<span class= 'mytooltip' tabindex="0"><sup>]</sup>
       </span><span class ='tooltiptext'>$1</span>`)
-      text[i].innerHTML = fnoted
+      t.innerHTML = fnoted
   
-      checked = text[i].innerHTML.replaceAll(/\[c\]/g, "<input type= 'checkbox'>")
-      text[i].innerHTML = checked
+      checked = t.innerHTML.replaceAll(/\[c\]/g, "<input type= 'checkbox'>")
+      t.innerHTML = checked
      
-      popper=text[i].innerHTML.replaceAll(/(;;;)(.*?)(;;;)/g,` 
+      popper=t.innerHTML.replaceAll(/(;;;)(.*?)(;;;)/g,` 
       <a tabindex="0" class=" text-primary p-0 m-0 align-top" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="$2" style='text-indent:0px;'><i class="bi bi-question-square-fill"></i></a>`)
-      text[i].innerHTML = popper
+      t.innerHTML = popper
       
+      quick_math(t)
+        
       
-    }
+    })
     
 
     var links = document.querySelectorAll('#maincontent a')
@@ -96,3 +100,16 @@ function scrolltohash(){
             }, 300);
           }
         }
+
+
+
+function quick_math(t){
+  renderMathInElement(t, {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "$", right: "$", display: false },
+      { left: "\\(", right: "\\)", display: false },
+      { left: "\\[", right: "\\]", display: true }
+    ]
+  })
+}

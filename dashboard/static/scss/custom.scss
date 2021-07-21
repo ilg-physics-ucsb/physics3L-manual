@@ -562,6 +562,10 @@ $simulation-bg:$UCSB-mist;
    
  };
 
+ 
+
+
+
 .xs, .s, .m, .l, .xl{
     margin:auto;
 }
@@ -573,9 +577,9 @@ $simulation-bg:$UCSB-mist;
       }
       
       
-      .Note.float-lg-end{
-        margin:0rem 0rem 0rem 1.2rem!important
-      }
+    .Note.float-lg-end{
+    margin:0rem 0rem 0rem 1.2rem!important
+    }
     .modal-body img{
         max-height: calc(100vh - 180px);
     }
@@ -584,20 +588,23 @@ $simulation-bg:$UCSB-mist;
         max-width:80%;
     }
     .xs.Figure:not(.rowfig), .xs img{
-        width:10rem;
+        width:min(10rem, 100%);
     }
     .s.Figure:not(.rowfig), .s img{
-        max-width: 15rem;
+        max-width: min(15rem, 100%);
+        margin: auto;
     }
     .m.Figure:not(.rowfig), .m img{
-        max-width: 20rem;
+        max-width: min(20rem, 100%);
         margin: auto;
     }
     .l.Figure:not(.rowfig), .l img{
-        max-width: 25rem;
+        max-width: min(25rem, 100%);
+        margin: auto;
     }
     .xl.Figure:not(.rowfig), .xl img {
-        max-width: 40rem;
+        max-width: min(40rem, 100%);
+        margin: auto;
     }
  }
  .Figure img{
@@ -608,6 +615,7 @@ $simulation-bg:$UCSB-mist;
  .Figure:not(.rowfig) img{
     max-width:100%;
  }
+
 
 
 

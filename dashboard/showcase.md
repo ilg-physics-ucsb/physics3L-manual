@@ -21,8 +21,6 @@ We also provide suggestions for how to use each feature to keep the general flow
 The first header in a markdown file is rendered as the title of the page. The second single-hashed header becomes Part I. Typically this should be an introduction section. Since it is the first thing that students will read, they will be less mentally fatigued and recall more of this information. It should summarize the 'big-picture' of the lab, and use visual elements such as images, videos and figures.
 
 
-
-
 ## Second Level Headers
 
 Second  level headers are earmarked on the left navigation screen. This means that students can quickly navigate between parts and the subsections. Second level sections should thus be used to delinate important chunks of information. These are particularly useful for 
@@ -31,12 +29,14 @@ Second  level headers are earmarked on the left navigation screen. This means th
 
 Third Level Headers and beyond will not generate a link, so they should be used to draw attention to important subcontent in the section. 
 
-# Special Elements
+# Main Container Elements
+In this section we describe the most important cointainer elements in the lab manual format. For each container, we provide the use syntax ;;; The general syntax for containers is: Kind-of-Container (argument-1|argument-2|...|argument-n);;;.
+
 
 ## @fa-wrench@ Materials List
 :::Materials (Brains|Computer---Running VS Code or Similar|Notepad and Pen)
 :::
-The materials list is designed to look nice beneath a section header, allowing you to partition materials for each part of the lab. Each material can be clicked on to change its color. This is intended to help students stay organized as they progress through the lab. You can also add a note to an item, designated by the red notification, that will display when clicked on.  Generate your Material List quickly with the following code:
+The materials list is designed to look nice beneath a section header, allowing you to partition materials for each part of the lab. Each material can be clicked on to change its color. This is intended to help students stay organized as they progress through the lab. You can also add a note to an item, designated by the red notification, that will display when clicked on.  Generate your Material List quickly with the following syntax: `Materials (item 1---note 1|item 2---note 2|item 3---note 3) `. The example above is generated with:
 
 ``` 
 :::Materials (Brains|Computer---running VS Code or Similar|Notepad and Pen)
@@ -47,24 +47,175 @@ The materials list is designed to look nice beneath a section header, allowing y
 
 
 
+## @fa-Exercise-circle@ Exercises
+
+Exercise boxes should contain *all* items that students must respond to and that TAs will grade. They are brightly colored to draw attention to them and are automatically numbered. The Exercise box syntax is  `Exercise (optional-ref) `, where the optional ref is the name of the exercise so that it may be refered to later. [](#Exercise-following) gives an example of usage.
+
+```
+:::Exercise (following)
+Are you following along with this tutorial?
+:::
+```
+
+:::Exercise (following)
+Are you following along with this tutorial?
+:::
+
+Exercises with multiple subparts are automatically labeled with lower-case letters.
+
+```
+:::Exercise (multiple-parts)
+Answer the following questions:
+1. Using [](#Equation-gbt) for the case of $d=2$ , derive the result $a=\tfrac{1}{2}\pi r^2$
+2. How would this result change if $M$ was a manifold of genus 2? Discuss
+:::
+```
+
+:::Exercise (multiple-parts)
+Answer the following questions:
+1. Using [](#Equation-gbt) for the case of $d=2$ , derive the result $a=\tfrac{1}{2}\pi r^2$
+2. How would this result change if $M$ was a manifold of genus 2? Discuss
+:::
+
+
+## @fa-sitemap@ Activities
+
+Activities are another important call-to-action for students. They act as a stand alone prompt with step-by-step instructions for completing part of a lab. They are automatically numbered and occur in full-width boxes so that any Figures or Exercises within have sufficient readability. **If you want a student to record something done in an activity, the prompt should be placed in an Exercise box**. The syntax for activities is: `Activity (optional-reference|optional-title)`
+
+```
+:::::: Activity (magnetic-field|Measuring the Magnetic Field with your Phone)
+Let's measure the direction of magnetic field from the  magnet using the phyphox app on your phone.
+
+**Measurement steps:**
+1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.
+2. Start recording. You should see some random fluctuations on the plot. 
+3. Hold the magnet above the magnetomer, with one flat side facing up. Move it up and down above the magnetometer.
+4.  Now flip the magnet over, and repeat the motion.
+5.  Stop recording to view the collected data. 
+
+::: Exercise
+Answer the following questions:
+1. Why does $B_z$ change when you move the magnet vertically?
+2. At the point where you flipped the magnet, describe the difference you observe, and give a possible explanation.
+:::
+::::::
+```
+
+:::::: Activity (magnetic-field|Measuring the Magnetic Field with your Phone)
+Let's measure the direction of magnetic field from the  magnet using the phyphox app on your phone.
+
+**Measurement steps:**
+1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.
+2. Start recording. You should see some random fluctuations on the plot. 
+3. Hold the magnet above the magnetomer, with one flat side facing up. Move it up and down above the magnetometer.
+4.  Now flip the magnet over, and repeat the motion.
+5.  Stop recording to view the collected data. 
+
+::: Exercise
+Answer the following questions:
+1. Why does $B_z$ change when you move the magnet vertically?
+2. At the point where you flipped the magnet, describe the difference you observe, and give a possible explanation.
+:::
+::::::
 
 ## @fa-line-chart@ Figures
 
-Figures and generally contain images. They are automatically numbered, nameable and have three types. The simplest will generate a full row div which breaks the text. 
+Figures are critical to the readability of a lab manual. For that reason, the Figure container is quite complex -- the added flexibility in displaying figures allows you to elegantly couple visual aids to the main manual content in a number of ways. Importantly, when used with the designated syntax, the Figures generated will be *automatically* access-compliant. As with most containers, Figures automatically numbered and may be referenced. The syntax for calling a figure is `Figure (optional-ref|optional-size|optional-alignment)`. Optional sizes can be chosen from the presets (xs, s, m , l, xl). Alignment can take on the values (R, L, Row).
+
+
+### Plain, unformated
+The simplest will generate a full row div which breaks the text, with the image baring its original size up to the maximum size of the page: 
 
 
 ``` 
-:::Figure (optional-ref|optional-size)
-![Description of an image for anyone using a screen reader](imgs/crossproduct.png "The image caption goes here")
-
+:::Figure (crossproduct|)
+![Image of a hand demonstrating the right hand rule. The index finger points along the a vector direction, the middle finger along the b vector direction. The thumb points in the resultant direction, a cross b.](imgs/crossproduct.png "The 'right hand rule' stipulates that when you index and middle finders align with the a and b vectors, respectively, your thumb will point in the direction of the $a \times b$")
 :::
 ``` 
-:::Figure (optional-ref|optional-size)
-![Description of an image for anyone using a screen reader](imgs/crossproduct.png "The image caption goes here")
-
+:::Figure (crossproduct|)
+![Image of a hand demonstrating the right hand rule. The index finger points along the a vector direction, the middle finger along the 'B' vector direction. The thumb points in the resultant direction, 'A' cross 'B'.](imgs/crossproduct.png "The 'right hand rule' stipulates that when you index and middle finders align with the $\vec a$ and $\vec b$ vectors, respectively, your thumb will point in the direction of the $\vec a \times \vec b$")
 :::
 
-To improve visual variety you can also make right and left floating figures, respectively. These will float to the right(left) of any text that *follows* it.
+### Sizing Figures
+
+To ensure that Figures look nice on large screens, one can specify a maximum size. These sizes, (xs, s, m ,l ,xl) are computed relative to the font size and constrain the maximum height and width of an image. The figures in the excercise below show variants of [](#Figure-crossproduct) as each size as an example.
+
+:::::: Activity (|Sizing Figures)
+```
+:::Figure (crossproduct-original|)
+![This is an image](imgs/crossproduct.png "Original")
+:::
+```
+:::Figure (crossproduct-original|)
+![This is an image](imgs/crossproduct.png "Original")
+:::
+
+---
+
+```
+:::Figure (crossproduct-xs|xs)
+![This is an image](imgs/crossproduct.png "xs")
+:::
+
+```
+
+:::Figure (crossproduct-xs|xs) 
+![This is an image](imgs/crossproduct.png "xs")
+:::
+
+---
+
+```
+:::Figure (crossproduct-s|s) 
+![This is an image](imgs/crossproduct.png "s")
+:::
+```
+
+:::Figure (crossproduct-s|s)  
+![This is an image](imgs/crossproduct.png "s")
+:::
+
+---
+```
+:::Figure (crossproduct-m|m) 
+![This is an image](imgs/crossproduct.png "m")
+:::
+
+```
+
+:::Figure (crossproduct-m|m) 
+![This is an image](imgs/crossproduct.png "m")
+:::
+
+---
+
+```
+:::Figure (crossproduct-l|l) 
+![This is an image](imgs/crossproduct.png "l")
+:::
+```
+:::Figure (crossproduct-l|l) 
+![This is an image](imgs/crossproduct.png "l")
+:::
+
+---
+```
+
+:::Figure (crossproduct-xl|xl) 
+![This is an image](imgs/crossproduct.png "xl")
+:::
+```
+
+:::Figure (crossproduct-xl|xl)  
+![This is an image](imgs/crossproduct.png "xl")
+:::
+::::::
+
+## Figures: Advanced
+### Figure Alignment
+
+
+To improve visual variety you can also make right and left floating figures, respectively. These will float to the right(left) of any text that *follows* it. It is recommended that figure alingment be used in conjuction with sizing to make sure that the flow of text is appropriate.
 
 
 Right:
@@ -119,153 +270,58 @@ You might worry that the images appear too small when multiple are in a figure, 
 
 <p style="color:gray">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
 
-
-## Figures: Advanced
-
-### Sizing
-
-To ensure that Figures look nice on large screens, one can specify a maximum size. These sizes, {xs, s, m ,l ,xl} are computed relative to the font size and constrain the height and width of an image to a square. The figures in the excercise below show variants of [](#Figure-balls) with each size
-
-:::::: Activity (|Sizing Figures)
-
 ```
-:::Figure (ball-o|)
-![This is an image](imgs/crossproduct.png "Original")
-
-:::
-```
-:::Figure (ball-o|)
-![This is an image](imgs/crossproduct.png "Original")
-
-
-:::
-
----
-
-
-```
-:::Figure (ball-xs|xs)
-![This is an image](imgs/crossproduct.png "xs")
-
-
-:::
-
+You may run into the issue that floating figures somtimes cause containers and headings to get uncentered, like this one. If you do not want this behavior, simply include 6 hashtags `######` in the line above to the container to break the float-wraping environment.
 ```
 
-:::Figure (ball-xs|xs) 
-![This is an image](imgs/crossproduct.png "xs")
-
-
-:::
-
----
-
-```
-:::Figure (ball-s|s) 
-![This is an image](imgs/crossproduct.png "s")
-
-:::
-```
-
-:::Figure (ball-s|s)  
-![This is an image](imgs/crossproduct.png "s")
-
-
-:::
-
----
-```
-:::Figure (ball-m|m) 
-![This is an image](imgs/crossproduct.png "m")
-
-
-:::
-
-```
-
-:::Figure (ball-m|m) 
-![This is an image](imgs/crossproduct.png "m")
-
-
-:::
-
----
-
-```
-:::Figure (ball-l|l) 
-![This is an image](imgs/crossproduct.png "l")
-
-
-:::
-```
-:::Figure (ball-l|l) 
-![This is an image](imgs/crossproduct.png "l")
-
-
-:::
-
----
-```
-
-:::Figure (ball-xl|xl) 
-![This is an image](imgs/crossproduct.png "xl")
-
-:::
-```
-
-:::Figure (ball-xl|xl)  
-![This is an image](imgs/crossproduct.png "xl")
-
-:::
-::::::
-
+######
 
 ### Columnation
-In order to accommodate a row of images, the site makes use of W3.CSS standard columnization. Each full figure generates a row div class containing 12 equally sized columns. These are visualized in the figure below
+In order to accommodate a row of images, we can use a 'Row' alignment to generate a container that can accomodate up to '12' columns, as visualized below.
 
 :::::::::Figure (||Row)
 ::::::row 
-:::col (bg-dark text-light)
+:::col ( bg-dark text-light)
 C1
 :::
-:::col (bg-primary text-light)
+:::col ( bg-primary text-light)
 C2
 :::
-:::col (bg-danger text-light)
+:::col ( bg-danger text-light)
 C3
 :::
-:::col (bg-UCSB-seagreen text-light)
+:::col ( bg-UCSB-seagreen text-light)
 C4
 :::
-:::col (bg-UCSB-gold text-light)
+:::col ( bg-UCSB-gold text-light)
 C5
 :::
-:::col (bg-UCSB-navy text-light)
+:::col ( bg-UCSB-navy text-light)
 C6
 :::
-:::col (bg-secondary text-light)
+:::col ( bg-secondary text-light)
 C7
 :::
-:::col (bg-info text-light)
+:::col ( bg-info text-light)
 C8
 :::
-:::col (bg-UCSB-coral text-light)
+:::col ( bg-UCSB-coral text-light)
 C9
 :::
-:::col (bg-UCSB-moss text-light)
+:::col ( bg-UCSB-moss text-light)
 C10
 :::
-:::col (bg-success text-light)
+:::col ( bg-success text-light)
 C11
 :::
-:::col (bg-UCSB-aqua text-light)
+:::col ( bg-UCSB-aqua text-light)
 C12
 :::
 ::::::
 :::::::::
 
 
-Within this, we can designate how many columns each part of the figure should take up large screens. The example below shows two images that each take up half of the horizontal space = 6 columns Note: all columns take up the full width on mobile and tablet sized screens.
+Within this, we can designate how many columns each part of the figure should take up large screens. The example below shows the default behavior when no width is specified -- columns equaly divide the available width. Note: all columns take up the full width on mobile and tablet sized screens.
 
 ```
 ::::::::Figure (|m|Row)
@@ -288,6 +344,32 @@ Within this, we can designate how many columns each part of the figure should ta
 
 :::col 
 ![](imgs/crossproduct.png "Part B: This figure takes up 6 of 12 rows")
+:::
+::::::
+:::::::::
+
+You could designate uneven column allotment between images in a figure if you desire. The images will take on a size equal to the column width, up to the maximum allowed by the size tag.
+```
+::::::::Figure (|l|Row)
+::::::row
+:::col 3
+![Part A: Unobstructed view](imgs/crossproduct.png "Part A: This figure takes up 3 of 12 rows")
+:::
+
+:::col 9
+![](imgs/crossproduct.png "Part B: This figure takes up 9 of 12 rows")
+:::
+::::::
+:::::::::
+```
+::::::::Figure (|l|Row)
+::::::row
+:::col 3
+![Part A: Unobstructed view](imgs/crossproduct.png "Part A: This figure takes up 3 of 12 rows")
+:::
+
+:::col 9
+![](imgs/crossproduct.png "Part B: This figure takes up 9 of 12 rows")
 :::
 ::::::
 :::::::::
@@ -297,10 +379,26 @@ Within this, we can designate how many columns each part of the figure should ta
 
 ## @fa-superscript@ Equations
 
-Just as important as figures, equations get their own box. Each equation is automatically numbered. Moreover, equations can be named and linked to later (see linking Section). 
+Just as important as figures, equations get their own box. Each equation is automatically numbered. Equations can be given a reference name and linked to. The Syntax for equations is `Equation (optional-equation-ref|optional-equation-title)`
 
+
+An example of an important, but unnamed equation is:
 ```
-:::Equation (equation_ref|optional-equation-title)
+:::Equation (volume-of-sphere)
+$$
+V= \frac{2\pi^2}{3}  R^3
+$$
+:::
+```
+:::Equation (volume-of-sphere)
+$$
+V= \frac{2\pi^2}{3}  R^3
+$$
+:::
+
+When stating an important and named equation, you have the option to title the equation box:
+```
+:::Equation (gbt|The Gauss-Bonnet Theorem) 
 $$
 \int_M K dA+\int_{\partial M}k_g ds=2\pi\chi(M)
 $$
@@ -314,82 +412,32 @@ $$
 :::
 
 
-Equation markup uses standard KaTeX. For less important equations, KaTeX may be rendered in-line with single dollar signs `$a=\tfrac{1}{2}\pi r^2$`, e.g. : For our purposes [](#Equation-gbt) can be reduced to the more familiar $a=\tfrac{1}{2}\pi r^2$
+Equation markup uses standard KaTeX. For less important equations, KaTeX may be rendered in-line with single dollar signs `$a=\tfrac{1}{2}\pi r^2$`, e.g. : For our purposes [](#Equation-gbt) can be reduced to the more familiar $a=\tfrac{1}{2}\pi r^2$. Similarly, for mathematical maneuvers that don't warrent numbering, you can simply use the double-dollar signs to insert the math directly into the writing.
 
-
-
-:::Equation (gbt2) 
 $$
-\int_M K dA+\int_{\partial M}k_g ds=2\pi\chi(M)
+\begin{aligned}
+V &= \int_0^\pi d\theta \int_0^{2\pi} d\phi \int_0^R r^2 dr \\\\
+&= 2\pi^2 \frac{r^3}{3} \Big|^R_0 \\\\
+&=  \frac{2\pi^2}{3}  R^3
+\end{aligned}
 $$
-:::
 
-
-
-## @fa-Exercise-circle@ Exercises
-
-Exercise boxes contain graded action items for students, and are brightly colored to draw attention to them. They are automatically numbered and may be linked to.
 
 ```
-:::Exercise optional-name
-Are you following along with this tutorial?
-:::
-```
-
-:::Exercise (following)
-Are you following along with this tutorial?
-:::
-
-Exercises with multiple subparts are automatically labeled with lower-case letters.
+$$
+\begin{aligned}
+V &= \int_0^\pi d\theta \int_0^{2\pi} d\phi \int_0^R r^2 dr \\\\
+&= 2\pi^2 \frac{r^3}{3} \Big|^R_0 \\\\
+&=  \frac{2\pi^2}{3}  R^3
+\end{aligned}
+$$
 
 ```
-:::Exercise
-1. Using [](#Equation-gbt) for the case of $d=2$ , derive the result $a=\tfrac{1}{2}\pi r^2$
-2. How would this result change if $M$ was a manifold of genus 2? Discuss
-:::
-```
-
-:::Exercise
-1. Using [](#Equation-gbt) for the case of $d=2$ , derive the result $a=\tfrac{1}{2}\pi r^2$
-2. How would this result change if $M$ was a manifold of genus 2? Discuss
-:::
 
 
-## @fa-sitemap@ Activities
 
-Activities are another important call-to-action for students. They act as a stand alone prompt with step-by-step instructions for completing part of a lab. They are automatically numbered and occur in full-width boxes so that any figures or Exercises within have sufficient readability.
 
-```
-:::::: Activity ([optional-reference]|[optional-title])
-Firstly, let's measure the direction of magnetic field from the  magnet.
-**Measurement steps:**
-1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.
-2. Start recording. You should see some random fluctuations on the plot. 
-3. Hold the magnet above the magnetomer, with one flat side facing up. Move it up and down above the magnetometer.
-4.  Now flip the magnet over, and repeat the motion.
-5.  Stop recording to view the collected data. 
 
-::: Exercise
-1. Why does $B_z$ change when you move the magnet vertically?
-2. At the point where you flipped the magnet, describe the difference you observe, and give a possible explanation.
-:::
-::::::
-```
-
-:::::: Activity (optional-reference|optional-title)
-Firstly, let's measure the direction of magnetic field from the  magnet.
-**Measurement steps:**
-1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.
-2. Start recording. You should see some random fluctuations on the plot. 
-3. Hold the magnet above the magnetomer, with one flat side facing up. Move it up and down above the magnetometer.
-4.  Now flip the magnet over, and repeat the motion.
-5.  Stop recording to view the collected data. 
-
-::: Exercise
-1. Why does $B_z$ change when you move the magnet vertically?
-2. At the point where you flipped the magnet, describe the difference you observe, and give a possible explanation.
-:::
-::::::
 
 
 ## @fa-video-camera@ Videos
@@ -442,7 +490,9 @@ The default Note can be used for anything in a pinch, but is especially good for
 ::: Note (this_is_a_right_note|2 R)
 Hey, look! This note is to the right of the text and tiny
 :::
-You may, of course, want to pass on a smaller or larger amount of information. To make it look nice, you can specify the note's width (a number 1-12) and its alignment (L or R) by passing the argument as (optional-name|width alignment) For example:
+You may, of course, want to pass on a smaller or larger amount of information. To make it look nice, you can specify the note's width (a number 1-12) and its alignment (L or R) by passing the argument as `Note (optional-ref|width alignment)`.  For example:
+
+######
 ```
 ::: Note (this_is_a_right_note|2 R)
 Hey, look! This note is to the right of the text and tiny
@@ -474,23 +524,22 @@ Tables are as usual, and will fill the entire width available. If the width is n
 
 ```
 :::Table
-|Offset | Radius |Inverse  | Measured |Measured   | Field strength |
-|  $y$  | $R$ |$1/R$  |  $B_y$   | $B_z$  |  $B$ |
-|------|------|------|------|------|------|
-|@fa-pencil@    |      |      |      |      |      |     
-|@fa-pencil@   |      |      |      |      |      |   
-|@fa-pencil@    |      |      |      |      |      |   
-|@fa-pencil@   |      |      |      |      |      |        
+| Offset  $y$ | Radius $R$ | Inverse $1/R$ | Measured $B_y$ | Measured $B_z$ | Field strength $B$ |
+| ----------- | ---------- | ------------- | -------------- | -------------- | ------------------ |
+| @fa-pencil@ |            |               |                |                |                    |
+| @fa-pencil@ |            |               |                |                |                    |
+| @fa-pencil@ |            |               |                |                |                    |
+| @fa-pencil@ |            |               |                |                |                    |
 :::
 ```
 
 :::Table
-|Offset  $y$  |Radius $R$ |Inverse $1/R$  | Measured $B_y$   |Measured $B_z$  | Field strength $B$ |
-|------|------|------|------|------|------|
-|@fa-pencil@    |      |      |      |      |      |     
-|@fa-pencil@   |      |      |      |      |      |   
-|@fa-pencil@    |      |      |      |      |      |   
-|@fa-pencil@   |      |      |      |      |      |        
+| Offset  $y$ | Radius $R$ | Inverse $1/R$ | Measured $B_y$ | Measured $B_z$ | Field strength $B$ |
+| ----------- | ---------- | ------------- | -------------- | -------------- | ------------------ |
+| @fa-pencil@ |            |               |                |                |                    |
+| @fa-pencil@ |            |               |                |                |                    |
+| @fa-pencil@ |            |               |                |                |                    |
+| @fa-pencil@ |            |               |                |                |                    |
 :::
 
 ### Plain Card
@@ -591,19 +640,19 @@ These are contents
 Similarly, one can make a dropdown card.
 
 ```
-:::Drop (ref|header|footer|bg-UCSB-navy text-white)
+:::Drop (ref|Header|Footer|bg-UCSB-navy text-white)
 These are contents
 :::
 ```
-:::Drop (ref|header|footer|bg-UCSB-navy text-white)
+:::Drop (ref|Header|Footer|bg-UCSB-navy text-white)
 These are contents
 :::
 
 # Other Features
 
-## Linking (WIP)
+## Linking
 
-Linking allows you to reference previous named material, autogenerating a link to the place on the page it is located and the correct description of the item. The syntax is `[](#Equation-gbt)`
+Linking allows you to reference previous named material, autogenerating a link to the place on the page it is located and the correct description of the item. The syntax is `[](#ContainerType-ref)`
 
 :::Figure
 
@@ -617,9 +666,9 @@ Linking allows you to reference previous named material, autogenerating a link t
 [](#Exercise-following) is a Exercise link to the "Are you following?" Exercise
 
 
-`[](#Figure-balls) is a Figure link to the balls figure`
+`[](#Figure-crossproducts) is a Figure link to the crossproducts figure`
 
-[](#Figure-balls) is a Figure link to the balls figure
+[](#Figure-crossproducts) is a Figure link to the crossproducts figure
 
 
 `[](#Activity-magnetic-field) is an Activity link to the Magnetic Strength Activity` 
@@ -675,21 +724,13 @@ Look at the image below and write the first word that comes to mind
 
 ## Iconography
 
-You can use any icons from [Font Awesome 4.7](https://fontawesome.com/v4.7.0/icons/) by sandwiching the icon name with @ symbols
+You can use any icons from [Font Awesome 4.7](https://fontawesome.com/v4.7.0/icons/) or [Bootstrap](https://icons.getbootstrap.com/) by sandwiching the icon name with @ symbols
 
 ```
-@fa-thumbs-up@
-@fa-area-chart@
-@fa-briefcase@
-@fa-check@
-@fa-gear@
+@fa-thumbs-up@ @bi-cloud-lightning-rain-fill@ @fa-area-chart@ @bi-calendar3@ @fa-check@ @bi-emoji-sunglasses@  @fa-gear@
 ```
 
-@fa-thumbs-up@
-@fa-area-chart@
-@fa-briefcase@
-@fa-check@
-@fa-gear@
+@fa-thumbs-up@ @bi-cloud-lightning-rain-fill@ @fa-area-chart@ @bi-calendar3@ @fa-check@ @bi-emoji-sunglasses@  @fa-gear@
 ## Foot Notes
 
 
@@ -730,8 +771,7 @@ with text that hangs out above?
 
 ## HTML
 
-HTML is enabled in this markdown compiler, so if you need to include something beyond the scope of what is provided, you can directly code it in. Check out the [Course Info](?linkfile=courseinfo) page to see an example
-
+HTML is enabled in this markdown compiler, so if you need to include something beyond the scope of what is provided, you can directly code it in. Note that anyplace custom HTML is placed, the markdown renderer will **ignore**.
 
 # Conclusion
 

@@ -13,6 +13,8 @@ const collapsable_header = ' fs-4 align-bottom'
 
 class Card{
   constructor(type, ref) {
+    //Correct for non-alphanumeric
+    ref=(ref||'').replace(/[^a-zA-Z0-9-_]/g,'')
     //Static
     this.type=type
     
@@ -112,8 +114,6 @@ class Card{
  }
 
 function classCard(c) {
-console.log(c.ref)
-console.log(c.number)
   div_head.push(`
   <div id="${c.ref}" 
     class="${[c.styleList.join(' ')]} " 
@@ -577,7 +577,7 @@ md.use(container, 'col', {
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^col(.*)$/)[1])
       // opening tag
-      return `<div class="col-lg ${args[0]}">`;
+      return `<div class= " d-inline-flex align-items-end col-lg${args[0] ? (/\d/.test(args[0]) ? `-${args[0]}` : ` ${args[0]}`): ''}">`;
     } else {
       return '</div>'
     }
@@ -593,7 +593,7 @@ md.use(container, 'row', {
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^row(.*)$/)[1])
       // opening tag
-      return `<div class="row ${args[0]}">`;
+      return `<div class="d-flex flex-row align-items-baseline ${args[0]}">`;
     } else {
       return '</div>'
     }

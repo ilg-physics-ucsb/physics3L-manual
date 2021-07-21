@@ -14219,24 +14219,27 @@ textarea.form-control-lg {
   }
 
   .xs.Figure:not(.rowfig), .xs img {
-    width: 10rem;
+    width: min(10rem, 100%);
   }
 
   .s.Figure:not(.rowfig), .s img {
-    max-width: 15rem;
+    max-width: min(15rem, 100%);
+    margin: auto;
   }
 
   .m.Figure:not(.rowfig), .m img {
-    max-width: 20rem;
+    max-width: min(20rem, 100%);
     margin: auto;
   }
 
   .l.Figure:not(.rowfig), .l img {
-    max-width: 25rem;
+    max-width: min(25rem, 100%);
+    margin: auto;
   }
 
   .xl.Figure:not(.rowfig), .xl img {
-    max-width: 40rem;
+    max-width: min(40rem, 100%);
+    margin: auto;
   }
 }
 .Figure img {
