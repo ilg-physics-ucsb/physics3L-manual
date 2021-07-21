@@ -14353,7 +14353,6 @@ img:hover {
   display: block;
   bottom: 5px;
   transition: opacity 1s ease;
-  width: 100%;
   z-index: 2;
 }
 

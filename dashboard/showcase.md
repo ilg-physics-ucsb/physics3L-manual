@@ -54,16 +54,13 @@ Figures and generally contain images. They are automatically numbered, nameable 
 
 
 ``` 
-:::Figure optional-name optional-size
-![This is an image](imgs/crossproduct.png)
-This is an image
+:::Figure (optional-ref|optional-size)
+![Description of an image for anyone using a screen reader](imgs/crossproduct.png "The image caption goes here")
+
 :::
 ``` 
-:::Figure (ball-p|) 
-
-
-![This is an image](imgs/crossproduct.png)
-This is an image
+:::Figure (optional-ref|optional-size)
+![Description of an image for anyone using a screen reader](imgs/crossproduct.png "The image caption goes here")
 
 :::
 
@@ -72,8 +69,8 @@ To improve visual variety you can also make right and left floating figures, res
 
 Right:
 ``` 
-:::RFigure optional-name optional-size
-![This is a right floating image](imgs/Lab0/phyphox.png)
+:::Figure (phyphox|m|R)
+![Image of a phone with the phyphox app](imgs/phyphox.png "This is a right floating image")
 :::
 ``` 
 
@@ -81,10 +78,13 @@ Right:
 
 Left: 
 ``` 
-:::LFigure optional-name optional-size
-![The relationship between x and t is constant](imgs/Constant.png)
-![The relationship between x and t is linear](imgs/Linear.png)
-![The relationship between x and t is quadratic](imgs/Quad.png)
+:::Figure (graphs|m|L)
+![A graph of a function that is parallel to the time axis. The position is equal to 5 meters at all times.](imgs/Constant.png "The relationship between x and t is constant")
+
+![](imgs/Linear.png "The relationship between x and t is linear")
+
+![](imgs/Quad.png "The relationship between x and t is quadratic")
+
 :::
 ``` 
 
@@ -94,8 +94,7 @@ The figure will not float next to this text because the text is placed above the
 <p style="color:gray">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
 
 :::Figure (phyphox|m|R)
-![This is a right floating image](imgs/phyphox.png)
-*This is a right floating image*
+![Image of a phone with the phyphox app](imgs/phyphox.png "This is a right floating image")
 :::
 
 It will, however, float to the right of text that follows. Floating figures are best used for tall images, or a figure containing multiple images.
