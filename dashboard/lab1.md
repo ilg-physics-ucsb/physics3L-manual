@@ -2,8 +2,6 @@
 
 :::Intro (Objective)
 The objective of this lab is to determine which physical quantities influence the period of a pendulum. The relevant features are the mass of the bob, the length of the pendulum, and the initial angular displacement. By making many measurements of each feature while keeping the other two constant you will construct an argument as to which feature or features influence the period.
-
-Once you are convinced which feature or features affect the period of the pendulum you will mathematically characterize the relationship between those features and the period. 
 :::
 
 # Introduction
@@ -14,7 +12,12 @@ Once you are convinced which feature or features affect the period of the pendul
 ![Picture of the apparatus. Has a metal bar vertically clamped to a table. At the top of the bar clamped on is another bar that is orthogonal to the original. Clamped to the horizontal bar is a large wooden protractor. In front of the protractor is a string goes through a hole in the horizontal bar. In the middle of the vertical rod is a piece of plastic that is used to adjust the length of the string.](imgs/Lab1/FullApparatus.jpg "Fully Constructed Pendulum Apparatus (Click on me to see a larger version)")
 :::
 
-In [](Figure-fullApparatus) you see a picture of the apparatus you will be using. When you come in it will be setup as shown. One the table will be a container that should have a stopwatch, a metric measuring tape, and 6 bobs of the same size but made of different materials. The materials are wood, aluminum, brass, copper, steel, and zinc.
+In [](Figure-fullApparatus) you see a picture of the apparatus you will be using. When you come in it will be setup as shown. One the table, as seen in [](Figure-equipment).D will be a container that should have a stopwatch, a metric measuring tape, and 6 bobs of the same size but made of different materials. The materials are wood, aluminum, brass, copper, steel, and zinc. Everything can be seen more clearly in [](Figure-equipment).
+
+:::Figure (equipment|l)
+![One figure containing four images labelled A, B, C, & D. A is the six pendulum bobs. B is the stopwatch that is provided. C is metric measuring tape. D is the piece of tupperware with each of the previous items arranged inside.](imgs/Lab1/Equipment1.png "A) Pendulum Bobs B) Stopwatch C) Measuring Tape D) Container with objects")
+
+:::
 
 You can use the stopwatch to measure the period. 
 
@@ -24,41 +27,23 @@ To read your initial angle a protractor is attached to the setup.
 
 To adjust the length you will use piece of plastic attached to the vertical steel pole. To use it, just squeeze the handles together and slide it up and down the pole. The length of the pendulum can be adjust from about 20 cm to 160 cm. You can use the measuring tape to precisely measure the length. 
 
+Watch the video below for instructions on how to use the apparatus.
 
-## Procedure
-
-:::Activity
-Write a three part procedure for the lab?
+:::Video (appaartus)
+Put video here.
 :::
 
 
-# What's Important?
-
-## Mass
+## Pre-Lab
 
 :::Activity
-In this activity you will collect data on the period of the pendulum for varying mass while keeping the initial angle and the length constant.
+Write a three part procedure for collecting your data to measure each parameter independently. Your procedure should be identify each step you will need to take and should not be as vague as:
+1. Measure two periods at two lengths with set mass and initial angle.
+2. Measure two periods at two angles with set mass and length.
+3. Measure two peiods at two masses with set length and initial angle.
 
-1. For this part of the lab pick a length, $l$ to use between 20 cm and 160 cm. Set the pendulum to this length and make a note of the length you use. It should be obvious to anyone reading your report what length you used for this part of the lab. 
-2. Now pick an initial angle, $\theta$, between $1\deg$ and $25\deg$. Again make a note of the angle you use. It should be obvious to anyone reading your report what angle you used for this part of the lab. 
-3. Create a table in which you'll record your data. 
-4. Use the triple-beam balance to record the mass of each bob.
-5. Place one of the bobs on the end of the pendulum.
-6. Now move pull the bob to the initial angle you chose and release. 
-7. Measure the time it takes for 10 periods and record that in your table.
-8. Calculate the average period. 
-9. Make a plot of the average period as a function of mass. Add this point to the plot.
-10. Repeat this for each of the bobs, make sure to use the same length and initial angle.
+You should expand on each of these and go into the details of each one. Approximately X-X steps should be appropriate.
 :::
 
 
-## Angle
-
-:::Activity
-In this activity you will collect data on the period of the pendulum for varying initial angles while keeping the mass and length constant.
-
-1. For this part of the lab pick a length, $l$ to use between 20 cm and 160 cm. Set the pendulum to this length and make a note of the length you use. It should be obvious to anyone reading your report what length you used for this part of the lab. 
-2. Now pick on of the bobs to use for the duration of this section. Again make a note of the mass you use. It should be obvious to anyone reading your report what mass you used for this part of the lab.
-3. Create a table in which you will record your data. 
-:::
 
