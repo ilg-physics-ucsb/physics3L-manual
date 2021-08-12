@@ -16,7 +16,6 @@ In [](Figure-fullApparatus) you see a picture of the apparatus you will be using
 
 :::Figure (equipment|l)
 ![One figure containing four images labelled A, B, C, & D. A is the six pendulum bobs. B is the stopwatch that is provided. C is metric measuring tape. D is the piece of tupperware with each of the previous items arranged inside.](imgs/Lab1/Equipment1.png "A) Pendulum Bobs B) Stopwatch C) Measuring Tape D) Container with objects")
-
 :::
 
 You can use the stopwatch to measure the period. 
@@ -29,21 +28,27 @@ To adjust the length you will use piece of plastic attached to the vertical stee
 
 Watch the video below for instructions on how to use the apparatus.
 
-:::Video (appaartus)
-Put video here.
+:::Video (apparatus)
+<iframe src="https://drive.google.com/file/d/1n4yWlKtHTYYzRsL3Q1OlaSqj8sfed0MY/preview" width="100%" height="100%" allow="autoplay"></iframe>
 :::
 
 
 ## Pre-Lab
 
-:::Activity
-Write a three part procedure for collecting your data to measure each parameter independently. Your procedure should be identify each step you will need to take and should not be as vague as:
-1. Measure two periods at two lengths with set mass and initial angle.
-2. Measure two periods at two angles with set mass and length.
-3. Measure two peiods at two masses with set length and initial angle.
+::::::Activity
+In this activity you will write a procedure for your experiment. This needs to be done *before* you get to your lab section and will be checked off by your TA. 
 
-You should expand on each of these and go into the details of each one. Approximately X-X steps should be appropriate.
+:::Exercise
+Since the protractor does not have defined position, you will need to set it in a position that is useful for the experiment. Spend 5 minutes coming up with a procedure to align your protractor.
 :::
+
+:::Exercise
+Write a step by step procedure outlining the data that you will collect that will determine which of the three parameters, mass, length, and initial angle, affect the period of the pendulum.
+:::
+
+
+
+::::::
 
 
 
