@@ -6,10 +6,21 @@ The objective of this lab is to determine which physical quantities influence th
 
 # Introduction
 
+## Simple Pendulum Basics
+:::Figure (pendulumDiagram|l)
+![A diagram of the apparatus. There is a vertical dashed line that marks the lowest point of the pendulum, while the bob itself is displaced to one side. There is an arc from the vertical to the displaced bob and it is labelled theta sub zero, for the initial angle. There is a marker running the length of the string to the middle of the bob to indicate the length of the pendulum designated as L. Lastly there is an m located inside the bob to show it has mass.](imgs/Lab1/PendulumDiagram.png "A diagram of the setup indicating the length, L, the mass, m, and the initial angle θ_0. (Click on me, or any figure, to see a larger version)")
+:::
+
+The simple pendulum is called such because the most simplified model of pendulum that we have. It assumes that we are using a point mass, $m$, at the end of a string of length, $L$, that has negligible mass itself. Notice the simple pendulum does not attempt to exactly replicate what is happening in the real world. Instead it makes some assumptions and ignores some real life features.
+
+This is a typical thing in physics. Often times the real world gets extremely complicated and it becomes easier to make assumptions and ignore things. However, we must be thoughtful about what we choose to assume and ignore. We want to choose things that will have little affect what we are trying to measure. Sometimes we do this well, and sometimes we are too loose with our assumptions. In the latter case we must then reevaluate our simplified model and add back things we may have thought we could ignore, or relax some of our assumptions.
+
+The thing that we will be focusing on is the period, $T$. For the simple pendulum we have three parameters available to us. The mass of the bob, $m$, the length of the pendulum, $L$, and the initial angle, $\theta_0$. Each of these is depicted in [](Figure-pendulumDiagram) We will be adjusting these three parameters to see what affects they have on the period.  
+
 ## Apparatus
 
 :::Figure (fullApparatus|m|R)
-![Picture of the apparatus. Has a metal bar vertically clamped to a table. At the top of the bar clamped on is another bar that is orthogonal to the original. Clamped to the horizontal bar is a large wooden protractor. In front of the protractor is a string goes through a hole in the horizontal bar. In the middle of the vertical rod is a piece of plastic that is used to adjust the length of the string.](imgs/Lab1/FullApparatus.jpg "Fully Constructed Pendulum Apparatus (Click on me to see a larger version)")
+![Picture of the apparatus. Has a metal bar vertically clamped to a table. At the top of the bar clamped on is another bar that is orthogonal to the original. Clamped to the horizontal bar is a large wooden protractor. In front of the protractor is a string goes through a hole in the horizontal bar. In the middle of the vertical rod is a piece of plastic that is used to adjust the length of the string.](imgs/Lab1/FullApparatus.jpg "Fully constructed pendulum apparatus")
 :::
 
 In [](Figure-fullApparatus) you see a picture of the apparatus you will be using. When you come in it will be setup as shown. One the table, as seen in [](Figure-equipment).D will be a container that should have a stopwatch, a metric measuring tape, and 6 bobs of the same size but made of different materials. The materials are wood, aluminum, brass, copper, steel, and zinc. Everything can be seen more clearly in [](Figure-equipment).
@@ -36,7 +47,9 @@ Watch the video below for instructions on how to use the apparatus.
 ## Pre-Lab
 
 ::::::Activity
-In this activity you will write a procedure for your experiment. This needs to be done *before* you get to your lab section and will be checked off by your TA. 
+In this activity you will write a procedure for your experiment. This needs to be done *before* you get to your lab section and will be checked off by your TA.
+
+You will not be graded on whether you have "the right" procedure. We are simply looking for effort that you have thought about this and that you will be ready to start taking measurements when you get to class.
 
 :::Exercise
 Since the protractor does not have defined position, you will need to set it in a position that is useful for the experiment. Spend 5 minutes coming up with a procedure to align your protractor.
@@ -45,8 +58,16 @@ Since the protractor does not have defined position, you will need to set it in 
 :::Exercise
 Write a step by step procedure outlining the data that you will collect that will determine which of the three parameters, mass, length, and initial angle, affect the period of the pendulum.
 :::
+::::::
 
+# Making a measurement
 
+::::::Activity
+You TA will walk your class through an exercise in which you measure the period of the pendulum in multiple ways and discuss the different methods. 
+
+:::Exercise
+Do something.
+:::
 
 ::::::
 
