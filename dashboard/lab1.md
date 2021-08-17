@@ -66,10 +66,16 @@ Write a step by step procedure outlining the data that you will collect that wil
 You TA will walk your class through an exercise in which you measure the period of the pendulum in multiple ways and discuss the different methods. 
 
 :::Exercise
-Do something.
+Write down the two period values you recorded in the activity. Make sure to indicate which is which?
+:::
+
+:::Exercise
+From looking at the class data, make a argument for which method is more precise for measuring the period. Why do you think one method is more precise than the other?
 :::
 
 ::::::
+
+
 
 
 
