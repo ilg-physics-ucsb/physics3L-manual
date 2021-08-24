@@ -66,7 +66,7 @@ class Card{
         this.headerText='<i class="fa fa-exclamation-triangle fs-1 rotor" aria-hidden="true"></i> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
         break
       case 'Definition':
-        this.styleList.push(' mx-auto ')
+        this.styleList.push(' mx-auto my-4')
         this.innerStyles[0]='text-left'
         this.headerText=`<strong > Definition ${this.number}: </strong>`
         break
