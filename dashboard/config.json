@@ -59,6 +59,10 @@
       {
         "name": "Showcase",
         "file": "showcase"
+      },
+      {
+        "name": "Reference Material",
+        "file": "references"
       }
     ],
     "integrations": [
