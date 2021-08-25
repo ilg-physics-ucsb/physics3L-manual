@@ -106,7 +106,11 @@ class Card{
         this.styleList.push(blurb_center)
         this.headerText=`<i class="bi bi-journal-text"></i><strong> Prelab Assignment</strong> <i class="bi bi-journal-text"> </i>`
         break
-
+      case 'Quiz':
+        this.styleList.push(blurb_center)
+        this.innerStyles[1]='text-center'
+        this.headerText=`<i class="bi bi-journal-text"></i><strong>Check your understanding</strong> <i class="bi bi-journal-text"> </i>`
+        break
     } 
   }
 
@@ -210,6 +214,29 @@ md.use(container, 'Intro', {
       return div_head.pop()
     } else {
       return div_foot.pop()
+    }
+  }
+})
+
+///Quiz////
+md.use(container, 'Quiz', {  
+  // Input Format is:
+  // Intro (Heading Line|material 1 --- comment|material 2 --- comment| ...)
+  render: function (tokens, idx) {   
+    if (tokens[idx].nesting === 1) {  
+      args = strip(tokens[idx].info.trim().match(/^Quiz(.*)$/)[1])
+      let quiz=new Card("Quiz", args[0].replace(/[^a-zA-Z0-9]/g,''))
+      quiz.headerText='Check your Understanding'
+      quiz.publishCard()
+
+
+      quizinner= quizzy(args.slice(1), quiz.ref)
+      div_foot[div_foot.length-1]= quizinner  +div_foot[div_foot.length-1]
+      console.log(quiz.ref)
+      return `${div_head.pop()} `
+    } else {
+      return `
+      ${div_foot.pop()}`
     }
   }
 })
@@ -812,4 +839,42 @@ function materials(args) {
   })
   return list;
 
+}
+
+function quizzy(args,ref) {
+  let obj, deet
+
+  let inner = `
+  <div class="row">
+  <div class="col">
+     <ul class="Quiz px-1 py-0 mb-3 list-group-flush" >
+
+      `
+  args.forEach((e, i) => {
+    // console.log(e)
+    obj = e.split('---')[0]; deet = e.split('---').slice(1).join(' ');
+    // console.log(obj, deet)
+    inner += `<li class="list-group-item align-middle py-1 ">
+              <a tabindex="0"  role="button" class="btn btn-UCSB-navy position-relative quizlet" 
+                id= '${ref}_ans_${i}'
+                aria-pressed="false" autocomplete="off" data-modify="${ref}_answer" data-result="${deet}">
+                ${obj} 
+              </a>
+            </li>
+             `
+      // document.getElementById(`${ref}_ans_${i}`).onclick= insert_quiz_text(deet, ref+'_answer')
+  })
+
+  inner+=`</div> 
+  <div class="col quiz_ans align-middle" id="${ref}_answer" > Choose your answer</div>
+  </div>`
+  return inner;
+
+}
+
+
+function insert_quiz_text(repytext, quiz_id){
+  console.log('i was called')
+  document.getElementById(quiz_id).innerHTML=repytext
+  
 }

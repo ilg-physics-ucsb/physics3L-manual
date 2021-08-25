@@ -818,3 +818,22 @@ img:hover{
     background-color: white;
     /* or add it to the track */
   }
+
+
+.Quiz a:focus{
+    background-color: $UCSB-gold;
+    border: 0px white solid;
+}
+.Quiz {
+    a{
+    width: 100%;
+    }
+    li, ol, ul{
+        border: 0px white solid;
+    }
+ 
+    .card-header{
+        background-color: $UCSB-sandstone;
+    }
+}
+

@@ -84,6 +84,16 @@ function replace_tags() {
       }
     }
 
+    var quizzes = document.getElementsByClassName('quizlet')
+    for(i=0; i<quizzes.length;i++){
+      quizzes[i].onclick= function(){
+        document.getElementById(this.dataset.modify).innerHTML=this.dataset.result
+      }
+      quizzes[i].onclick= function(){
+        document.getElementById(this.dataset.modify).innerHTML=this.dataset.result
+      }
+    }
+
  
   }
   

@@ -14424,4 +14424,19 @@ img:hover {
   /* or add it to the track */
 }
 
+.Quiz a:focus {
+  background-color: #FEBC11;
+  border: 0px white solid;
+}
+
+.Quiz a {
+  width: 100%;
+}
+.Quiz li, .Quiz ol, .Quiz ul {
+  border: 0px white solid;
+}
+.Quiz .card-header {
+  background-color: #C9BF9D;
+}
+
 /*# sourceMappingURL=custom.css.map */
