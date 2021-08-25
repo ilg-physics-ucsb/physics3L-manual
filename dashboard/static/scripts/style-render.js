@@ -38,7 +38,7 @@ function processstyles(){
 function replace_tags() {
     var text = document.querySelectorAll(' #maincontent >*:not(code):not(pre)')
     text.forEach( (t) => {
-      console.log(t.tagName)
+     
       emojified = t.innerHTML.replaceAll(/(\@)(.{2})(-)(.*?)(\@)/g, `<i class='$2 $2-$4'></i>`)
       t.innerHTML = emojified
   

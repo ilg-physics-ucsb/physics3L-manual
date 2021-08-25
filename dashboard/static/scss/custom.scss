@@ -293,6 +293,20 @@ $simulation-bg:$UCSB-mist;
     }
  };
 
+ .Prelab{
+    background-color: $light;
+    color:$dark;
+
+    ul{
+        font-size: 90%;
+    };
+
+    .card-header{
+        background-color: shade-color(tint-color(red,20%),20%);
+        color:white
+    }
+ };
+
 
 ///Hider////
 .Hider{

@@ -13982,6 +13982,18 @@ textarea.form-control-lg {
   background-color: #ffde88;
 }
 
+.Prelab {
+  background-color: #f8f9fa;
+  color: #001626;
+}
+.Prelab ul {
+  font-size: 90%;
+}
+.Prelab .card-header {
+  background-color: #cc2929;
+  color: white;
+}
+
 .Hider button {
   border: 0px solid black;
   width: 100%;

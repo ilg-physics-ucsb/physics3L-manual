@@ -8,6 +8,7 @@ var div_foot = []; //This list lets us print ou the footers of custom classes us
 const fig_group = "justify-content-center text-center px-0 mx-3 mb-4" //Formatting that is special for figues -- adds margins to floated figs
 
 const narrow_center = "col-lg-9 mx-auto my-5"
+const blurb_center = "col-lg-5 mx-auto my-5"
 const collapsable_header = ' fs-4 align-bottom'
 
 
@@ -101,7 +102,10 @@ class Card{
         this.styleList.push(narrow_center)
         this.innerStyles[0]+= collapsable_header
         break
-      
+      case 'Prelab':
+        this.styleList.push(blurb_center)
+        this.headerText=`<i class="bi bi-journal-text"></i><strong> Prelab Assignment</strong> <i class="bi bi-journal-text"> </i>`
+        break
 
     } 
   }
@@ -323,7 +327,24 @@ md.use(container, 'Definition', {
   }
 })
 
+///PRELAB
+md.use(container, 'Prelab', {
+  // Input Format is: 
+  // Warning (optional-width)
+  render: function (tokens, idx) {
+    let args;
+    if (tokens[idx].nesting === 1) {
+      args = strip(tokens[idx].info.trim().match(/^Prelab(.*)$/)[1])
 
+      let def= new Card("Prelab", args[0])
+
+      def.publishCard()
+      return div_head.pop()
+    } else {
+      return div_foot.pop()
+    }
+  }
+})
 
 ///TABLES
 md.use(container, 'Table', {
