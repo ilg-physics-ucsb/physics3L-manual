@@ -14394,4 +14394,34 @@ img:hover {
   overflow-x: hidden;
 }
 
+.Equation .card-body::-webkit-scrollbar-thumb {
+  width: 10px;
+  height: 10px;
+  background-color: #aaa;
+  border-right: gray 1px;
+  /* or add it to the track */
+}
+
+.Equation .card-body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #d9e1e7;
+  /* or add it to the track */
+}
+
+.Table .card-body::-webkit-scrollbar-thumb {
+  width: 10px;
+  height: 10px;
+  background-color: #aaa;
+  border-right: gray 1px;
+  /* or add it to the track */
+}
+
+.Table .card-body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  /* or add it to the track */
+}
+
 /*# sourceMappingURL=custom.css.map */

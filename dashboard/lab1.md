@@ -10,7 +10,7 @@ Following this discussion we will turn our attention to a real experiment. You w
 
 :::Prelab ()
 **Prior to Lab**, please complete the following:
- - [](#Exercise-analysis)
+ [](#Exercise-analysis) [](#Exercise-analysis)
 
 Your TA will check your notebook at the begining of class.
 :::
