@@ -46,19 +46,20 @@ Watch the video below for instructions on how to use the apparatus.
 
 ## Pre-Lab
 
-::::::Activity
-In this activity you will write a procedure for your experiment. This needs to be done *before* you get to your lab section and will be checked off by your TA.
+:::Prelab
+**Before coming to lab** you will need to complete [](Exercise-alignment) and [](Exercise-procedure). This will be checked off by your TA when you get to class. 
+:::
 
-You will not be graded on whether you have "the right" procedure. We are simply looking for effort that you have thought about this and that you will be ready to start taking measurements when you get to class.
-
-:::Exercise
+:::Exercise (alignment)
 Since the protractor does not have defined position, you will need to set it in a position that is useful for the experiment. Spend 5 minutes coming up with a procedure to align your protractor.
 :::
 
-:::Exercise
+:::Exercise (procedure)
 Write a step by step procedure outlining the data that you will collect that will determine which of the three parameters, mass, length, and initial angle, affect the period of the pendulum.
+
+You will not be graded on whether you have "the right" procedure. We are simply looking for effort that you have thought about this and that you will be ready to start taking measurements when you get to class.
 :::
-::::::
+
 
 # Making a measurement
 
