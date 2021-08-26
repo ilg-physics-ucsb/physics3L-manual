@@ -234,7 +234,7 @@ Random error is unavoidable and leads to uncertainty in our measurement.
 ![Figure 2: Line of Best Fit](../imgs/lab0/targets.png)
 :::
 
-Systematic errors will  cause bias in one direction, causing your measurements to be consistently higher or lower than the accepted value. These errors will determine the **accuracy** of your measurement.
+Systematic errors will cause bias in one direction, causing your measurements to be consistently higher or lower than the accepted value. These errors will determine the **accuracy** of your measurement.
 
 Random errors are unbiased, so some of your measurements will be higher and some will be lower than the accepted value. Random errors will determine the **precision** of your measurement.
 

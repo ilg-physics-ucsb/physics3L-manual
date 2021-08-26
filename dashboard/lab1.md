@@ -8,7 +8,7 @@ The objective of this lab is to determine which physical quantities influence th
 
 ## Simple Pendulum Basics
 :::Figure (pendulumDiagram|l)
-![A diagram of the apparatus. There is a vertical dashed line that marks the lowest point of the pendulum, while the bob itself is displaced to one side. There is an arc from the vertical to the displaced bob and it is labelled theta sub zero, for the initial angle. There is a marker running the length of the string to the middle of the bob to indicate the length of the pendulum designated as L. Lastly there is an m located inside the bob to show it has mass.](imgs/Lab1/PendulumDiagram.png "A diagram of the setup indicating the length, L, the mass, m, and the initial angle θ_0. (Click on me, or any figure, to see a larger version)")
+![A diagram of the apparatus. There is a vertical dashed line that marks the lowest point of the pendulum, while the bob itself is displaced to one side. There is an arc from the vertical to the displaced bob and it is labelled theta sub zero, for the initial angle. There is a marker running the length of the string to the middle of the bob to indicate the length of the pendulum designated as L. Lastly there is an m located inside the bob to show it has mass.](imgs/Lab1/PendulumDiagram.png "A diagram of the setup indicating the length, L, the mass, m, and the initial angle, θ_0. (Click on me, or any figure, to see a larger version)")
 :::
 
 The simple pendulum is called such because the most simplified model of pendulum that we have. It assumes that we are using a point mass, $m$, at the end of a string of length, $L$, that has negligible mass itself. Notice the simple pendulum does not attempt to exactly replicate what is happening in the real world. Instead it makes some assumptions and ignores some real life features.
@@ -66,7 +66,7 @@ Write a step by step procedure outlining the data that you will collect that wil
 You TA will walk your class through an exercise in which you measure the period of the pendulum in multiple ways and discuss the different methods. 
 
 :::Exercise
-Write down the two period values you recorded in the activity. Make sure to indicate which is which?
+Write down the two period values you recorded in the activity. Make sure to indicate which is which.
 :::
 
 :::Exercise
@@ -74,6 +74,38 @@ From looking at the class data, make a argument for which method is more precise
 :::
 
 ::::::
+
+::::::Activity
+Your TA will walk your class through another period exercise in which you will measure the period in multiple ways and discuss the different methods.
+
+:::Exercise
+Write down the two period values you recorded in the activity. Make sure to indicate which is which.
+:::
+
+:::Exercise
+From looking at the class data, make a argument for which method is more precise for measuring the period. Why do you think one method is more precise than the other?
+:::
+
+::::::
+
+# Looking for signal
+
+::::::Activity
+Your TA will walk you all through a final activity of looking for a sign of response in the period to the different parameters above, $L$, $m$, and $\theta_0$.
+
+:::Exercise
+1. Which parameter are you measuring?
+2. What are the other two values you are looking at?
+3. What is the data you collected?
+4. What is the data the other groups collected?
+:::
+
+:::Exercise
+Do you think the period depends on the parameter you measured? Why or why not?
+:::
+::::::
+
+
 
 
 
