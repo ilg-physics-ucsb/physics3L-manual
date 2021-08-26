@@ -345,7 +345,7 @@ md.use(container, 'Definition', {
 
       let def= new Card("Definition", args[0])
       def.headerText+=`<span class=''>${args[0]} </span>`
-      def.styleList.push(args[1] ? 'col-lg-' + args[1].replace("L","float-lg-start mt-0 mb-1 mx-3 ").replace("R","float-lg-end mt-0 mb-1 mx-3 ") : 'col-lg-10 mx-auto my-5' )
+      def.styleList.push(args[1] ? 'col-lg-' + args[1].replace("L","float-lg-start mt-0 mb-1 mx-3 ").replace("R","float-lg-end mt-0 mb-1 mx-3 ").replace("C","mx-auto my-4 ") : 'col-lg-10 mx-auto my-5' )
       def.publishCard()
       return div_head.pop()
     } else {

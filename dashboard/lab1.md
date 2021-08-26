@@ -54,21 +54,22 @@ Unlike the simple case of 1D motion, when we are considering motion in 2D (a pla
 
 ## Motion with No Forces
 
-:::Definition (Rest|3 R)
-An object at **rest** has a velocity of $v=0 \text{ m/s}$ in the frame of interest. 
-:::
 To make our discussion concrete, we should review some basic physics for the case in which there are no forces acting on the body of interest. In this and the following sections, we will do thought experiments on what happens to a ball as it is released in various scenarios, similar to the experiment you will perform. 
 
+### An Object at Rest
+:::Definition (Rest|5 C)
+An object at **rest** has a velocity of $v=0 \text{ m/s}$ in the frame of interest. 
+:::
 
 The first case of force-free motion to consider is a body starting at **rest**.
-From [](#Definition-VariablesofMotionin1D) and your intuition alone, you can probably guess what happens to an object at rest when no force is acting upon it. Take a minute to consider the situation and try answering the *Check Your Understanding* box below ;;;Don't worry — This isn't graded!;;;.
+From [](#Definition-VariablesofMotionin1D), [](#Definition-Rest) and your intuition alone, you can probably guess what happens to an object at rest when no force is acting upon it. Take a minute to consider the situation and try answering the *Check Your Understanding* box below ;;;Don't worry — This isn't graded!;;;.
 
 
 
 
 
 :::Quiz (rest| $0\text{m}$ --- No! Would mean that the speed was $-2.5\text{m/s}$|$25 \text{m}$ --- Correct! Since the ball is stationary  $$v_0= 0\, \text{m/s}$$ so it is still at $y=25\text{m}$!| $250\text{m}$ --- No way! Go back and check your work.)
- Let's imagine that that at $t=0$, we have a ball at **rest** at a height $y_0= 25$ m. There are no forces acting on the ball. What is its position at $t=10$ s?
+ Let's imagine that that at $t=0$, we have a ball at **rest** at a height $y_0= 25 \text{m}$. There are no forces acting on the ball. What is its position at $t=10\text{s}$?
 
 :::
 

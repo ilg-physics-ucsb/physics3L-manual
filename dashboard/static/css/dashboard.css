@@ -45,6 +45,7 @@ h2.accordion-header{
   color: var(--bs-gray-dark);
   padding-top: 20px;
   margin-bottom: 10px;
+  clear: none;
 }
 
 h1,h2, h6{
