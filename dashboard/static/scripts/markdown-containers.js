@@ -9,7 +9,7 @@ const katex_map = new Map(); //saves key pairs for retreiving latex in blurbs
 const fig_group = "justify-content-center text-center px-0 mx-3 mb-4" //Formatting that is special for figues -- adds margins to floated figs
 
 const narrow_center = "col-lg-9 mx-auto my-5"
-const blurb_center = "col-lg-5 mx-auto my-5"
+const blurb_center = "col-lg-5 mx-auto"
 const collapsable_header = ' fs-4 align-bottom'
 
 
@@ -68,7 +68,7 @@ class Card{
         this.headerText='<i class="fa fa-exclamation-triangle fs-1 rotor" aria-hidden="true"></i> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
         break
       case 'Definition':
-        this.styleList.push(' mx-auto my-4')
+        this.styleList.push('')
         this.innerStyles[0]='text-left'
         this.headerText=`<span class='lead' > Definition: </span>`
         break
@@ -345,7 +345,7 @@ md.use(container, 'Definition', {
 
       let def= new Card("Definition", args[0])
       def.headerText+=`<span class=''>${args[0]} </span>`
-      def.styleList.push(args[1] ? 'col-lg-' + args[1].replace("L","float-lg-start ").replace("R","float-lg-end") : 'col-lg-10 mx-auto' )
+      def.styleList.push(args[1] ? 'col-lg-' + args[1].replace("L","float-lg-start my-0 mx-3 ").replace("R","float-lg-end my-0 mx-3 ") : 'col-lg-10 mx-auto my-5' )
       def.publishCard()
       return div_head.pop()
     } else {

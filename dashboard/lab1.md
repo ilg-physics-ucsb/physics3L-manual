@@ -2,45 +2,35 @@
 
 
 :::Intro (Motion!|Objects for Dropping --- Feather, Basket Ball, Dog Ball|Stopwatch| Large Measuring Tape | Graph Paper)
-This week we will review how to describe, mathematically, the trajectory of a body moving under the influence of a force. For your Prelab, you will sharpen your calculational abilities on some test problems, and make some educated guesses about the influence of **air resistance**.
+This week we will review how to describe, mathematically, the trajectory of a body moving under the influence of a force. For your Pre-Lab, you will sharpen your calculational abilities on some test problems, and make some educated guesses about the influence of **air resistance**.
 
 Following this discussion we will turn our attention to a real experiment. You will analyze the data from this "real-world" experiment, compare the results to the predictions of the "ideal" theory, and then draw inferences about the underlying physics. 
 
 :::
 
-:::Prelab ()
+:::Prelab
 **Prior to Lab**, please complete the following:
- [](#Exercise-analysis) [](#Exercise-analysis)
+ - [](#Exercise-analysis)
 
-Your TA will check your notebook at the begining of class.
+Your TA will check your notebook at the beginning of class.
 :::
 ---
 
-:::Quiz (area| $\frac{1}{2}\pi r^2$ --- Correct! This is the area of a circle in 2D| 0 --- Of course not! This doesn't even have units. Try again.  Of course not! This doesn't even have units. Try again. | R2D2 --- Nope| $a^2 + b^2 = c^2$ --- This is pythagoreous's theorem )
-What is the area of a circle?
-:::
 
 
-:::Quiz (rest| 0 m --- No! Would mean that the speed was $-2.5$ m/s|$25$ m --- Since the ball is stationary — in other words, $v_0= 0$ ms$^{-1}$ —  of course it is still $y (10s)=25$ m!| $250$ m --- No way! Go back and check your work. )
- Let's imagine that that at $t=0$, we have a ball at rest at a height $y_0= 25$ m. What is its position at $t=10$ s?
-
-:::
 
 
-To get a feel for the concepts in this lab, feel free to play with [](#Simulation-balldrop). You can adjust the sliders to see how different conditions affect the trajectory of the ball. Observe how increasing or decreasing air resistance affects the shape of the graph! In this lab you will explore this phenomenon by using your analytical and mathematical skills.
-	
-:::Simulation (balldrop)
-<iframe src="https://kapawlak.github.io/PhDemoJS/Apps/BallDrop/Page.html"  height="1000" style="border:none;width:100%"> </iframe>
+# Keeping Track of Motion in 1D
 
-:::
+For a body in motion, we are typically concerned with three variables which characterize the trajectory of some object. The first and most familiar is the **position**, which tells you where an object is at some instant, with reference to some coordinate system. The position of an object, however, is not always useful — think about a fast moving car on the highway: while you may know which exit you saw it at in one instant, you won't know where the car is a few minutes later unless you know its **velocity**. The velocity of a car, as you instinctively know, tells you something about how its position *changes in time*. 
 
-# Introduction
-
-For 1-D motion of a body, we are typically concerned with three variables which characterize the trajectory:
+Now, if that car happens to be on Route 405 in Los Angeles, even knowing its velocity won't help you figure out where it is minutes later — the heavy LA traffic means that the car's velocity could change at a moment's notice! This change in velocity over time is called **acceleration**. 
 
 
- 
-:::Definition (Variables of Motion)
+
+
+:::Definition (Variables of Motion in 1D)
+
 The **position**, $x(t)$, quantifies where a body is located in space at a given time. In this lab, this is simply the *height* of an object above the ground.
 
 --- 
@@ -50,36 +40,59 @@ The  **velocity**, $v(t)$, quantifies how the *position* of an object changes ov
 --- 
 
 The **acceleration**, $a(t)$, quantifies how the *velocity* of an object changes over time. Physically, it originates from the forces acting on the body through $F=ma$.
+
+
 :::
 
-These three variables are interrelated, as each of the latter two quantities tells you about the *change over time* of the previous one.
+
+These three variables are interrelated, as each of the latter two quantities tells you about the *change over time* of the previous one [fn]You may wonder what a change in acceleration is. This is called [*jerk*](https://en.wikipedia.org/wiki/Jerk_(physics)).We could go on to define the change in jerk and so on, but as it turns out, the three variables in our current discussion are often more than adequate to describe most kinds of motion[/fn]. In this lab, we will learn about what these relationships mean in both a qualitative and quantitative way. Since we are going to experiment with these concepts by dropping a ball off the side of Broida, the remaining discussions in the manual will focus on this scenerio.
+
+:::Note (vectors|3 )
+Unlike the simple case of 1D motion, when we are considering motion in 2D (a plane) or 3D (a volume), all three quantities must be expressed as *vectors*, with independent components for each possible direction of motion. 
+:::
 
 
 ## Motion with No Forces
-:::Figure (noforce|m|R)
-![A graph showing the trajectory a ball takes in time when no force is applied to it. The vertical axis of the graph is distance and the horizontal axis is time. The plot appears as a perfectly horizonal line through the initial position of the ball since the position does not change.](imgs/Lab2/nov_pos.gif "The trajectory of the ball with no force and zero initial velocity")
+
+:::Definition (Rest|4 L)
+An object at **rest** has a velocity of $v=0 \text{ m/s}$ in the frame of interest. 
 :::
-To make our discussion concrete, we should review some basic physics for the case in which there are no forces acting on the body of interest.
+To make our discussion concrete, we should review some basic physics for the case in which there are no forces acting on the body of interest. From [](#Definition-VariablesofMotionin1D), you can probably guess what happens to an object at *rest* when no force is acting upon it.
 
 
-Let's imagine that that at $t=0$, we have a ball at rest at a height $y_0= 25$ m. What is its position at $t=10$ s? Since the ball is stationary &mdash; in other words, $v_0= 0$ m/s &mdash; of course it is still $y(10$ s$)=25$ m!
 
 
+
+:::Quiz (rest| $0\text{m}$ --- No! Would mean that the speed was $-2.5\text{m/s}$|$25 \text{m}$ --- Correct! Since the ball is stationary  $$v_0= 0\, \text{m/s}$$ so it is still at $y=25\text{m}$!| $250\text{m}$ --- No way! Go back and check your work.)
+ Let's imagine that that at $t=0$, we have a ball at **rest** at a height $y_0= 25$ m. There are no forces acting on the ball. What is its position at $t=10$ s?
+
+:::
+
+
+:::Figure (noforce|m|R)
+![A graph showing the trajectory a ball takes in time when no force is applied to it. The vertical axis of the graph is distance and the horizontal axis is time. The plot appears as a perfectly horizonal line through the initial position of the ball since the position does not change.](imgs/VelAcc/nov_pos.gif "The trajectory of the ball with no force and zero initial velocity")
+:::
 
 Now we imagine that this ball is given an initial velocity $v_0 = + 10$ m/s by being tossed upwards, with no forces acting upon it after its release (for example, in space).  Since no forces are acting on the ball, the *change* in the velocity must be zero, so $v(t) = v_0=10$ m/s for all time.  Note that the time, $t$, does not appear in this equation!
 
 
+:::Quiz (const_vel| 125 m --- Correct! The ball traveled for $10\text{s}$ at $10\text{m/s}$, meaning it travelled $10\text{s} \times 10 \frac{\text m}{\text s} = 100$m from its initial position of $25$m|$25$ m --- Since the ball is stationary — in other words, $v_0= 0$ ms$^{-1}$ —  of course it is still $y (10 \text{s})=25$ m!| $250$ m --- No way! Go back and check your work.)
+
+Since the velocity tells you how an object's *position* is changing with time, and we know that the velocity in the absence of force is constant, we can say that the position of the ball will increase by $10$ meters per second that passes. From this, we deduce that at $t=10$ s, the ball is now at $y(10 \text{s})$ =
+
+:::
 
 
-Since the velocity tells you how an object's *position* is changing with time, and we know that the velocity in the absence of force is constant, we can say that the position of the ball will increase by $10$ meters per second that passes. From this, we deduce that at $t=10$ s, the ball is now at $y(10$ s$) = y_0 + v_0 t=  25$ m $+ 10$ m/s $\times 10$ s = $125$ m. 
+
+ $y(10$ s$) = y_0 + v_0 t=  25$ m $+ 10$ m/s $\times 10$ s = $125$ m. 
 
 :::::::::Figure (constvel|l|Row)
 ::::::row
 :::col
-![A graph of a balls position over time when no force is applied, but the starting velocity is not zero. The vertical axis of the graph is position and the horizontal axis is time. The plot appears as a straight line of slope v naught through the initial position of the ball.](imgs/Lab2/v10_pos.gif "a) When there is no force, the velocity remains constant")
+![A graph of a balls position over time when no force is applied, but the starting velocity is not zero. The vertical axis of the graph is position and the horizontal axis is time. The plot appears as a straight line of slope v naught through the initial position of the ball.](imgs/VelAcc/v10_pos.gif "a) When there is no force, the velocity remains constant")
 :::
 :::col
-![A graph of a balls velocity over time when no force is applied. The vertical axis of the graph is velocity and the horizontal axis is time. The plot appears as a perfectly horizonal line through the initial veloctiy of the ball since the position does not change.](imgs/Lab2/v10_vel.png "b) Constant velocity, like constant position, appears as a perfectly horizontal line")
+![A graph of a balls velocity over time when no force is applied. The vertical axis of the graph is velocity and the horizontal axis is time. The plot appears as a perfectly horizonal line through the initial veloctiy of the ball since the position does not change.](imgs/VelAcc/v10_vel.png "b) Constant velocity, like constant position, appears as a perfectly horizontal line")
 :::
 ::::::
 :::::::::
@@ -108,10 +121,10 @@ So that at $t=10$ s, we now calculate that our ball has a velocity of $v(10s) = 
 :::::::::Figure (withforce|l)
 ::::::row
 :::col 
-![](imgs/Lab2/acc_pos.gif "(a) Position vs. time in the presence of an external force")
+![](imgs/VelAcc/acc_pos.gif "(a) Position vs. time in the presence of an external force")
 :::
 :::col 
-![](imgs/Lab2/acc_vel.png "(b) Velocity vs. time in the presence of an external force")
+![](imgs/VelAcc/acc_vel.png "(b) Velocity vs. time in the presence of an external force")
 :::
 ::::::
 
@@ -152,11 +165,11 @@ where y is the position, $v_{0y}$ the initial velocity, $a_{y}$ the acceleration
 ## General Properties of Motion Curves
 :::Figure (graphs|m|R) 
 
-![(a) Constant Position vs. Time](imgs/Lab2/Constant.png "(a) Constant Position vs. Time")
+![(a) Constant Position vs. Time](imgs/VelAcc/Constant.png "(a) Constant Position vs. Time")
 
-![(b) Linear Position vs. Time](imgs/Lab2/Linear.png "(b) Linear Position vs. Time")
+![(b) Linear Position vs. Time](imgs/VelAcc/Linear.png "(b) Linear Position vs. Time")
 
-![(c) Quadratic Position vs. Time](imgs/Lab2/Quad.png "(c) Quadratic Position vs. Time")
+![(c) Quadratic Position vs. Time](imgs/VelAcc/Quad.png "(c) Quadratic Position vs. Time")
 
 :::
 
@@ -181,11 +194,11 @@ Constant refers to a value that is not changing with time; the plot is a horizon
 :::::::::Figure (motiongraphs|m|Row)
 ::::::row
 ::: col l6
-![](imgs/Lab2/HP_MotionGraphs_Download.png)
+![](imgs/VelAcc/HP_MotionGraphs_Download.png)
 :::
 
 :::col l6
-![](imgs/Lab2/HP_MotionGraphs_Annotated.png)
+![](imgs/VelAcc/HP_MotionGraphs_Annotated.png)
 :::
 ::::::
 :::::::::
@@ -206,7 +219,7 @@ Constant refers to a value that is not changing with time; the plot is a horizon
 Now that you have gained familiarity with position, velocity and acceleration plots, you can do analysis. In this exercise you will take a new position plot and create sketches of the velocity and acceleration plots. Please see Figure 6 below.
 
 :::Figure (pvtsketch|l)
-![](imgs/Lab2/PvTSketch.png)
+![](imgs/VelAcc/PvTSketch.png)
 :::
 
 The dashed lines indicate where the plot changes from one of the plot shapes mentioned above, to another. 
@@ -230,7 +243,7 @@ Make sure to take a picture of your sketch plots and include them in your report
 
 ## Collecting Data from an Experiment
 :::Figure (balls|s|R)
-![The sport balls](imgs/Lab2/Balls2.png)
+![The sport balls](imgs/VelAcc/Balls2.png)
 The sport balls - click to enlarge
 :::
 
@@ -485,3 +498,12 @@ each object.
 
 8. On each of these same graphs, also plot $y = \frac{1}{2}a_y t^2$ ;;; using $a_y = -9.8 \text{ m}/\text{s}^2= -32 \text{ ft}/\text{s}^2$, and your fall times to get $y$ ;;; and compare this to your original data. Remember to include a few sentences of analysis with each graph.
 ::::::
+
+
+# Simulation
+To get a feel for the concepts in this lab, feel free to play with [](#Simulation-balldrop). You can adjust the sliders to see how different conditions affect the trajectory of the ball. Observe how increasing or decreasing air resistance affects the shape of the graph! In this lab you will explore this phenomenon by using your analytical and mathematical skills.
+	
+:::Simulation (balldrop)
+<iframe src="https://kapawlak.github.io/PhDemoJS/Apps/BallDrop/Page.html"  height="1000" style="border:none;width:100%"> </iframe>
+
+:::
