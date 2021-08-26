@@ -14438,5 +14438,8 @@ img:hover {
 .Quiz .card-header {
   background-color: #C9BF9D;
 }
+.Quiz .quiz_ans {
+  font-size: 1rem;
+}
 
 /*# sourceMappingURL=custom.css.map */

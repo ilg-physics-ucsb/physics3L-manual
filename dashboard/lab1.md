@@ -16,10 +16,15 @@ Your TA will check your notebook at the begining of class.
 :::
 ---
 
-:::Quiz (area| $\frac{1}{2}\pi r^2$ --- Correct! This is the area of a circle in 2D| 0 --- Of course not! This doesn&rsquo;t even have units. Try again.  Of course not! This doesn&rsquo;t even have units. Try again. | R2D2 --- Nope| $a^2 + b^2 = c^2$ --- This is pythagoreous's theorem )
+:::Quiz (area| $\frac{1}{2}\pi r^2$ --- Correct! This is the area of a circle in 2D| 0 --- Of course not! This doesn't even have units. Try again.  Of course not! This doesn't even have units. Try again. | R2D2 --- Nope| $a^2 + b^2 = c^2$ --- This is pythagoreous's theorem )
 What is the area of a circle?
 :::
 
+
+:::Quiz (rest| 0 m --- No! Would mean that the speed was $-2.5$ m/s|$25$ m --- Since the ball is stationary — in other words, $v_0= 0$ ms$^{-1}$ —  of course it is still $y (10s)=25$ m!| $250$ m --- No way! Go back and check your work.)
+ Let's imagine that that at $t=0$, we have a ball at rest at a height $y_0= 25$ m. What is its position at $t=10$ s?
+
+:::
 
 
 To get a feel for the concepts in this lab, feel free to play with [](#Simulation-balldrop). You can adjust the sliders to see how different conditions affect the trajectory of the ball. Observe how increasing or decreasing air resistance affects the shape of the graph! In this lab you will explore this phenomenon by using your analytical and mathematical skills.

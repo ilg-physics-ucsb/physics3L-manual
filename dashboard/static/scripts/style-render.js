@@ -86,11 +86,20 @@ function replace_tags() {
 
     var quizzes = document.getElementsByClassName('quizlet')
     for(i=0; i<quizzes.length;i++){
+  
+
       quizzes[i].onclick= function(){
-        document.getElementById(this.dataset.modify).innerHTML=this.dataset.result
-      }
-      quizzes[i].onclick= function(){
-        document.getElementById(this.dataset.modify).innerHTML=this.dataset.result
+        var result=katex_map.get(this.id)
+        console.log(result, result.length)
+        document.getElementById(this.dataset.modify).innerHTML=result
+         renderMathInElement( document.getElementById(this.dataset.modify), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false },
+            { left: "\\[", right: "\\]", display: true }
+          ]
+        })
       }
     }
 
@@ -114,6 +123,7 @@ function scrolltohash(){
 
 
 function quick_math(t){
+  console.log(t)
   renderMathInElement(t, {
     delimiters: [
       { left: "$$", right: "$$", display: true },

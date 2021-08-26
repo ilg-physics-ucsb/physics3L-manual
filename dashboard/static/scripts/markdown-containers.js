@@ -2,6 +2,7 @@
 var Counter = {}; //This keeps track of the number of each element and their reference name
 var div_head = []; //This list lets us print out the headers for custom classes
 var div_foot = []; //This list lets us print ou the footers of custom classes using first-in-first-out when there are nested containers
+const katex_map = new Map(); //saves key pairs for retreiving latex in blurbs
 
 //Class Groups
 
@@ -109,7 +110,7 @@ class Card{
       case 'Quiz':
         this.styleList.push(blurb_center)
         this.innerStyles[1]='text-center'
-        this.headerText=`<i class="bi bi-journal-text"></i><strong>Check your understanding</strong> <i class="bi bi-journal-text"> </i>`
+        this.headerText=`<i class="bi bi-check2-circle fs-2"></i> Your Understanding `
         break
     } 
   }
@@ -226,7 +227,6 @@ md.use(container, 'Quiz', {
     if (tokens[idx].nesting === 1) {  
       args = strip(tokens[idx].info.trim().match(/^Quiz(.*)$/)[1])
       let quiz=new Card("Quiz", args[0].replace(/[^a-zA-Z0-9]/g,''))
-      quiz.headerText='<i class="bi bi-check2-circle"></i> Your Understanding '
       quiz.publishCard()
 
 
@@ -853,6 +853,8 @@ function quizzy(args,ref) {
   args.forEach((e, i) => {
     // console.log(e)
     obj = e.split('---')[0]; deet = e.split('---').slice(1).join(' ');
+    var katex_key=`${ref}_ans_${i}`
+    katex_map.set(katex_key, deet)
     // console.log(obj, deet)
     inner += `<li class="list-group-item align-middle py-1 ">
               <a tabindex="0"  role="button" class="btn btn-UCSB-navy position-relative quizlet" 
@@ -872,9 +874,3 @@ function quizzy(args,ref) {
 
 }
 
-
-function insert_quiz_text(repytext, quiz_id){
-  console.log('i was called')
-  document.getElementById(quiz_id).innerHTML=repytext
-  
-}
