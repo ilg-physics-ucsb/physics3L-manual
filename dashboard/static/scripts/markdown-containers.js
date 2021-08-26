@@ -225,7 +225,7 @@ md.use(container, 'Quiz', {
   // Intro (Heading Line|material 1 --- comment|material 2 --- comment| ...)
   render: function (tokens, idx) {   
     if (tokens[idx].nesting === 1) {  
-      args = strip(tokens[idx].info.trim().match(/^Quiz(.*)$/)[1])
+      args = strip_leave(tokens[idx].info.trim().match(/^Quiz(.*)$/)[1])
       let quiz=new Card("Quiz", args[0].replace(/[^a-zA-Z0-9]/g,''))
       quiz.publishCard()
 
@@ -613,9 +613,16 @@ function updateCounter(ref, type){
 
 ////Small Things
 
-function strip(m) {
-  return md.utils.escapeHtml(m).trim().replace(/[()]/g, '').split('|')
+function strip_leave(m) {
+  return md.utils.escapeHtml(m).trim().replace(/\((\(*(?:[^)(]*|\([^)]*\))*\)*)\)/g, "$1").split('|')
+
 }
+
+function strip(m) {
+  // return md.utils.escapeHtml(m).trim().replace(/[()]/g, '').split('|')
+  return md.utils.escapeHtml(m).trim().replace(/\((\(*(?:[^)(]*|\([^)]*\))*\)*)\)/g, "$1").split('|')
+}
+
 
 
 md.use(container, 'col', {

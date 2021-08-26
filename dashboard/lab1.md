@@ -21,7 +21,7 @@ What is the area of a circle?
 :::
 
 
-:::Quiz (rest| 0 m --- No! Would mean that the speed was $-2.5$ m/s|$25$ m --- Since the ball is stationary — in other words, $v_0= 0$ ms$^{-1}$ —  of course it is still $y (10s)=25$ m!| $250$ m --- No way! Go back and check your work.)
+:::Quiz (rest| 0 m --- No! Would mean that the speed was $-2.5$ m/s|$25$ m --- Since the ball is stationary — in other words, $v_0= 0$ ms$^{-1}$ —  of course it is still $y (10s)=25$ m!| $250$ m --- No way! Go back and check your work. )
  Let's imagine that that at $t=0$, we have a ball at rest at a height $y_0= 25$ m. What is its position at $t=10$ s?
 
 :::
