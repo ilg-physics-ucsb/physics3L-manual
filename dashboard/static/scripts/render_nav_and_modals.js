@@ -195,9 +195,12 @@ imgModal.addEventListener('show.bs.modal', function (event) {
   modalBodyInput.innerHTML = `
   <img src="${image.getAttribute('src')}"  alt="${image.getAttribute('alt')} width="100%" style="max-width:100%"></img>
   <hr>
-
+  <p id= "modal_cap">
   ${image.getAttribute('title')}
+  </p>
   `
+
+  quick_math(document.getElementById('imgModal'))
   
   
   

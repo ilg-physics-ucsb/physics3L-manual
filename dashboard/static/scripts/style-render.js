@@ -1,4 +1,5 @@
 function processstyles(){
+  
   renderMathInElement(document.body, {
     delimiters: [
       { left: "$$", right: "$$", display: true },
@@ -35,35 +36,41 @@ function processstyles(){
 
 
 function replace_tags() {
-    var text = document.querySelectorAll('h1, h2, h3, #maincontent p, #maincontent span, #maincontent li, #maincontent table') 
-    for (i = 0; i < text.length; i++) {
-      emojified = text[i].innerHTML.replaceAll(/(\@)(.*?)(\@)/g, "<i class='fa $2'></i>")
-      text[i].innerHTML = emojified
-  
-      fnoted = text[i].innerHTML.replaceAll(/\[fn\](.*?)\[\/fn\]/g, 
-      `<span class= 'mytooltip' tabindex="0"><sup>]</sup>
-      <span class ='tooltiptext'>$1</span></span>`)
-      text[i].innerHTML = fnoted
-  
-      checked = text[i].innerHTML.replaceAll(/\[c\]/g, "<input type= 'checkbox'>")
-      text[i].innerHTML = checked
+    var text = document.querySelectorAll(' #maincontent >*:not(code):not(pre)')
+    text.forEach( (t) => {
      
-      popper=text[i].innerHTML.replaceAll(/(;;;)(.*?)(;;;)/g,` 
+      emojified = t.innerHTML.replaceAll(/(\@)(.{2})(-)(.*?)(\@)/g, `<i class='$2 $2-$4'></i>`)
+      t.innerHTML = emojified
+  
+      fnoted = t.innerHTML.replaceAll(/\[fn\](.*?)\[\/fn\]/g, 
+      `<span class= 'mytooltip' tabindex="0"><sup>]</sup>
+      </span><span class ='tooltiptext'>$1</span>`)
+      t.innerHTML = fnoted
+  
+      checked = t.innerHTML.replaceAll(/\[c\]/g, "<input type= 'checkbox'>")
+      t.innerHTML = checked
+     
+      popper=t.innerHTML.replaceAll(/(;;;)(.*?)(;;;)/g,` 
       <a tabindex="0" class=" text-primary p-0 m-0 align-top" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="$2" style='text-indent:0px;'><i class="bi bi-question-square-fill"></i></a>`)
-      text[i].innerHTML = popper
+      t.innerHTML = popper
       
+      quick_math(t)
+        
       
-    }
+    })
     
 
     var links = document.querySelectorAll('#maincontent a')
     for (i = 0; i < links.length; i++) {
       if( links[i].innerHTML ==''){
       console.log(links[i])
+      links[i].innerHTML ='Invalid Link'
       var link_id = links[i].getAttribute("href").replace('#','');
 
       let link_ref= document.getElementById(link_id)
-      links[i].innerHTML = `${link_ref.dataset.type} ${link_ref.dataset.kiwi}`
+  
+      if(link_ref){
+      links[i].innerHTML = `${link_ref.dataset.type} ${link_ref.dataset.kiwi}`}
       }
     }
 
@@ -74,6 +81,25 @@ function replace_tags() {
         this.classList.toggle('btn-UCSB-gold')
         this.querySelector('span').classList.remove('bg-danger')
         this.querySelector('span').classList.add('bg-secondary')
+      }
+    }
+
+    var quizzes = document.getElementsByClassName('quizlet')
+    for(i=0; i<quizzes.length;i++){
+  
+
+      quizzes[i].onclick= function(){
+        var result=katex_map.get(this.id)
+        console.log(result, result.length)
+        document.getElementById(this.dataset.modify).innerHTML=result
+         renderMathInElement( document.getElementById(this.dataset.modify), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false },
+            { left: "\\[", right: "\\]", display: true }
+          ]
+        })
       }
     }
 
@@ -93,3 +119,17 @@ function scrolltohash(){
             }, 300);
           }
         }
+
+
+
+function quick_math(t){
+  console.log(t)
+  renderMathInElement(t, {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "$", right: "$", display: false },
+      { left: "\\(", right: "\\)", display: false },
+      { left: "\\[", right: "\\]", display: true }
+    ]
+  })
+}

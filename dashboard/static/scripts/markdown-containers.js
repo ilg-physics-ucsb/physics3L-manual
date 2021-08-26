@@ -2,22 +2,26 @@
 var Counter = {}; //This keeps track of the number of each element and their reference name
 var div_head = []; //This list lets us print out the headers for custom classes
 var div_foot = []; //This list lets us print ou the footers of custom classes using first-in-first-out when there are nested containers
+const katex_map = new Map(); //saves key pairs for retreiving latex in blurbs
 
 //Class Groups
-const pad_mar = "px-0 mx-auto my-5" //Applies 0 padding, auto margin (centers element), and bottom margin to most card groups
-const group1 = "col-lg-9" // forces a 75% columnar layout that expands to 95% width on small screens
+
 const fig_group = "justify-content-center text-center px-0 mx-3 mb-4" //Formatting that is special for figues -- adds margins to floated figs
 
 const narrow_center = "col-lg-9 mx-auto my-5"
+const blurb_center = "col-lg-5 mx-auto"
 const collapsable_header = ' fs-4 align-bottom'
 
 
 class Card{
   constructor(type, ref) {
+    //Correct for non-alphanumeric
+    ref=(ref||'').replace(/[^a-zA-Z0-9-_]/g,'')
     //Static
     this.type=type
-    this.ref= type + '-' +ref  
+    
     this.number= updateCounter(ref,type)
+    this.ref= type + '-' + (ref||this.number)  
     this.id = type + this.number;
 
     //Mutable -- can be set in the calling routine below
@@ -64,9 +68,9 @@ class Card{
         this.headerText='<i class="fa fa-exclamation-triangle fs-1 rotor" aria-hidden="true"></i> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
         break
       case 'Definition':
-        this.styleList.push(' mx-auto ')
+        this.styleList.push('')
         this.innerStyles[0]='text-left'
-        this.headerText=`<strong > Definition ${this.number}: </strong>`
+        this.headerText=`<span class='lead' > Definition: </span>`
         break
       case 'Table':
         this.styleList.push(' mx-auto ')
@@ -76,7 +80,7 @@ class Card{
       case 'Hider':
         this.collapse=true
         this.styleList.push(narrow_center)
-        this.innerStyles[0]+= collapsable_header
+        this.innerStyles[0]+= ' fs-5 align-bottom text-left'
 
         break
       case 'Activity':
@@ -99,8 +103,15 @@ class Card{
         this.styleList.push(narrow_center)
         this.innerStyles[0]+= collapsable_header
         break
-      
-
+      case 'Prelab':
+        this.styleList.push(blurb_center)
+        this.headerText=`<i class="bi bi-journal-text"></i><strong> Prelab Assignment</strong> <i class="bi bi-journal-text"> </i>`
+        break
+      case 'Quiz':
+        this.styleList.push(blurb_center, 'my-5')
+        this.innerStyles[1]='text-center'
+        this.headerText=`<i class="bi bi-check2-circle fs-2"></i> Your Understanding `
+        break
     } 
   }
 
@@ -112,7 +123,6 @@ class Card{
  }
 
 function classCard(c) {
-
   div_head.push(`
   <div id="${c.ref}" 
     class="${[c.styleList.join(' ')]} " 
@@ -205,6 +215,28 @@ md.use(container, 'Intro', {
       return div_head.pop()
     } else {
       return div_foot.pop()
+    }
+  }
+})
+
+///Quiz////
+md.use(container, 'Quiz', {  
+  // Input Format is:
+  // Intro (Heading Line|material 1 --- comment|material 2 --- comment| ...)
+  render: function (tokens, idx) {   
+    if (tokens[idx].nesting === 1) {  
+      args = strip_leave(tokens[idx].info.trim().match(/^Quiz(.*)$/)[1])
+      let quiz=new Card("Quiz", args[0].replace(/[^a-zA-Z0-9]/g,''))
+      quiz.publishCard()
+
+
+      quizinner= quizzy(args.slice(1), quiz.ref)
+      div_foot[div_foot.length-1]= quizinner  +div_foot[div_foot.length-1]
+      console.log(quiz.ref)
+      return `${div_head.pop()} `
+    } else {
+      return ` <hr>
+      ${div_foot.pop()}`
     }
   }
 })
@@ -312,8 +344,8 @@ md.use(container, 'Definition', {
       args = strip(tokens[idx].info.trim().match(/^Definition(.*)$/)[1])
 
       let def= new Card("Definition", args[0])
-      def.headerText+=`<span class='lead'>${args[0]} </span>`
-      def.styleList.push(args[1] ? 'col-lg-' + args[1] : 'col-lg-10')
+      def.headerText+=`<span class=''>${args[0]} </span>`
+      def.styleList.push(args[1] ? 'col-lg-' + args[1].replace("L","float-lg-start mt-0 mb-1 mx-3 ").replace("R","float-lg-end mt-0 mb-1 mx-3 ").replace("C","mx-auto my-4 ") : 'col-lg-10 mx-auto my-5' )
       def.publishCard()
       return div_head.pop()
     } else {
@@ -322,7 +354,24 @@ md.use(container, 'Definition', {
   }
 })
 
+///PRELAB
+md.use(container, 'Prelab', {
+  // Input Format is: 
+  // Warning (optional-width)
+  render: function (tokens, idx) {
+    let args;
+    if (tokens[idx].nesting === 1) {
+      args = strip(tokens[idx].info.trim().match(/^Prelab(.*)$/)[1])
 
+      let def= new Card("Prelab", args[0])
+
+      def.publishCard()
+      return div_head.pop()
+    } else {
+      return div_foot.pop()
+    }
+  }
+})
 
 ///TABLES
 md.use(container, 'Table', {
@@ -496,7 +545,6 @@ md.use(container, 'Card', {
 
 
 ///GENERIC Accordion
-
 md.use(container, 'Drop', {
   render: function (tokens, idx) {
     if (tokens[idx].nesting === 1) {
@@ -505,7 +553,7 @@ md.use(container, 'Drop', {
     let drop = new Card('Drop',args[0])
     drop.headerText=args[1]
     drop.footerText=args[2]
-    drop.styleList.push(args.slice(3))  
+    drop.innerStyles[0]+= ' ' + args.slice(3)  
     drop.publishCard()
     return div_head.pop()
     }else{
@@ -532,117 +580,49 @@ md.use(container, 'Drop', {
 ////////////////////////////Utility Card Routines
 //This counter
 function updateCounter(ref, type){
-  let this_count =( Counter[type] ? Counter[type].length + 1 : 1 )
- 
+  let this_count
   if (Counter[type]) {
+    this_count= Counter[type].length + 1
     if (ref == '') {
-      ref = this_count.toString()
+      Counter[type].push([this_count, type+'-'+this_count])
+    }else{
+      Counter[type].push([this_count, type+'-'+ref])
     }
-    Counter[type].push([this_count, ref]);
+   ;
   } else {
+    this_count=1
     Counter[type] = []
+    
     if (ref == '') {
-      ref = this_count.toString()
+      Counter[type][0]=[this_count, type+'-'+this_count]
+    }else{
+      Counter[type][0]=[this_count, type+'-'+ref]
     }
-    Counter[type][0] = [1, ref]
+
   }
-  console.log(Counter)
+
   return this_count
 }
 
 
-//Blank Cards
-function card_maker(type, ref, header, footer, card_style, content_style = ['text-center', 'text-center', 'text-center']) {
- 
-  this_count=updateCounter
-(ref, type)
 
 
-  var opening_string =
-    `<div id ="${type + '-' + ref}" class=" ${[type, card_style].join(' ')} card" data-kiwi="${this_count}" data-type="${type}"> `;
-
-    opening_string += (header == '' || header == null ? '' :
-      `<div class="card-header  ">
-        <h5 class="my-0 ${content_style[0]} align-baseline ">
-          ${header.replace('#', this_count)}
-        </h5>
-      </div>`);
-  
-  opening_string +=
-    `<div class=" container  ${content_style[1]}">
-        <div class="card-text card-body px-2">`;
-
-  var closing_string =
-    `</div>
-        </div>`;
-  
-    closing_string += (footer == '' || footer == null ? '' :
-      `<div class="card-footer">
-        <h5 class="my-0 ${content_style[2]} ">
-          ${footer.replace('#', this_count)}
-        </h5>
-      </div>`);
-  
-  closing_string +=
-    `</div>`
-
-
-div_head.push(opening_string)
-  div_foot.push(closing_string)
-}
-
-
-
-
-//Blank Card Collapse
-function card_maker_collapse(type, ref, header, card_style, content_style = ['text-center', 'text-center', 'text-center']) {
-  var card_id
-  var this_count
-  if (Counter[type]) {
-    this_count = Counter[type].length + 1
-    Counter[type].push([this_count, ref]);
-    card_id = type + Counter[type]
-  } else {
-    Counter[type] = []
-    this_count = 1
-    Counter[type][0] = [1, ref]
-  }
-
-  var uniqueid = [type, this_count, "ac"].join('-')
-  if (header == '') {
-    header = type
-  }
-  var opening_string =
-    `
-      <div id ="${type + '-' + ref}" class="accordion accordion-flush card col-card ${[type, card_style].join(' ')}" data-kiwi="${this_count}" data-type="${type}" >
-        <div class="accordion-item"> 
-          
-            <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#${uniqueid}" aria-expanded="false" aria-controls="${uniqueid}">
-             ${header.replace('#', this_count)}
-            </button>
-   
-          <div id="${uniqueid}" class="accordion-collapse collapse card-text px-2 ${content_style[1]}" aria-labelled-by="${uniqueid}" data-bs-parent="#${type + '-' + ref}">
-            <div class="accordion-body container ">`
-    ;
-  var closing_string =
-    `</div>
-          </div>
-        </div>
-      </div>
-    `
-
-  div_head.push(opening_string)
-  div_foot.push(closing_string)
-}
 
 
 
 
 ////Small Things
 
-function strip(m) {
-  return md.utils.escapeHtml(m).trim().replace(/[()]/g, '').split('|')
+function strip_leave(m) {
+  return md.utils.escapeHtml(m).trim().replace(/\((\(*(?:[^)(]*|\([^)]*\))*\)*)\)/g, "$1").split('|')
+
 }
+
+function strip(m) {
+  // return md.utils.escapeHtml(m).trim().replace(/[()]/g, '').split('|')
+  return md.utils.escapeHtml(m).trim().replace(/\((\(*(?:[^)(]*|\([^)]*\))*\)*)\)/g, "$1").split('|')
+}
+
 
 
 md.use(container, 'col', {
@@ -652,7 +632,7 @@ md.use(container, 'col', {
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^col(.*)$/)[1])
       // opening tag
-      return `<div class="col-lg ${args[0]}">`;
+      return `<div class= "  align-items-end col-lg${args[0] ? (/\d/.test(args[0]) ? `-${args[0]}` : ` ${args[0]}`): ''}">`;
     } else {
       return '</div>'
     }
@@ -668,7 +648,7 @@ md.use(container, 'row', {
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^row(.*)$/)[1])
       // opening tag
-      return `<div class="row ${args[0]}">`;
+      return `<div class="d-flex flex-row align-items-baseline ${args[0]}">`;
     } else {
       return '</div>'
     }
@@ -770,20 +750,73 @@ md.use(container, 'Summary', {
     let args;
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Summary(.*)$/)[1])
+      
       // opening tag
-      return `<div class="Summary card col-lg-8 mx-auto">
-      <div class="card-header">
-      Summary of the Lab
-      </div>
-      <div class="card-body">
-      There were ${Counter["Activity"].length} Activities and ${Counter["Exercise"].length} Exercises
-      </div>
+      let string= `
+      <div class="Summary card col-lg-8 mx-auto ">
+        <div class="card-header text-center display-6 ">
+          Summary of the Lab
+        </div>`
       
-      `
+      string+=`
+      <div class='row g-0' >
+        <div class='col-3 text-center badge-Activity container fs-3 text-white'>
+          <span class='badge badge-Activity fs-1 text-white'> ${Counter["Activity"].length} </span> <br> Activities
+          </div> `    
+      string+=`
+        <div class='col-9' style='border-bottom:1px solid var(--bs-secondary)'>
+          <ul class="list-inline px-1 py-0 mb-3 " >`
+      Counter["Activity"].forEach((e)=> {
+        string += `<li class="list-inline-item align-middle py-1">
+            <a 
+              tabindex="0"  
+              href="#${e[1]}"
+              role="button" 
+              class="btn btn-sm badge-Activity position-relative mats text-white"  
+              aria-pressed="false" autocomplete="off">
+              Activity ${e[0]}
+            </a>
+          </li>`
+        })
+          
+
+        string+=`
+        </ul>
+        </div>
       
+        </div>
+    
+        <div class='row g-0'>
+        <div class='col-3 text-center badge-Exercise container fs-3 text-white'>
+          <span class='badge badge-Exercise fs-1 text-white'> ${Counter["Exercise"].length} </span> <br> Exercises
+          </div> `
+       
+      string+=`
+        <div class='col-9 '>
+          <ul class="list-inline px-1 py-0 mb-3 " >`
+ 
+        Counter["Exercise"].forEach((e)=> {
+          string += `<li class="list-inline-item align-middle py-1">
+              <a 
+                tabindex="0"  
+                href="#${e[1]}"
+                role="button" 
+                class="btn btn-sm badge-Exercise position-relative mats text-white"  
+                aria-pressed="false" autocomplete="off">
+                Exercise ${e[0]}
+              </a>
+            </li>`
+          })
+          
+        string+=`</ul>
+        </div>
+        </div>
+        <div class="card-footer text-center py-2" >
+          Please be sure to complete all parts of the lab`
+      return string
       ;
     } else {
-      return '</div>'
+      return ' </div></div>'
     }
   }
 });
@@ -814,3 +847,37 @@ function materials(args) {
   return list;
 
 }
+
+function quizzy(args,ref) {
+  let obj, deet
+
+  let inner = `
+  <div class="row">
+  <div class="col">
+     <ul class="Quiz px-1 py-0 mb-3 list-group-flush" >
+
+      `
+  args.forEach((e, i) => {
+    // console.log(e)
+    obj = e.split('---')[0]; deet = e.split('---').slice(1).join(' ');
+    var katex_key=`${ref}_ans_${i}`
+    katex_map.set(katex_key, deet)
+    // console.log(obj, deet)
+    inner += `<li class="list-group-item align-middle py-1 ">
+              <a tabindex="0"  role="button" class="btn btn-UCSB-navy position-relative quizlet" 
+                id= '${ref}_ans_${i}'
+                aria-pressed="false" autocomplete="off" data-modify="${ref}_answer" data-result="${deet}">
+                ${obj} 
+              </a>
+            </li>
+             `
+      // document.getElementById(`${ref}_ans_${i}`).onclick= insert_quiz_text(deet, ref+'_answer')
+  })
+
+  inner+=`</div> 
+  <div class="col quiz_ans align-middle" id="${ref}_answer" > Choose your answer.</div>
+  </div>`
+  return inner;
+
+}
+

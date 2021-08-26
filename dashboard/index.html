@@ -26,8 +26,8 @@
 
   <!-- To automatically render math in text elements, include the auto-render extension: -->
   <script src="static/scripts/auto-render.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
-    integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" -->
+    <!-- integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous"> -->
 
   <!-- Symbol to Style Loop -->
   <script src="static/scripts/style-render.js"></script>
@@ -189,11 +189,14 @@
           <div class="spinner-border spinner-border-lg position-absolute top-50 start-50  " role="status">
             <span class="visually-hidden ">Loading...</span>
           </div>
-
+         
         </div>
+        <br>
+        <br>
+        <footer class='text-center bg-UCSB-lightgray m-0'> <small class="muted" id='copyright'></small></footer>
       </main>
 
-
+      
 
 
 
@@ -221,7 +224,7 @@
       console.log("pressed")
     })
   })()
-
+document.getElementById('copyright').innerHTML=`©(2020-${new Date().getFullYear()}) UCSB ILG`
 
   //Function that determines the page to display based on URL Variable.
   const queryString = window.location.search;

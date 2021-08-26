@@ -53,20 +53,8 @@
         "file": "lab0"
       },
       {
-        "name": "Lab 1",
-        "file": "lab1"
-      },
-      {
         "name": "Showcase",
         "file": "showcase"
-      },
-      {
-        "name": "Reference Material",
-        "file": "references"
-      },
-      {
-        "name": "Showcase2",
-        "file": "showcase2"
       }
     ],
     "integrations": [
@@ -77,7 +65,7 @@
     ],
     "Course-info":
       {
-        "name" : "Physics 3L"
+        "name" : "Physics 4L"
       }
     
   }

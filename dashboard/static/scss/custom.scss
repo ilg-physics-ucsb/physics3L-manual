@@ -253,6 +253,16 @@ $simulation-bg:$UCSB-mist;
  };
 
 
+ .Summary{
+
+    background-color: tint-color($intro-bg,80%);
+    > .card-header{
+        color:white;
+        background-color: $intro-bg
+       }
+ }
+
+
 ///Materials/////////////////////////////
  .Materials{
     background-color:rgba(white, .2);
@@ -280,6 +290,23 @@ $simulation-bg:$UCSB-mist;
 
     .card-header{
         background-color: tint-color($UCSB-gold,50%);
+    }
+    .card-body{
+        font-size: smaller
+    }
+ };
+
+ .Prelab{
+    background-color: $light;
+    color:$dark;
+
+    ul{
+        font-size: 90%;
+    };
+
+    .card-header{
+        background-color: shade-color(tint-color(red,20%),20%);
+        color:white
     }
  };
 
@@ -313,6 +340,7 @@ $simulation-bg:$UCSB-mist;
     }
 };
 
+///Hider////
 
 
 //Simulation
@@ -358,7 +386,7 @@ $simulation-bg:$UCSB-mist;
 
 
 ///
-.Contact{
+.Contact, .Drop{
     button:after{
         background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>")
 
@@ -367,6 +395,22 @@ $simulation-bg:$UCSB-mist;
         background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>")
 
     }
+}
+
+.col-card{
+    border-radius: 5px!important;
+    button{
+    border: 0px solid black;
+    width: 100%;
+    box-shadow: none!important;
+    border-radius: 0.25rem!important;
+
+    };
+    button:not(.collapsed){
+        border: 0px solid black;
+        border-bottom-left-radius: 0.0rem!important;
+        border-bottom-right-radius: 0.0rem!important;
+     };
 }
 ///Activity
 .Activity {
@@ -413,6 +457,15 @@ $simulation-bg:$UCSB-mist;
 
 }
 
+.badge-Activity{
+    background-color: $Activity-bg;
+    font-size: 1.3rem;
+}
+.badge-Activity:hover{
+    background-color: tint-color($Activity-bg,20%);
+
+}
+
 ///Exercise
 
 
@@ -440,8 +493,14 @@ $simulation-bg:$UCSB-mist;
 
 
 }
+.badge-Exercise{
+    background-color: $Exercise-header-bg;
+    font-size: 1.3rem;
+}
+.badge-Exercise:hover{
+    background-color: tint-color($Exercise-header-bg,20%);
 
-
+}
 //Video
 .Video {
 
@@ -520,6 +579,10 @@ $simulation-bg:$UCSB-mist;
    
  };
 
+ 
+
+
+
 .xs, .s, .m, .l, .xl{
     margin:auto;
 }
@@ -531,9 +594,9 @@ $simulation-bg:$UCSB-mist;
       }
       
       
-      .Note.float-lg-end{
-        margin:0rem 0rem 0rem 1.2rem!important
-      }
+    .Note.float-lg-end{
+    margin:0rem 0rem 0rem 1.2rem!important
+    }
     .modal-body img{
         max-height: calc(100vh - 180px);
     }
@@ -542,20 +605,23 @@ $simulation-bg:$UCSB-mist;
         max-width:80%;
     }
     .xs.Figure:not(.rowfig), .xs img{
-        width:10rem;
+        width:min(10rem, 100%);
     }
     .s.Figure:not(.rowfig), .s img{
-        max-width: 15rem;
+        max-width: min(15rem, 100%);
+        margin: auto;
     }
     .m.Figure:not(.rowfig), .m img{
-        max-width: 20rem;
+        max-width: min(20rem, 100%);
         margin: auto;
     }
     .l.Figure:not(.rowfig), .l img{
-        max-width: 25rem;
+        max-width: min(25rem, 100%);
+        margin: auto;
     }
     .xl.Figure:not(.rowfig), .xl img {
-        max-width: 40rem;
+        max-width: min(40rem, 100%);
+        margin: auto;
     }
  }
  .Figure img{
@@ -566,6 +632,7 @@ $simulation-bg:$UCSB-mist;
  .Figure:not(.rowfig) img{
     max-width:100%;
  }
+
 
 
 
@@ -656,7 +723,7 @@ img:hover{
   };
   
   /* Tooltip text */
-  .mytooltip .tooltiptext {
+  .mytooltip + .tooltiptext {
   
     background-color: black;
     color: #fff;
@@ -676,12 +743,11 @@ img:hover{
   };
 
   /* Show the tooltip text when you mouse over the tooltip container */
-   .mytooltip:active  .tooltiptext, .mytooltip:focus  .tooltiptext{
+   .mytooltip:active + .tooltiptext, .mytooltip:focus + .tooltiptext{
     opacity: 1;
     display: block;
     bottom:5px;
     transition: opacity 1s ease;
-    
     z-index:2;
   };
   
@@ -702,6 +768,79 @@ img:hover{
   }
 
 
-.card-header p, .card-footer p{
+.card-header p, .card-footer p, .card-header h5, .card-footer h5{
     margin-bottom: 0px!important
 }
+
+
+
+.Table {
+    
+    .card-body{
+    overflow-x: scroll;
+    }
+    card-footer{
+        max-width: 100%;
+    }
+  }
+
+  .card:not(.Note){
+    overflow-x: hidden;
+
+  }
+
+
+
+.Equation .card-body::-webkit-scrollbar-thumb {
+  width: 10px;
+  height: 10px;
+  background-color: #aaa;
+  border-right: gray 1px;
+  /* or add it to the track */
+}
+
+ .Equation .card-body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: $eqn-bg;
+    /* or add it to the track */
+  }
+
+
+  .Table .card-body::-webkit-scrollbar-thumb {
+  width: 10px;
+  height: 10px;
+  background-color: #aaa;
+  border-right: gray 1px;
+  /* or add it to the track */
+}
+
+.Table .card-body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    /* or add it to the track */
+  }
+
+
+.Quiz a:focus{
+    background-color: $UCSB-gold;
+    border: 0px white solid;
+}
+.Quiz {
+    a{
+    width: 100%;
+    }
+    li, ol, ul{
+        border: 0px white solid;
+    }
+ 
+    .card-header{
+        background-color: $UCSB-sandstone;
+    }
+    .quiz_ans{
+        font-size: 1rem;
+    }
+}
+
+.katex { font-size: 105%; }

@@ -45,6 +45,7 @@ h2.accordion-header{
   color: var(--bs-gray-dark);
   padding-top: 20px;
   margin-bottom: 10px;
+  clear: none;
 }
 
 h1,h2, h6{
@@ -124,24 +125,24 @@ h1:not(#part0)~ul{
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
-.sidebar::-webkit-scrollbar,
-.Table::-webkit-scrollbar {
+.sidebar::-webkit-scrollbar {
   width: 10px;
-  height: 20px;
+  height: 10px;
   background-color: #f0f0f0;
   /* or add it to the track */
 }
 
-.sidebar::-webkit-scrollbar-thumb,
-.Table::-webkit-scrollbar-thumb {
+.sidebar::-webkit-scrollbar-thumb{
   width: 10px;
-  height: 20px;
+  height: 10px;
   background-color: #aaa;
   border-right: gray 1px;
   /* or add it to the track */
 }
 
-
+.Equation .card-body{
+  overflow-x: scroll;
+}
 
 .sidebar-sticky {
   position: relative;
@@ -221,5 +222,4 @@ h1:not(#part0)~ul{
 h5.text-responsive{
   font-size: calc(0.9rem + 0.6vw)!important;
 }
-
 
