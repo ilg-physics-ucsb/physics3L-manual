@@ -226,7 +226,7 @@ md.use(container, 'Quiz', {
     if (tokens[idx].nesting === 1) {  
       args = strip(tokens[idx].info.trim().match(/^Quiz(.*)$/)[1])
       let quiz=new Card("Quiz", args[0].replace(/[^a-zA-Z0-9]/g,''))
-      quiz.headerText='<i class="bi bi-bookmark-star-fill"></i> Check Your Understanding <i class="bi bi-bookmark-star-fill"></i>'
+      quiz.headerText='<i class="bi bi-check2-circle"></i> Your Understanding '
       quiz.publishCard()
 
 
