@@ -226,7 +226,7 @@ md.use(container, 'Quiz', {
     if (tokens[idx].nesting === 1) {  
       args = strip(tokens[idx].info.trim().match(/^Quiz(.*)$/)[1])
       let quiz=new Card("Quiz", args[0].replace(/[^a-zA-Z0-9]/g,''))
-      quiz.headerText='Check your Understanding'
+      quiz.headerText='<i class="bi bi-bookmark-star-fill"></i> Check Your Understanding <i class="bi bi-bookmark-star-fill"></i>'
       quiz.publishCard()
 
 
@@ -235,7 +235,7 @@ md.use(container, 'Quiz', {
       console.log(quiz.ref)
       return `${div_head.pop()} `
     } else {
-      return `
+      return ` <hr>
       ${div_foot.pop()}`
     }
   }
@@ -866,7 +866,7 @@ function quizzy(args,ref) {
   })
 
   inner+=`</div> 
-  <div class="col quiz_ans align-middle" id="${ref}_answer" > Choose your answer</div>
+  <div class="col quiz_ans align-middle" id="${ref}_answer" > Choose your answer.</div>
   </div>`
   return inner;
 
