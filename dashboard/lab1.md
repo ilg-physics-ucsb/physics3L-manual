@@ -16,7 +16,7 @@ Your TA will check your notebook at the begining of class.
 :::
 ---
 
-:::Quiz (area| $\frac{1}{2}\pi r^2$ --- Correct! This is the area of a circle in 2D| 0 --- Of course not! This doesn&rsquo;t even have units. Try again| R2D2 --- Nope| $a^2 + b^2 = c^2$ --- This is pythagoreous's theorem )
+:::Quiz (area| $\frac{1}{2}\pi r^2$ --- Correct! This is the area of a circle in 2D| 0 --- Of course not! This doesn&rsquo;t even have units. Try again.  Of course not! This doesn&rsquo;t even have units. Try again. | R2D2 --- Nope| $a^2 + b^2 = c^2$ --- This is pythagoreous's theorem )
 What is the area of a circle?
 :::
 

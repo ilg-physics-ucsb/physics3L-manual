@@ -69,7 +69,7 @@ class Card{
       case 'Definition':
         this.styleList.push(' mx-auto my-4')
         this.innerStyles[0]='text-left'
-        this.headerText=`<strong > Definition ${this.number}: </strong>`
+        this.headerText=`<span class='lead' > Definition: </span>`
         break
       case 'Table':
         this.styleList.push(' mx-auto ')
@@ -344,7 +344,7 @@ md.use(container, 'Definition', {
       args = strip(tokens[idx].info.trim().match(/^Definition(.*)$/)[1])
 
       let def= new Card("Definition", args[0])
-      def.headerText+=`<span class='lead'>${args[0]} </span>`
+      def.headerText+=`<span class=''>${args[0]} </span>`
       def.styleList.push(args[1] ? 'col-lg-' + args[1] : 'col-lg-10')
       def.publishCard()
       return div_head.pop()
