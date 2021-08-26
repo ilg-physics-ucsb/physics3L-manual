@@ -54,10 +54,14 @@ Unlike the simple case of 1D motion, when we are considering motion in 2D (a pla
 
 ## Motion with No Forces
 
-:::Definition (Rest|4 L)
+:::Definition (Rest|3 R)
 An object at **rest** has a velocity of $v=0 \text{ m/s}$ in the frame of interest. 
 :::
-To make our discussion concrete, we should review some basic physics for the case in which there are no forces acting on the body of interest. From [](#Definition-VariablesofMotionin1D), you can probably guess what happens to an object at *rest* when no force is acting upon it.
+To make our discussion concrete, we should review some basic physics for the case in which there are no forces acting on the body of interest. In this and the following sections, we will do thought experiments on what happens to a ball as it is released in various scenarios, similar to the experiment you will perform. 
+
+
+The first case of force-free motion to consider is a body starting at **rest**.
+From [](#Definition-VariablesofMotionin1D) and your intuition alone, you can probably guess what happens to an object at rest when no force is acting upon it. Take a minute to consider the situation and try answering the *Check Your Understanding* box below ;;;Don't worry — This isn't graded!;;;.
 
 
 

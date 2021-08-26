@@ -13981,6 +13981,9 @@ textarea.form-control-lg {
 .Definition .card-header {
   background-color: #ffde88;
 }
+.Definition .card-body {
+  font-size: smaller;
+}
 
 .Prelab {
   background-color: #f8f9fa;

@@ -291,6 +291,9 @@ $simulation-bg:$UCSB-mist;
     .card-header{
         background-color: tint-color($UCSB-gold,50%);
     }
+    .card-body{
+        font-size: smaller
+    }
  };
 
  .Prelab{

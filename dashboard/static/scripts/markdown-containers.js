@@ -108,7 +108,7 @@ class Card{
         this.headerText=`<i class="bi bi-journal-text"></i><strong> Prelab Assignment</strong> <i class="bi bi-journal-text"> </i>`
         break
       case 'Quiz':
-        this.styleList.push(blurb_center)
+        this.styleList.push(blurb_center, 'my-5')
         this.innerStyles[1]='text-center'
         this.headerText=`<i class="bi bi-check2-circle fs-2"></i> Your Understanding `
         break
@@ -345,7 +345,7 @@ md.use(container, 'Definition', {
 
       let def= new Card("Definition", args[0])
       def.headerText+=`<span class=''>${args[0]} </span>`
-      def.styleList.push(args[1] ? 'col-lg-' + args[1].replace("L","float-lg-start my-0 mx-3 ").replace("R","float-lg-end my-0 mx-3 ") : 'col-lg-10 mx-auto my-5' )
+      def.styleList.push(args[1] ? 'col-lg-' + args[1].replace("L","float-lg-start mt-0 mb-1 mx-3 ").replace("R","float-lg-end mt-0 mb-1 mx-3 ") : 'col-lg-10 mx-auto my-5' )
       def.publishCard()
       return div_head.pop()
     } else {
