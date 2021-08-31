@@ -1,8 +1,10 @@
 # Pendulum
 
 :::Intro (Objective)
-The objective of this lab is to determine which physical quantities influence the period of a pendulum. The relevant features are the mass of the bob, the length of the pendulum, and the initial angular displacement. By making many measurements of each feature while keeping the other two constant you will construct an argument as to which feature or features influence the period.
+The objective of this lab is to gain an understanding of what uncertainty is and how it can influence the choices we make in our experiments. Additionally we will want to qualitatively determine what parameters affect the period of the pendulum.
 :::
+
+The objective of this lab is to determine which physical quantities influence the period of a pendulum. The relevant features are the mass of the bob, the length of the pendulum, and the initial angular displacement. By making many measurements of each feature while keeping the other two constant you will construct an argument as to which feature or features influence the period.
 
 # Introduction
 
