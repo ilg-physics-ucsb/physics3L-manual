@@ -1,8 +1,25 @@
 // Custom.scss
 // Option B: Include parts of Bootstrap
+.avenir-light {
+    font-family: Avenir, "Century Gothic", sans-serif; 
+    font-weight:100; 
+    font-style:normal;
+  }
+  
+  .avenir-black-oblique {
+    font-family:Avenir, "Century Gothic", sans-serif; 
+    font-weight:600; 
+    font-style:italic; 
+  }
+  
+  .produkt-thin {
+    font-family:Produkt, serif; 
+    font-weight:100; 
+    font-style:normal;
+  }
 
-
-
+  $font-weight-bolder:          800 ;
+  $lead-font-weight:            100;
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../bootstrap/scss/functions";
 
@@ -70,7 +87,9 @@ $dropdown-divider-margin-y:         1px ;
  
 
 
-
+$font-family-sans-serif:      "Avenir", Roboto , -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace:       "Produkt", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-weight-base:            280;
 
 
 $accordion-padding-y:                     0.75rem;
@@ -126,6 +145,9 @@ code{
 $card-border-width: 0px;
 .card{
     box-shadow: 1px 1px 5px 2px $UCSB-lightgray;
+    .katex{
+        font-size: 1.3rem
+    }
 }
 
 // 4. Include any optional Bootstrap components as you like
@@ -260,6 +282,10 @@ $simulation-bg:$UCSB-mist;
         color:white;
         background-color: $intro-bg
        }
+
+       ol> li, ul> li{
+        text-align: left
+    }
  }
 
 
@@ -283,16 +309,20 @@ $simulation-bg:$UCSB-mist;
  .Definition{
     background-color: $definition-bg;
     color:$dark;
-
+    font-size: 1.1rem!important;
     ul{
-        font-size: 90%;
+        font-size: 95%;
     };
 
     .card-header{
         background-color: tint-color($UCSB-gold,50%);
     }
     .card-body{
-        font-size: smaller
+        font-size: 1rem
+    }
+    clear: none !important;
+    .katex{
+        font-size: 1.15rem;
     }
  };
 
@@ -338,6 +368,8 @@ $simulation-bg:$UCSB-mist;
         font-weight: normal;
         padding-right:10px;   
     }
+    p{
+        text-indent: 1rem}
 };
 
 ///Hider////
@@ -455,6 +487,10 @@ $simulation-bg:$UCSB-mist;
         font-size: 1.5rem;
     }
 
+    ol li::marker{
+        font-weight: bold;
+    }
+
 }
 
 .badge-Activity{
@@ -483,7 +519,7 @@ $simulation-bg:$UCSB-mist;
             padding: 0.3rem 0px;
         }
         li::marker{
-            font-weight: 550;
+            font-weight: bold;
         }
     }
 
@@ -491,6 +527,10 @@ $simulation-bg:$UCSB-mist;
         list-style-type: lower-alpha!important;
       }
 
+    img{
+        margin: auto;
+        text-align: center;
+    }
 
 }
 .badge-Exercise{
@@ -524,21 +564,33 @@ $simulation-bg:$UCSB-mist;
 //Note
 
 .Note{
-    transform:rotate(2deg);
-    font-family: 'Comic Sans Ms', "Comic Sans", cursive;
-    font-size: 0.9rem;
+    // transform:rotate(2deg);
+    // font-family: 'Comic Sans Ms', "Comic Sans", cursive;
+    font-size: 1rem;
     color: shade-color($UCSB-lightgray,70%);
     text-indent: 0.25rem;
-    i{
-        transform:rotate(45deg) translateY(-40px) ;
-    }
+    // i{
+    //     transform:rotate(45deg) translateY(-40px) ;
+    // }
     .card-header{
-        background-color: $caution!important;
         border:none;
-        height:20px;
-        color:black;
-
+        display: none;
     }
+    .card-footer{
+        border:none;
+        display: none;
+    }
+    p{
+        margin: 0px;
+    }
+
+    ol > li, ul >li{
+        text-align: left;
+    }
+
+
+    background-color: tint-color($warning,80%);
+    border-left: 8px $warning solid!important;
 }
 
 .Warning{
@@ -576,6 +628,10 @@ $simulation-bg:$UCSB-mist;
         overflow: hidden;
         font-size: 0.85rem;
     }
+
+    .katex{
+        font-size: 100%!important
+    }
    
  };
 
@@ -605,7 +661,7 @@ $simulation-bg:$UCSB-mist;
         max-width:80%;
     }
     .xs.Figure:not(.rowfig), .xs img{
-        width:min(10rem, 100%);
+        max-width:min(10rem, 100%);
     }
     .s.Figure:not(.rowfig), .s img{
         max-width: min(15rem, 100%);
@@ -643,11 +699,17 @@ $simulation-bg:$UCSB-mist;
 
 ////Specific
 #part0{
-    font-family: var(--bs-font-monospace);
+    font-family: "Produkt", var(--bs-font-monospace);
     font-size: 1em;
+    font-weight: 400;
     direction: ltr /* rtl:ignore */;
     unicode-bidi: bidi-override;
-
+    margin:  20px auto;
+    display: block;
+    text-align: center;
+    //text-decoration: underline;
+    font-size: 3rem;
+    border-bottom: 1px lightgrey solid
 }
 
 
@@ -782,12 +844,16 @@ img:hover{
     card-footer{
         max-width: 100%;
     }
+
+    td, th{
+        text-align: center;
+    }
   }
 
-  .card:not(.Note){
-    overflow-x: hidden;
-
-  }
+.card:not(.Note){
+overflow-x: hidden;
+// font-size: 2rem;
+}
 
 
 
@@ -844,3 +910,4 @@ img:hover{
 }
 
 .katex { font-size: 105%; }
+ 

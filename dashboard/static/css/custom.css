@@ -1,4 +1,22 @@
 @charset "UTF-8";
+.avenir-light {
+  font-family: Avenir, "Century Gothic", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.avenir-black-oblique {
+  font-family: Avenir, "Century Gothic", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.produkt-thin {
+  font-family: Produkt, serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
 pre {
   border: rgba(0, 0, 0, 0.125) 1px solid;
   margin: auto;
@@ -19,6 +37,9 @@ code {
 }
 .card {
   box-shadow: 1px 1px 5px 2px #DCE1E5;
+}
+.card .katex {
+  font-size: 1.3rem;
 }
 
 :root {
@@ -43,8 +64,8 @@ code {
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #001626;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-font-sans-serif: "Avenir", Roboto, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-monospace: "Produkt", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
 
@@ -64,7 +85,7 @@ body {
   margin: 0;
   font-family: var(--bs-font-sans-serif);
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 280;
   line-height: 1.5;
   color: #212529;
   background-color: #fff;
@@ -187,7 +208,7 @@ blockquote {
 
 b,
 strong {
-  font-weight: bolder;
+  font-weight: 800;
 }
 
 small, .small {
@@ -466,7 +487,7 @@ progress {
 
 .lead {
   font-size: 1.25rem;
-  font-weight: 300;
+  font-weight: 100;
 }
 
 .display-1 {
@@ -1978,8 +1999,8 @@ progress {
   --bs-UCSB-lightgray: #DCE1E5;
   --bs-black: black;
   --bs-caution: #ffebb8;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-font-sans-serif: "Avenir", Roboto, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-monospace: "Produkt", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
 
@@ -1999,7 +2020,7 @@ body {
   margin: 0;
   font-family: var(--bs-font-sans-serif);
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 280;
   line-height: 1.5;
   color: #212529;
   background-color: #fff;
@@ -2122,7 +2143,7 @@ blockquote {
 
 b,
 strong {
-  font-weight: bolder;
+  font-weight: 800;
 }
 
 small, .small {
@@ -2401,7 +2422,7 @@ progress {
 
 .lead {
   font-size: 1.25rem;
-  font-weight: 300;
+  font-weight: 100;
 }
 
 .display-1 {
@@ -10202,7 +10223,7 @@ textarea.form-control-lg {
 }
 
 .fw-bolder {
-  font-weight: bolder !important;
+  font-weight: 800 !important;
 }
 
 .lh-1 {
@@ -13958,6 +13979,9 @@ textarea.form-control-lg {
   color: white;
   background-color: #003660;
 }
+.Summary ol > li, .Summary ul > li {
+  text-align: left;
+}
 
 .Materials {
   background-color: rgba(255, 255, 255, 0.2);
@@ -13974,15 +13998,20 @@ textarea.form-control-lg {
 .Definition {
   background-color: #f2f5f7;
   color: #001626;
+  font-size: 1.1rem !important;
+  clear: none !important;
 }
 .Definition ul {
-  font-size: 90%;
+  font-size: 95%;
 }
 .Definition .card-header {
   background-color: #ffde88;
 }
 .Definition .card-body {
-  font-size: smaller;
+  font-size: 1rem;
+}
+.Definition .katex {
+  font-size: 1.15rem;
 }
 
 .Prelab {
@@ -14019,6 +14048,9 @@ textarea.form-control-lg {
   font-size: 1.3rem !important;
   font-weight: normal;
   padding-right: 10px;
+}
+.Hider p {
+  text-indent: 1rem;
 }
 
 .Simulation button {
@@ -14110,6 +14142,9 @@ textarea.form-control-lg {
 .Activity .card-but {
   font-size: 1.5rem;
 }
+.Activity ol li::marker {
+  font-weight: bold;
+}
 
 .badge-Activity {
   background-color: #a9544a;
@@ -14135,10 +14170,14 @@ textarea.form-control-lg {
   padding: 0.3rem 0px;
 }
 .Exercise ol li::marker, .Exercise ul li::marker {
-  font-weight: 550;
+  font-weight: bold;
 }
 .Exercise ol {
   list-style-type: lower-alpha !important;
+}
+.Exercise img {
+  margin: auto;
+  text-align: center;
 }
 
 .badge-Exercise {
@@ -14165,20 +14204,25 @@ textarea.form-control-lg {
 }
 
 .Note {
-  transform: rotate(2deg);
-  font-family: "Comic Sans Ms", "Comic Sans", cursive;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #424445;
   text-indent: 0.25rem;
-}
-.Note i {
-  transform: rotate(45deg) translateY(-40px);
+  background-color: #fff3cd;
+  border-left: 8px #ffc107 solid !important;
 }
 .Note .card-header {
-  background-color: #ffebb8 !important;
   border: none;
-  height: 20px;
-  color: black;
+  display: none;
+}
+.Note .card-footer {
+  border: none;
+  display: none;
+}
+.Note p {
+  margin: 0px;
+}
+.Note ol > li, .Note ul > li {
+  text-align: left;
 }
 
 .Warning {
@@ -14211,6 +14255,9 @@ textarea.form-control-lg {
   overflow: hidden;
   font-size: 0.85rem;
 }
+.Figure .katex {
+  font-size: 100% !important;
+}
 
 .xs, .s, .m, .l, .xl {
   margin: auto;
@@ -14234,7 +14281,7 @@ textarea.form-control-lg {
   }
 
   .xs.Figure:not(.rowfig), .xs img {
-    width: min(10rem, 100%);
+    max-width: min(10rem, 100%);
   }
 
   .s.Figure:not(.rowfig), .s img {
@@ -14268,10 +14315,16 @@ textarea.form-control-lg {
 }
 
 #part0 {
-  font-family: var(--bs-font-monospace);
+  font-family: "Produkt", var(--bs-font-monospace);
   font-size: 1em;
+  font-weight: 400;
   direction: ltr;
   unicode-bidi: bidi-override;
+  margin: 20px auto;
+  display: block;
+  text-align: center;
+  font-size: 3rem;
+  border-bottom: 1px lightgrey solid;
 }
 
 h5 > button, .h5 > button {
@@ -14391,6 +14444,9 @@ img:hover {
 }
 .Table card-footer {
   max-width: 100%;
+}
+.Table td, .Table th {
+  text-align: center;
 }
 
 .card:not(.Note) {
