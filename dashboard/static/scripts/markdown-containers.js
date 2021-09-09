@@ -9,7 +9,7 @@ const katex_map = new Map(); //saves key pairs for retreiving latex in blurbs
 const fig_group = "justify-content-center text-center px-0 mx-3 mb-4" //Formatting that is special for figues -- adds margins to floated figs
 
 const narrow_center = "col-lg-9 mx-auto my-5"
-const blurb_center = "col-lg-5 mx-auto"
+const blurb_center = "col-lg-8 mx-auto"
 const collapsable_header = ' fs-4 align-bottom'
 
 
@@ -58,14 +58,15 @@ class Card{
         this.footerText= `Video ${this.number}`
         break
       case 'Note':
-        this.styleList.push('mx-auto', 'my-4', 'col-8 bg-caution bg-gradient')
+        this.styleList.push('mx-auto', 'my-4', 'col-8 bg-gradient')
         this.innerStyles[1]='text-center'
         this.headerText = '<i class="fa fa-thumb-tack fs-1" aria-hidden="true"></i>'
         break
       case 'Warning':
-        this.styleList.push(' mx-auto bg-danger bg-gradient alert alert-warning alert-dismissible fade show hshaker')
+        this.styleList.push(' mx-auto bg-danger bg-gradient alert alert-warning  fade show hshaker')
         this.innerStyles= ['text-center text-light', 'text-center text-light fs-2', 'px-2' , 'text-center']
-        this.headerText='<i class="fa fa-exclamation-triangle fs-1 rotor" aria-hidden="true"></i> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
+        this.headerText='<i class="fa fa-exclamation-triangle fs-1 rotor" aria-hidden="true"></i> '
+        this.footerText='<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="bottom:0px!important; position:relative!important"></button>'
         break
       case 'Definition':
         this.styleList.push('')
@@ -73,9 +74,9 @@ class Card{
         this.headerText=`<span class='lead' > Definition: </span>`
         break
       case 'Table':
-        this.styleList.push(' mx-auto ')
+        this.styleList.push('')
         this.innerStyles[0]='text-left'
-        this.footerText= 'Table ' + this.number
+        this.footerText= 'Table ' + this.number 
         break
       case 'Hider':
         this.collapse=true
@@ -85,7 +86,7 @@ class Card{
         break
       case 'Activity':
         this.collapse=true
-        this.headerText= 'Activity ' + this.number
+        this.headerText= `<div class= ' container-fluid row justify-content-start'> <div class='col-lg-12'> <strong>Activity ${this.number} </strong></div>`
         this.styleList.push('col-lg-11 my-5 mx-auto')
         this.innerStyles[0]+=collapsable_header
         break
@@ -383,8 +384,9 @@ md.use(container, 'Table', {
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Table(.*)$/)[1])
       let table=new Card("Table", args[0])
-      table.styleList.push('col-lg-' + (args[2] ||'9') )
-      table.footerText+=(args[1] || '')
+      table.styleList.push(args[2] ? 'col-lg-' + args[2].replace("L","float-lg-start mt-0 mb-1 mx-3 ").replace("R","float-lg-end mt-0 mb-1 mx-3 ").replace("C","mx-auto my-4 ") : 'col-lg-9 mx-auto my-5' )
+     
+      table.footerText+=( args[1]? ': ' + args[1] : '')
       table.publishCard()
       return div_head.pop()
     } else {
@@ -429,7 +431,8 @@ md.use(container, 'Activity', {
     if (tokens[idx].nesting === 1) {
       args = strip(tokens[idx].info.trim().match(/^Activity(.*)$/)[1])
       let activity = new Card('Activity', args[0])
-      activity.headerText+= args[1] ?  `│ <span class='lead align-baseline' style="padding-left:0px"> ${args[1]} </span>` : ''
+      activity.headerText+= args[1] ?  `<div class='col-lg-12 text-left justify-content-start' > <span class='lead align-baseline' style="padding-left:0px"> ${args[1]} </span></div>` : ''
+      activity.headerText+='</div>'
       activity.publishCard()
       return div_head.pop()
     } else {
@@ -655,6 +658,48 @@ md.use(container, 'row', {
   }
 });
 
+md.use(container, 'center', {
+
+  render: function (tokens, idx) {
+
+    let args;
+    if (tokens[idx].nesting === 1) {
+      args = strip(tokens[idx].info.trim().match(/^center(.*)$/)[1])
+      // opening tag
+      return `<div class="text-center">`;
+    } else {
+      return '</div>'
+    }
+  }
+});
+md.use(container, 'left', {
+
+  render: function (tokens, idx) {
+
+    let args;
+    if (tokens[idx].nesting === 1) {
+      args = strip(tokens[idx].info.trim().match(/^left(.*)$/)[1])
+      // opening tag
+      return `<div class="text-left">`;
+    } else {
+      return '</div>'
+    }
+  }
+});
+md.use(container, 'right', {
+
+  render: function (tokens, idx) {
+
+    let args;
+    if (tokens[idx].nesting === 1) {
+      args = strip(tokens[idx].info.trim().match(/^right(.*)$/)[1])
+      // opening tag
+      return `<div class="text-right">`;
+    } else {
+      return '</div>'
+    }
+  }
+});
 
 
 
