@@ -40,11 +40,23 @@ We will be making the following assumptions in our model:
 - The initial angle of the amplitude is small.
 - The pendulum bob behaves like a point mass.
 
+## Some Statistics
 
+Last week you talked a bit about uncertainty and qualitatively made some comparisons by looking at some histogram data. 
+
+Today we will work on making the comparisons more quantitative by looking at some statistics. Namely we will be discussing the $t\prime$ statistic that we will use this quarter for making comparisons. It is defined, with more information, in the reference section of the manual. Just so you don't have to jump back and forth to see its definition we will define it here.
+
+:::Equation (tstat)
+$$
+t\prime = \frac{A-B}{\sqrt{\delta A^2 + \delta B^2}}
+$$
+:::
+
+In [](Equation-tstat) $A$ and $B$ are both measurements that have been made and $\delta A$ and $\delta B$ are both uncertainties in $A$ and $B$ respectively.
+
+$t\prime$ gives us a more quantitative way to talk about the relationship of two measurements.
 
 ## Apparatus
-
-
 
 The apparatus is the same as the previous lab and can be shown in [](Figure-fullApparatus). For a review of how the apparatus works you can go to the apparatus section of the previous lab document.
 
@@ -63,14 +75,20 @@ Update your procedure from last week to incorporate what you learned in class ab
 # Making a comparison
 
 ::::::Activity
-Last week you talked a bit about uncertainty and qualitatively made some comparisons by looking at some histogram data. 
+Your TA will start a discussion about the interpretation of $t\prime$ and how you might go about making some claims based on the value of $t\prime$.
 
-Today we will work on making the comparisons more quantitative by looking at some statistics. Namely we will be discussing the $t\prime$ statistic that we will use this quarter for making comparisons. It is defined, with more information, in the reference section of the manual. Just so you don't have to jump back and forth to see its definition we will define it here.
+:::Exercise
+1. Based on your discussion, what conclusions can be drawn if $|t\prime| \leq 1$?
+2. What actions might you take ensure that your conclusion is accurate?
+:::
 
-:::Equation (tstat)
-$$
-t\prime = \frac{A-B}{\sqrt{\delta A^2 + \delta B^2}}
-$$
+:::Exercise
+Based on your discussion, what conclusions can be drawn if $1 < |t\prime| < 3$?
+:::
+
+:::Exercise
+1. Based on your discussion, what conclusions can be drawn if $|t\prime| \geq 3$?
+2. What actions might you take ensure that your conclusion is accurate?
 :::
 
 ::::::
