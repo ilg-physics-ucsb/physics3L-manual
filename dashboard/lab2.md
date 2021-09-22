@@ -83,16 +83,58 @@ Your TA will start a discussion about the interpretation of $t\prime$ and how yo
 :::
 
 :::Exercise
-Based on your discussion, what conclusions can be drawn if $1 < |t\prime| < 3$?
+Based on your discussion, what conclusions can be drawn if $1 < |t\prime| \leq 3$?
 :::
 
 :::Exercise
-1. Based on your discussion, what conclusions can be drawn if $|t\prime| \geq 3$?
+1. Based on your discussion, what conclusions can be drawn if $|t\prime| > 3$?
 2. What actions might you take ensure that your conclusion is accurate?
 :::
 
 ::::::
 
+# The Experiment
+
+:::::::::Activity
+
+In this lab you make attempt to determine if there is a difference between the period of a pendulum released at 10° and 20°. 
+
+Follow your procedure and use the $t\prime$ statistic to help make a case for one way or the other.
+
+There is not a "right answer" for this activity. You are not trying to prove something. You are trying to make a measurement and draw a conclusion from your data. 
+
+You will be graded on whether or not you made logical and justified decisions in your lab and that you properly analyzed your data using uncertainty and statistics provided.
+
+:::Note
+You should stop and due calculations throughout your lab to evaluate your measurement process and your data.
+:::
+
+:::Exercise
+Each time you calculate $t\prime$ and make a decision about how to proceed in your lab write down a short summary of what you did, what your data is telling you, and what you are choosing to do.
+:::
+
+:::Exercise
+List any major sources of uncertainty and systematics.
+:::
+
+:::Exercise
+Make two histograms of your data. Be sure to include a title and label the axes appropriately with correct units.
+:::
+
+:::Exercise
+Calculate you the mean, standard deviation, and standard uncertainty of the mean for each of your two data sets.
+:::
+
+::::::Exercise
+Based on your results, does the model we use accurately describe the world to your level of measurement? Explain your reasoning. 
+
+:::Hint
+You should make a reference to your histograms, your $t\prime$ value, and the rest of the statistics you calculated. 
+:::
+
+::::::
+
+:::::::::
 
 
 
